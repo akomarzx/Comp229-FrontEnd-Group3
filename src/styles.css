@@ -1,9 +1,9 @@
 html body {
     min-height: 100vh;
-    height: auto;
     margin: 0;
 }
 body {
+  height: 100%;
   padding-top: 60px !important;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
