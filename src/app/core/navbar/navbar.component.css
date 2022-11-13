@@ -1,0 +1,18 @@
+i {
+  margin-right: 6px;
+}
+.nav-searchbar {
+  margin-left: 8px;
+}
+
+.navbar {
+  background-color: #F1F5FE;
+}
+
+.nav-item :hover {
+  background-color: #70ABAF;
+}
+
+.active {
+  background-color: #8DB046;
+}
