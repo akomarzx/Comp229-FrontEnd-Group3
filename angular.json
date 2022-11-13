@@ -112,8 +112,9 @@
       }
     }
   },
-  "defaultProject": "Comp229-FrontEnd-Group3",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
