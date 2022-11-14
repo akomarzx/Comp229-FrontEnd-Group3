@@ -9,7 +9,7 @@ import { fromEvent, Subscription } from 'rxjs';
 export class FeatAdsCategoryButtonComponent implements  AfterContentInit,OnDestroy {
 
   constructor() { 
-    this.categoryActivated = new EventEmitter<void>;
+    this.activated = new EventEmitter<void>;
   }
   ngOnDestroy(): void {
     this.buttonSubscription?.unsubscribe();
@@ -17,11 +17,11 @@ export class FeatAdsCategoryButtonComponent implements  AfterContentInit,OnDestr
   
   ngAfterContentInit(): void {
     this.buttonSubscription = fromEvent(this.button.nativeElement, 'click').subscribe( event => 
-      this.categoryActivated.emit()
+      this.activated.emit()
     )
   }
   
   @ContentChild('catButton') button! : ElementRef;
-  @Output() categoryActivated : EventEmitter<void>;
+  @Output() activated : EventEmitter<void>;
   buttonSubscription! : Subscription | null;
 }
