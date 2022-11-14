@@ -5,6 +5,10 @@ i {
   margin-left: 8px;
 }
 
+.nav-item{
+  margin-left: 4px;
+  margin-right: 4px;
+}
 .navbar {
   background-color: #F1F5FE;
 }
