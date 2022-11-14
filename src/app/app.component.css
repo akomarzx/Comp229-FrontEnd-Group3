@@ -3,3 +3,7 @@
   border: solid 2px blueviolet;
 }
 
+app-footer { 
+  padding-left: 0;
+  padding-right: 0;
+}
