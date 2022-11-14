@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./home/feature/home-page/home-page.module').then(m => m.HomePageModule)
+  },
+  {
+    path: '/advertisements', 
+    loadChildren: () => import('./advertisements/shell/ads-page-shell.module').then(m => m.AdsPageShellModule)
   }
 ];
 
