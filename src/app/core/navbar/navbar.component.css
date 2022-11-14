@@ -5,6 +5,9 @@ i {
   margin-left: 8px;
 }
 
+.nav-searchbar input {
+  width: 330px;
+}
 .nav-item{
   margin-left: 4px;
   margin-right: 4px;
