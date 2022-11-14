@@ -1,3 +1,4 @@
+
 html body {
     min-height: 100vh;
     margin: 0;
@@ -6,5 +7,6 @@ body {
   height: 100%;
   padding-top: 60px !important;
   /* padding-bottom: 40px !important; */
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  
+  font-family: 'Lato' ,Georgia, 'Times New Roman', Times, serif;
 }
