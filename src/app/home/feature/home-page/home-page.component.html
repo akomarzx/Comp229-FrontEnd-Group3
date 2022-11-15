@@ -13,11 +13,14 @@
         </div>
       </div>
     </div>
-    <div class="row border border-danger featureAdsNav">
+    <div class="row featureAdsNav">
       <app-featured-ads-nav></app-featured-ads-nav>
     </div>
-    <div class="row border border-danger text-center">
+    <div class="row text-center">
       <h1>Featured Ads</h1>
+    </div>
+    <div class="row border border-primary">
+      <app-advertisements-list [advertisments]="advertsService.getAdvertisements()"></app-advertisements-list>
     </div>
   </div>
 </div>
