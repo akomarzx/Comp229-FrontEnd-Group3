@@ -63,7 +63,7 @@ export const reducer = createReducer(
               isOtherSelected: false
             }
           }),
-          on(fromFeaturedAdsNav.onClickedCarsCategory,
+          on(fromFeaturedAdsNav.onClickedOtherCategory,
             (state): State => {
               return {
                 ...state,

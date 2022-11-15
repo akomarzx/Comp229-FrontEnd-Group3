@@ -4,7 +4,8 @@
             <div class="mx-1">
                 <app-feat-ads-category-button (activated)="loadFeatCarAdverts()">
                     <a>
-                        <button class="btn btn-outline-secondary" #catButton>
+                        <button class="btn btn-outline-secondary" #catButton
+                            [ngClass]="{'active' : isFeatCarActive$ | async}">
                             <i class="fas fa-car fa-fw me-1"></i>Cars</button>
                     </a>
                 </app-feat-ads-category-button>
@@ -12,7 +13,8 @@
             <div class="mx-2">
                 <app-feat-ads-category-button (activated)="loadFeatElectrAdverts()">
                     <a>
-                        <button class="btn btn-outline-secondary" #catButton><i
+                        <button class="btn btn-outline-secondary" #catButton
+                            [ngClass]="{'active' : isFeatElectroActive$ | async}"><i
                                 class="fas fa-tv fa-fw me-1"></i>Electronics</button>
                     </a>
                 </app-feat-ads-category-button>
@@ -20,7 +22,8 @@
             <div class="mx-1">
                 <app-feat-ads-category-button (activated)="loadFeatFashAdverts()">
                     <a>
-                        <button class="btn btn-outline-secondary" #catButton><i
+                        <button class="btn btn-outline-secondary" #catButton
+                            [ngClass]="{'active' : isFeatFashActive$ | async}"><i
                                 class="fa-solid fa-shirt fa-fw me-1"></i>Fashion</button>
                     </a>
                 </app-feat-ads-category-button>
@@ -28,7 +31,8 @@
             <div class="mx-1">
                 <app-feat-ads-category-button (activated)="loadFeatSportAdverts()">
                     <a>
-                        <button class="btn btn-outline-secondary" #catButton> <i
+                        <button class="btn btn-outline-secondary" #catButton
+                            [ngClass]="{'active' : isFeatSportsActive$ | async}"> <i
                                 class="fa-solid fa-bicycle fa-fw me-1"></i>Sports</button>
                     </a>
                 </app-feat-ads-category-button>
@@ -36,7 +40,9 @@
             <div class="mx-1">
                 <app-feat-ads-category-button (activated)="loadFeatOtherAdverts()">
                     <a>
-                        <button class="btn btn-outline-secondary" #catButton><i class="fa-solid fa-gifts me-1"></i>Other</button>
+                        <button class="btn btn-outline-secondary" #catButton
+                            [ngClass]="{'active' : isFeatOtherActive$ | async}"><i
+                                class="fa-solid fa-gifts me-1"></i>Other</button>
                     </a>
                 </app-feat-ads-category-button>
             </div>

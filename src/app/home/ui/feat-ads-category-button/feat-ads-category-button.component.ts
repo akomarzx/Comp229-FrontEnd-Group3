@@ -1,5 +1,5 @@
-import { AfterContentInit, Component, ContentChild, ElementRef, EventEmitter, OnDestroy, Output } from '@angular/core';
-import { fromEvent, Subscription } from 'rxjs';
+import { AfterContentInit, Component, ContentChild, ElementRef, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-feat-ads-category-button',
@@ -20,7 +20,6 @@ export class FeatAdsCategoryButtonComponent implements  AfterContentInit,OnDestr
       this.activated.emit()
     )
   }
-  
   @ContentChild('catButton') button! : ElementRef;
   @Output() activated : EventEmitter<void>;
   buttonSubscription! : Subscription | null;
