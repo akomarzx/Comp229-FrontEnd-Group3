@@ -1,14 +1,14 @@
 <!-- TODO: Homepage needs redesign -->
 <div class="row h-100 d-flex justify-content-center mt-2">
-  <div class="col-md border border-danger">
+  <div class="col-md">
     <div class="row justify-content-center">
-      <div class="col-lg-4 border border-danger">
-        <div class="border border-primary ">
+      <div class="col-lg-4 ">
+        <div class="">
           <img src="/assets/ecommerce.jpg" alt="ECommerce Picture" class="h-100 w-100 img-fluid">
         </div>
       </div>
-      <div class="col-lg-4 border border-secondary d-flex flex-column justify-content-center ps-md-0 pe-md-4">
-        <div class="border border-primary">
+      <div class="col-lg-4 d-flex flex-column justify-content-center ps-md-0 pe-md-4">
+        <div class="">
           <img src="/assets/CBSC.png" alt="CB&S Logo" class="h-100 w-100 img-fluid">
         </div>
       </div>
@@ -19,7 +19,7 @@
     <div class="row text-center">
       <h1>Featured Ads</h1>
     </div>
-    <div class="row border border-primary">
+    <div class="row">
       <app-advertisements-list [advertisments]="advertsService.getAdvertisements()"></app-advertisements-list>
     </div>
   </div>
