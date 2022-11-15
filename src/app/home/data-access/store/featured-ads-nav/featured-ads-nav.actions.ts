@@ -3,7 +3,9 @@ import { createAction, props } from '@ngrx/store';
 export const onFeaturedAdsNavs = createAction(
   '[FeaturedAdsNav] On FeaturedAdsNavs'
 );
-
+export const onClickedAllCategory = createAction(
+  '[FeaturedAdsNav] On FeaturedAdsNavs'
+);
 export const onClickedCarsCategory = createAction(
   '[FeaturedAdsNav] OnClickedCarCategory'
 )

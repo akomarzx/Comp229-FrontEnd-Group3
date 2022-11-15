@@ -48,6 +48,10 @@ export const selectIsOtherSelected = createSelector(
   selectFeatureAdNavState,
   fromFeaturedAdsNav.selectIsOthersSelected
 )
+export const selectIsAllSelected = createSelector(
+  selectFeatureAdNavState,
+  fromFeaturedAdsNav.selectIsAlllsSelected
+)
 
 
 

@@ -2,13 +2,20 @@
     <div class="col-md-12 border border-secondary">
         <div class="d-flex justify-content-center mt-lg-1">
             <div class="mx-1">
+                <app-feat-ads-category-button (activated)="loadFeatAdverts()">
+                    <button class="btn btn-outline-secondary" #catButton
+                        [ngClass]="{'active' : isFeatAllActive | async}">
+                        <i class="fa-solid fa-heart me-1"></i>All</button>
+                </app-feat-ads-category-button>
+            </div>
+            <div class="mx-1">
                 <app-feat-ads-category-button (activated)="loadFeatCarAdverts()">
                     <button class="btn btn-outline-secondary" #catButton
                         [ngClass]="{'active' : isFeatCarActive$ | async}">
                         <i class="fas fa-car fa-fw me-1"></i>Cars</button>
                 </app-feat-ads-category-button>
             </div>
-            <div class="mx-2">
+            <div class="mx-1">
                 <app-feat-ads-category-button (activated)="loadFeatElectrAdverts()">
                     <button class="btn btn-outline-secondary" #catButton
                         [ngClass]="{'active' : isFeatElectroActive$ | async}"><i
