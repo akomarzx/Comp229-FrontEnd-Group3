@@ -16,10 +16,10 @@
     <div class="row featureAdsNav">
       <app-featured-ads-nav></app-featured-ads-nav>
     </div>
-    <div class="row text-center">
+    <div class="row text-center mt-3 mb-1 mt-lg-0">
       <h1>Featured Ads</h1>
     </div>
-    <div class="row">
+    <div class="row border h-75 border-danger overflow-auto">
       <app-advertisements-list [advertisments]="advertsService.getAdvertisements()"></app-advertisements-list>
     </div>
   </div>
