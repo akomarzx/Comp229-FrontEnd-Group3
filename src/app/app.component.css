@@ -1,5 +1,5 @@
 .contentArea {
-  height: 992px;
+  min-height: 80vh;
   /* border: solid 2px blueviolet; */
 }
 

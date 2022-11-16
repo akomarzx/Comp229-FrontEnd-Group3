@@ -2,3 +2,6 @@
     height: 5.8%;
     overflow-y: auto ;
 }
+.listArea {
+    min-height: 40vh;
+}
