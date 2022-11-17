@@ -17,10 +17,13 @@
       <app-featured-ads-nav></app-featured-ads-nav>
     </div>
     <div class="row text-center mt-3 mb-1 mt-lg-0">
+
       <h1>Featured Ads</h1>
     </div>
-    <div class="row border border-danger listArea">
-      <app-advertisements-list [advertisments]="advertsService.getAdvertisements() | async"></app-advertisements-list>
+    <div class="row border border-danger d-flex-lg justify-content-center listArea">
+      <div class=" col-lg-10">
+        <app-advertisements-list [advertisments]="advertsService.getAdvertisements() | async"></app-advertisements-list>
+      </div>
     </div>
   </div>
 </div>
