@@ -28,6 +28,7 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     EffectsModule.forRoot(),
     StoreRouterConnectingModule.forRoot({}),
     StoreDevtoolsModule.instrument({ maxAge: 25,logOnly: environment.production }),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Advertisement } from '../models/advertisement.model';
 
 @Injectable({
@@ -11,8 +12,8 @@ export class AdvertisementsService {
 
 
   //TODO: Remove Mock 
-  getAdvertisements(): Advertisement[] {
-    return [
+  getAdvertisements(): Observable<Advertisement[]> {
+    return of([
       {
         _id: '1',
         item: 'hello world',
@@ -130,6 +131,6 @@ export class AdvertisementsService {
           price: 3342
         }
       }
-    ]
+    ])
   }
 }

@@ -20,7 +20,7 @@
       <h1>Featured Ads</h1>
     </div>
     <div class="row border border-danger listArea">
-      <app-advertisements-list [advertisments]="advertsService.getAdvertisements()"></app-advertisements-list>
+      <app-advertisements-list [advertisments]="advertsService.getAdvertisements() | async"></app-advertisements-list>
     </div>
   </div>
 </div>

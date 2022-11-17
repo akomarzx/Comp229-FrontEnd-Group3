@@ -13,5 +13,5 @@ export class AdvertisementsListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() advertisments: Advertisement[] = [];
+  @Input() advertisments: Advertisement[] | null= [];
 }
