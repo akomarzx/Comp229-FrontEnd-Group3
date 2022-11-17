@@ -14,6 +14,7 @@ export class AdvertisementsService {
   getAdvertisements(): Advertisement[] {
     return [
       {
+        _id: '1',
         item: 'hello world',
         status: 'new',
         dateCreated: new Date(),
@@ -26,6 +27,7 @@ export class AdvertisementsService {
         }
       },
       {
+        _id: '2',
         item: 'hello world',
         status: 'new',
         dateCreated: new Date(),
@@ -38,6 +40,7 @@ export class AdvertisementsService {
         }
       },
       {
+        _id: '3',
         item: 'hello world',
         status: 'new',
         dateCreated: new Date(),
@@ -50,6 +53,7 @@ export class AdvertisementsService {
         }
       },
       {
+        _id: '4',
         item: 'hello world',
         status: 'new',
         dateCreated: new Date(),
@@ -62,6 +66,7 @@ export class AdvertisementsService {
         }
       },
       {
+        _id: '5',
         item: 'hello world',
         status: 'new',
         dateCreated: new Date(),
@@ -74,6 +79,7 @@ export class AdvertisementsService {
         }
       },
       {
+        _id: '6',
         item: 'hello world',
         status: 'new',
         dateCreated: new Date(),
@@ -86,6 +92,7 @@ export class AdvertisementsService {
         }
       },
       {
+        _id: '7',
         item: 'hello world',
         status: 'new',
         dateCreated: new Date(),
@@ -98,6 +105,7 @@ export class AdvertisementsService {
         }
       },
       {
+        _id: '8',
         item: 'hello world',
         status: 'new',
         dateCreated: new Date(),
@@ -110,6 +118,7 @@ export class AdvertisementsService {
         }
       },
       {
+        _id : '9',
         item: 'hello world',
         status: 'new',
         dateCreated: new Date(),

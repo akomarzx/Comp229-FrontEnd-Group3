@@ -1,5 +1,6 @@
 export interface Advertisement {
-    item: String,
+    _id: string,
+    item: string,
     status: string
     dateCreated: Date,    
     description: {

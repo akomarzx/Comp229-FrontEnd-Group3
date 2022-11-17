@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AdsCreateUpdatePageRoutingModule } from './ads-create-update-page-routing.module';
 import { AdsCreateUpdatePageComponent } from './ads-create-update-page.component';
+import { AdsCreateUpdateFormComponent } from '../../ui/ads-create-update-form/ads-create-update-form.component';
+import { AdsCreateUpdateFormModule } from '../../ui/ads-create-update-form/ads-create-update-form.module';
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { AdsCreateUpdatePageComponent } from './ads-create-update-page.component
   ],
   imports: [
     CommonModule,
-    AdsCreateUpdatePageRoutingModule
+    AdsCreateUpdatePageRoutingModule,
+    AdsCreateUpdateFormModule
   ]
 })
 export class AdsCreateUpdatePageModule { }

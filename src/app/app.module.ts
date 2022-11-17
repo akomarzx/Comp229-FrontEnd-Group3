@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { FooterModule } from './core/footer/footer.module';
 import { NavbarModule } from './core/navbar/navbar.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdsCreateUpdateFormComponent } from './advertisements/ui/ads-create-update-form/ads-create-update-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     NavbarModule,
     FooterModule,
