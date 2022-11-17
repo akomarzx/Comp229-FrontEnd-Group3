@@ -15,7 +15,6 @@ import { AdvertisementEffects } from '../../data-access/store/advertisement.effe
   imports: [
     CommonModule,
     AdsPageRoutingModule,
-    StoreModule.forFeature(fromAdvertisement.FeatureKey, fromAdvertisement.reducers, { metaReducers: fromAdvertisement.metaReducers }),
     EffectsModule.forFeature([AdvertisementEffects])
   ],
   exports: [

@@ -10,10 +10,8 @@ import { AppComponent } from './app.component';
 import { FooterModule } from './core/footer/footer.module';
 import { NavbarModule } from './core/navbar/navbar.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { AdsCreateUpdateFormComponent } from './advertisements/ui/ads-create-update-form/ads-create-update-form.component';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-
+import * as fromAdvertisementsState from './advertisements/data-access/store'
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,8 +23,9 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     NavbarModule,
     FooterModule,
     StoreModule.forRoot({}),
+    StoreModule.forFeature(fromAdvertisementsState.FeatureKey, fromAdvertisementsState.reducers),
     EffectsModule.forRoot(),
-    StoreRouterConnectingModule.forRoot({}),
+    StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25,logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
   ],
