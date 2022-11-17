@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { AdsPageRoutingModule } from './ads-page-routing.module';
 import { AdsPageComponent } from './ads-page.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromAdvertisement from '../../data-access/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AdvertisementEffects } from '../../data-access/store/advertisement.effects';
 
 @NgModule({
   declarations: [
@@ -10,7 +14,9 @@ import { AdsPageComponent } from './ads-page.component';
   ],
   imports: [
     CommonModule,
-    AdsPageRoutingModule
+    AdsPageRoutingModule,
+    StoreModule.forFeature(fromAdvertisement.FeatureKey, fromAdvertisement.reducers, { metaReducers: fromAdvertisement.metaReducers }),
+    EffectsModule.forFeature([AdvertisementEffects])
   ],
   exports: [
     AdsPageComponent
