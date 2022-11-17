@@ -12,6 +12,7 @@ import { NavbarModule } from './core/navbar/navbar.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdsCreateUpdateFormComponent } from './advertisements/ui/ads-create-update-form/ads-create-update-form.component';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AdsCreateUpdateFormComponent } from './advertisements/ui/ads-create-upd
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
