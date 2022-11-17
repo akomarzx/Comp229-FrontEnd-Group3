@@ -21,14 +21,13 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule,
     AppRoutingModule,
     NavbarModule,
     FooterModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot(),
-    StoreDevtoolsModule.instrument({ logOnly: environment.production }),
-    StoreRouterConnectingModule.forRoot(),
+    StoreRouterConnectingModule.forRoot({}),
+    StoreDevtoolsModule.instrument({ maxAge: 25,logOnly: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]

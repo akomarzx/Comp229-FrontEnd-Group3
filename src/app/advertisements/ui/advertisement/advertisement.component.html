@@ -3,5 +3,6 @@
     <div class="card-body">
       <h5 class="card-title">{{advertisement.item}}</h5>
       <p class="card-text">{{advertisement.description.description}}</p>
+      <a [routerLink]="['/advertisements', advertisement._id]" class="btn btn-primary stretched-link">Go somewhere</a>
     </div>
   </div>
