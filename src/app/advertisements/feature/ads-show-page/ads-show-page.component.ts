@@ -18,17 +18,8 @@ export class AdsShowPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.navigateSub = this.advertisement$.pipe(
-      tap((data) => {
-        if (typeof (data) === 'undefined') {
-          this.router.navigateByUrl('/');
-        }
-      })
-    ).subscribe()
   }
   ngOnDestroy(): void {
-    this.navigateSub.unsubscribe();
   }
-  navigateSub!: Subscription;
   advertisement$: Observable<Advertisement | undefined>;
 }
