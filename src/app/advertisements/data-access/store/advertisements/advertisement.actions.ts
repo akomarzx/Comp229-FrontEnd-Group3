@@ -1,10 +1,10 @@
 import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 
-import { Advertisement } from '../models/advertisement.model';
+import { Advertisement } from '../../models/advertisement.model';
 
 export const loadAdvertisements = createAction(
-  '[Advertisement/API] Load Advertisements', 
+  '[Advertisement/API] Load Advertisements',
   props<{ advertisements: Advertisement[] }>()
 );
 
