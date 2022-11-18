@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { FooterModule } from './core/footer/footer.module';
 import { NavbarModule } from './core/navbar/navbar.module';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import * as fromAdvertisementsState from './advertisements/data-access/store'
 @NgModule({
   declarations: [
@@ -24,9 +24,10 @@ import * as fromAdvertisementsState from './advertisements/data-access/store'
     FooterModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature(fromAdvertisementsState.FeatureKey, fromAdvertisementsState.reducers),
+    StoreModule.forFeature('router', routerReducer),
     EffectsModule.forRoot(),
     StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25,logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
   ],
   providers: [],

@@ -40,5 +40,5 @@ export const selectAdvertisementsEntities = createSelector(
 export const selectAdvertisement = createSelector(
   selectAdvertisementsEntities,
   selectRouteParams,
-  (advertisements, { adsId }) => advertisements[adsId]
+  (advertisements, { _id }) => advertisements[_id]
 );

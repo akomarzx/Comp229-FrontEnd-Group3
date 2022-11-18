@@ -8,16 +8,16 @@ const routes: Routes = [
   },
   {
     path: 'create-ad',
-    loadChildren: () => 
+    loadChildren: () =>
       import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule)
   },
   {
-    path: 'edit/:id',
-    loadChildren: () => 
+    path: 'edit/:_id',
+    loadChildren: () =>
       import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule)
   },
   {
-    path: ':id',
+    path: ':_id',
     loadChildren: () => import('../feature/ads-show-page/ads-show-page.module').then(m => m.AdsShowPageModule)
   }
 ];
