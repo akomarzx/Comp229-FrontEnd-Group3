@@ -11,124 +11,29 @@ export class AdvertisementsService {
   constructor(private httpClient: HttpClient) { }
 
 
-  //TODO: Remove Mock 
+  addSevenDays() {
+    const date = new Date();
+    return date.setDate(date.getDate() + 7).toString();
+  }
+
+  //TODO: Remove Mock
   getAdvertisements(): Observable<Advertisement[]> {
     return of([
       {
         _id: '1',
-        item: 'hello world',
+        adsTitle: 'hello world',
+        price: 333,
         status: 'new',
-        dateCreated: new Date(),
+        // TODO: mkjae sure that backend will return the timestamp
+        // Use a pipe to format the date in the template
+
+        activeDate: new Date().getDate().toString(),
+        expiryDate: this.addSevenDays(),
         description: {
-          title: 'test',
+          itemName: 'test',
           description: 'this is a test description',
           category: 'this a test',
           condition: 'this is a test',
-          price: 3342
-        }
-      },
-      {
-        _id: '2',
-        item: 'hello world',
-        status: 'new',
-        dateCreated: new Date(),
-        description: {
-          title: 'test',
-          description: 'this is a test description',
-          category: 'this a test',
-          condition: 'this is a test',
-          price: 3342
-        }
-      },
-      {
-        _id: '3',
-        item: 'hello world',
-        status: 'new',
-        dateCreated: new Date(),
-        description: {
-          title: 'test',
-          description: 'this is a test description',
-          category: 'this a test',
-          condition: 'this is a test',
-          price: 3342
-        }
-      },
-      {
-        _id: '4',
-        item: 'hello world',
-        status: 'new',
-        dateCreated: new Date(),
-        description: {
-          title: 'test',
-          description: 'this is a test description',
-          category: 'this a test',
-          condition: 'this is a test',
-          price: 3342
-        }
-      },
-      {
-        _id: '5',
-        item: 'hello world',
-        status: 'new',
-        dateCreated: new Date(),
-        description: {
-          title: 'test',
-          description: 'this is a test description',
-          category: 'this a test',
-          condition: 'this is a test',
-          price: 3342
-        }
-      },
-      {
-        _id: '6',
-        item: 'hello world',
-        status: 'new',
-        dateCreated: new Date(),
-        description: {
-          title: 'test',
-          description: 'this is a test description',
-          category: 'this a test',
-          condition: 'this is a test',
-          price: 3342
-        }
-      },
-      {
-        _id: '7',
-        item: 'hello world',
-        status: 'new',
-        dateCreated: new Date(),
-        description: {
-          title: 'test',
-          description: 'this is a test description',
-          category: 'this a test',
-          condition: 'this is a test',
-          price: 3342
-        }
-      },
-      {
-        _id: '8',
-        item: 'hello world',
-        status: 'new',
-        dateCreated: new Date(),
-        description: {
-          title: 'test',
-          description: 'this is a test description',
-          category: 'this a test',
-          condition: 'this is a test',
-          price: 3342
-        }
-      },
-      {
-        _id : '9',
-        item: 'hello world',
-        status: 'new',
-        dateCreated: new Date(),
-        description: {
-          title: 'test',
-          description: 'this is a test description',
-          category: 'this a test',
-          condition: 'this is a test',
-          price: 3342
         }
       }
     ])
