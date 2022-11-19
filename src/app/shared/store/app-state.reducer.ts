@@ -1,3 +1,4 @@
+import { routerRequestAction } from '@ngrx/router-store';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as fromAppState from './app-state.actions'
 
@@ -22,14 +23,14 @@ export const reducer = createReducer(
       }
     }
   ),
-  on(fromAppState.onErrorDismissed,
+  on(fromAppState.onErrorDismissed, routerRequestAction,
     (state): State => {
       return {
         ...state,
         hasError: false,
         errorMessage: ''
       }
-    })
+    }),
 );
 
 export const selectHasError = (state: State) => state.hasError;

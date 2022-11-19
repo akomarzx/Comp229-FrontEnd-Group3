@@ -15,7 +15,10 @@ const routes: Routes = [
   {
     path: 'edit/:_id',
     loadChildren: () =>
-      import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule)
+      import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule),
+      resolve : {
+        advertisement : AdvertisementResolver
+      }
   },
   {
     path: ':_id',

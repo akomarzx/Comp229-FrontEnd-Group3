@@ -20,8 +20,8 @@ export class AdvertisementResolver implements Resolve<any | undefined> {
     return this.store.select(selectAdvertisement).pipe(
       tap(
         (data) => {
-          if(!data){
-            this.store.dispatch(fromAppStateActions.onResolveAdsError({message: 'Advertisement is not found'}))
+          if (!data) {
+            this.store.dispatch(fromAppStateActions.onResolveAdsError({ message: 'Oh-oh the ads that you are looking for is not found' }))
           }
         }
       )

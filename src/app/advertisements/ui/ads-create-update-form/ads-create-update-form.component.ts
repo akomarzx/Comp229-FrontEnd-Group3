@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Advertisement } from '../../data-access/models/advertisement.model';
 
 @Component({
   selector: 'app-ads-create-update-form',
@@ -12,4 +13,5 @@ export class AdsCreateUpdateFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  @Input() advetisementToUpdated : Advertisement | undefined;
 }
