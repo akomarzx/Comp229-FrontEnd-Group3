@@ -13,16 +13,22 @@ import { Advertisement } from '../../data-access/models/advertisement.model';
 export class AdsCreateUpdatePageComponent implements OnInit {
 
   constructor(private route : ActivatedRoute, private store : Store) { 
-    this.isAdsNotFound$ = this.store.select(selectHasError)
+    this.isAdsNotFound$ = this.store.select(selectHasError);
+    this.isInEditMode = false;
   }
 
   ngOnInit(): void {
     this.route.data.subscribe(
       ({advertisement}) => {
-        this.advertToUpdate = advertisement;
+        if(advertisement){
+          this.advertToUpdate = advertisement;
+        }else{
+          this.isInEditMode = true;
+        }
       }
     )
   }
+  isInEditMode : boolean;
   isAdsNotFound$ : Observable<boolean>;
   advertToUpdate : Advertisement | undefined;
 }

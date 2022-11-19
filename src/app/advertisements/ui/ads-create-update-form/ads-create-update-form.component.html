@@ -2,14 +2,12 @@
     <div class="offset-md-3 col-md-6">
         <form class="form" method="POST">
             <div class="form-group my-1">
-                <label for="itemTextField">Item Name</label>
-                <input type="text" class="form-control" id="itemTextField" placeholder="Enter the Item Name" name="item"
-                    value="" required>
+                <label for="itemTextField">Advertisement Title</label>
+                <input type="text" class="form-control" id="itemTextField" placeholder="Enter the Ads Title" name="adsTitle">
             </div>
             <div class="form-group my-1">
                 <label for="priceTextField">Price</label>
-                <input type="number" class="form-control" id="priceTextField" placeholder="Enter a price" name="price"
-                    value="" required>
+                <input type="number" class="form-control" id="priceTextField" placeholder="Enter a price" name="price">
             </div>
             <div class="form-group mt-1">
                 <label for="statusTextField">Status</label>
@@ -18,26 +16,31 @@
                     <option value="Sold">Sold</option>
                 </select>
             </div>
-            <br />
-            <div class="card my-1">
-                <div class="card-header">Description</div>
+            <div class="card my-3">
+                <div class="card-header">Description - Describe What you are selling</div>
                 <div class="card-body">
-                    <div class="form-group my-1">
-                        <label for="titleTextField">title</label>
-                        <input type="text" class="form-control" id="titleTextField" placeholder="Item for Sale"
-                            name="title" value="" required>
+                    <div class="form-group mb-1">
+                        <label for="titleTextField">Item Name</label>
+                        <input type="text" class="form-control" id="titleTextField" placeholder="Item for Sale" name="itemName">
                     </div>
-
                     <div class="form-group my-2">
                         <label for="categoryTextField">Category</label>
-                        <input type="text" class="form-control" id="categoryTextField" placeholder="electronics"
-                            name="category" value="" required>
+                        <select name="category" id="categoryTextField" class="form-select">
+                            <option value="cars">Cars</option>
+                            <option value="electronics">Gadgets</option>
+                            <option value="fashion">Fashion</option>
+                            <option value="sports">Sports</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
 
                     <div class="form-group my-2">
                         <label for="conditionTextField">Condition</label>
-                        <input type="text" class="form-control" id="conditionTextField" placeholder="Used"
-                            name="condition" value="" required>
+                        <select name="condition" id="conditionTextField" class="form-select">
+                            <option value="new">Brand New</option>
+                            <option value="likeNew">Like New</option>
+                            <option value="used">Used</option>
+                        </select>
                     </div>
 
                     <div class="form-group my-2">

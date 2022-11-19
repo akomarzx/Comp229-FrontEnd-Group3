@@ -12,6 +12,6 @@ export class AdsCreateUpdateFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  @Input() isEditMode : boolean | undefined;
   @Input() advetisementToUpdated : Advertisement | undefined;
 }

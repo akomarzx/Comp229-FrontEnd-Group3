@@ -1,4 +1,3 @@
-<p>{{advertToUpdate | json}}</p>
 <div *ngIf="(isAdsNotFound$ | async) === false">
     <div *ngIf="advertToUpdate">
         <h1 class="text-center">Edit Advertisement</h1>
@@ -8,5 +7,5 @@
     </div>
 </div>
 
-<app-ads-create-update-form *ngIf="(isAdsNotFound$ | async) === false" [advetisementToUpdated]="advertToUpdate">
+<app-ads-create-update-form *ngIf="(isAdsNotFound$ | async) === false" [advetisementToUpdated]="advertToUpdate" [isEditMode]="isInEditMode">
 </app-ads-create-update-form>
