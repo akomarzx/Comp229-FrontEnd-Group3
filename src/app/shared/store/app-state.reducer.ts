@@ -31,3 +31,6 @@ export const reducer = createReducer(
       }
     })
 );
+
+export const selectHasError = (state: State) => state.hasError;
+export const selectErrorMessage = (state: State) => state.errorMessage;

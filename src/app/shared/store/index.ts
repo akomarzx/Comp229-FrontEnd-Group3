@@ -21,3 +21,20 @@ export const reducers: ActionReducerMap<State> = {
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+
+export const selectGlobalState = createFeatureSelector<State>(FeatureKey);
+
+export const selectAppState = createSelector(
+  selectGlobalState,
+  (fromGlobal) => fromGlobal.appState
+)
+
+export const selectHasError = createSelector(
+  selectAppState,
+  (fromAppState) => fromAppState.hasError
+)
+
+export const selectErrorMessage = createSelector(
+  selectAppState,
+  (fromAppState) => fromAppState.errorMessage
+)
