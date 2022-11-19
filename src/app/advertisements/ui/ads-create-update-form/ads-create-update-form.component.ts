@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Advertisement } from '../../data-access/models/advertisement.model';
 import dateFormat, { masks } from "dateformat";
-import { now } from 'mongoose';
 @Component({
   selector: 'app-ads-create-update-form',
   templateUrl: './ads-create-update-form.component.html',
