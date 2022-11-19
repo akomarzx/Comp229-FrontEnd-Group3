@@ -19,6 +19,6 @@ export const onResolveAdsError = createAction(
   props<{ message: string }>()
 )
 
-export const onResolveErrorClear = createAction(
+export const onErrorDismissed = createAction(
   '[App State] On Error Clear'
 )

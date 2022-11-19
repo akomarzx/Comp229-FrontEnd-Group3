@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { AdvertisementsService } from './advertisements/data-access/service/advertisements.service';
 import * as fromAdvertisementActions from './advertisements/data-access/store/advertisements/advertisement.actions'
+import * as fromAppStateActions from './shared/store/app-state.actions'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,5 +19,10 @@ export class AppComponent implements OnInit {
       }
     )
   }
-  title = 'Comp229-FrontEnd-Group3';
+  errorMessage$: Observable<string> | undefined;
+  hasError: Observable<boolean> | undefined;
+
+  onDismissError() {
+    this.store.dispatch(fromAppStateActions.onErrorDismissed());
+  }
 }

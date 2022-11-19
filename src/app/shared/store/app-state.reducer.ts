@@ -22,7 +22,7 @@ export const reducer = createReducer(
       }
     }
   ),
-  on(fromAppState.onResolveErrorClear,
+  on(fromAppState.onErrorDismissed,
     (state): State => {
       return {
         ...state,
