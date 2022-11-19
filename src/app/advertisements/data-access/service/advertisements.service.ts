@@ -35,6 +35,142 @@ export class AdvertisementsService {
           category: 'this a test',
           condition: 'this is a test',
         }
+      },
+      {
+        _id: '1',
+        adsTitle: 'hello world',
+        price: 333,
+        status: 'new',
+        // TODO: mkjae sure that backend will return the timestamp
+        // Use a pipe to format the date in the template
+
+        activeDate: new Date().getDate().toString(),
+        expiryDate: this.addSevenDays(),
+        description: {
+          itemName: 'test',
+          description: 'this is a test description',
+          category: 'this a test',
+          condition: 'this is a test',
+        }
+      },
+     {
+        _id: '1',
+        adsTitle: 'hello world',
+        price: 333,
+        status: 'new',
+        // TODO: mkjae sure that backend will return the timestamp
+        // Use a pipe to format the date in the template
+
+        activeDate: new Date().getDate().toString(),
+        expiryDate: this.addSevenDays(),
+        description: {
+          itemName: 'test',
+          description: 'this is a test description',
+          category: 'this a test',
+          condition: 'this is a test',
+        }
+      },
+      {
+        _id: '1',
+        adsTitle: 'hello world',
+        price: 333,
+        status: 'new',
+        // TODO: mkjae sure that backend will return the timestamp
+        // Use a pipe to format the date in the template
+
+        activeDate: new Date().getDate().toString(),
+        expiryDate: this.addSevenDays(),
+        description: {
+          itemName: 'test',
+          description: 'this is a test description',
+          category: 'this a test',
+          condition: 'this is a test',
+        }
+      },
+      {
+        _id: '1',
+        adsTitle: 'hello world',
+        price: 333,
+        status: 'new',
+        // TODO: mkjae sure that backend will return the timestamp
+        // Use a pipe to format the date in the template
+
+        activeDate: new Date().getDate().toString(),
+        expiryDate: this.addSevenDays(),
+        description: {
+          itemName: 'test',
+          description: 'this is a test description',
+          category: 'this a test',
+          condition: 'this is a test',
+        }
+      },
+     {
+        _id: '1',
+        adsTitle: 'hello world',
+        price: 333,
+        status: 'new',
+        // TODO: mkjae sure that backend will return the timestamp
+        // Use a pipe to format the date in the template
+
+        activeDate: new Date().getDate().toString(),
+        expiryDate: this.addSevenDays(),
+        description: {
+          itemName: 'test',
+          description: 'this is a test description',
+          category: 'this a test',
+          condition: 'this is a test',
+        }
+      },
+      {
+        _id: '1',
+        adsTitle: 'hello world',
+        price: 333,
+        status: 'new',
+        // TODO: mkjae sure that backend will return the timestamp
+        // Use a pipe to format the date in the template
+
+        activeDate: new Date().getDate().toString(),
+        expiryDate: this.addSevenDays(),
+        description: {
+          itemName: 'test',
+          description: 'this is a test description',
+          category: 'this a test',
+          condition: 'this is a test',
+        }
+      },
+      {
+        _id: '1',
+        adsTitle: 'hello world',
+        price: 333,
+        status: 'new',
+        // TODO: mkjae sure that backend will return the timestamp
+        // Use a pipe to format the date in the template
+
+        activeDate: new Date().getDate().toString(),
+        expiryDate: this.addSevenDays(),
+        description: {
+          itemName: 'test',
+          description: 'this is a test description',
+          category: 'this a test',
+          condition: 'this is a test',
+        }
+      },
+     {
+        _id: '1',
+        adsTitle: 'hello world',
+        price: 333,
+        status: 'new',
+        // TODO: mkjae sure that backend will return the timestamp
+        // Use a pipe to format the date in the template
+
+        activeDate: new Date().getDate().toString(),
+        expiryDate: this.addSevenDays(),
+        description: {
+          itemName: 'test',
+          description: 'this is a test description',
+          category: 'this a test',
+          condition: 'this is a test',
+        }
       }
     ])
   }
