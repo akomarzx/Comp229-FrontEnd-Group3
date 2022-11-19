@@ -4,6 +4,15 @@
   </div>
   <div class="row">
     <div class="col-md contentArea">
+      <div *ngIf="hasError$ | async">
+        <div class="alert alert-danger" role="alert">
+          {{errorMessage$ | async}}
+        </div>
+        <a routerLink="/">
+          <button type="button" class="btn btn-primary" aria-label="Close" (click)="onDismissError()">Back to
+            homepage</button>
+        </a>
+      </div>
       <router-outlet></router-outlet>
     </div>
   </div>

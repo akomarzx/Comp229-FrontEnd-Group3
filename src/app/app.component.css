@@ -1,6 +1,6 @@
 .contentArea {
-  height: 992px;
-  border: solid 2px blueviolet;
+  min-height: 80vh;
+  /* border: solid 2px blueviolet; */
 }
 
 app-footer { 

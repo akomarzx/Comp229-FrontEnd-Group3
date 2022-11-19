@@ -1,3 +1,6 @@
 .featureAdsNav {
-    height: 7.5%;
+    min-height: 6%;
+}
+.listArea {
+    min-height: 40vh;
 }

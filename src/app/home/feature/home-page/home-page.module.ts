@@ -6,6 +6,7 @@ import { HomePageComponent } from './home-page.component';
 import { FeaturedAdsNavModule } from '../featured-ads-nav/featured-ads-nav.module';
 import { StoreModule } from '@ngrx/store';
 import * as from from '../../data-access/store';
+import { AdvertisementsListModule } from 'src/app/advertisements/ui/advertisements-list/advertisements-list.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import * as from from '../../data-access/store';
     CommonModule,
     HomePageRoutingModule,
     FeaturedAdsNavModule,
+    AdvertisementsListModule,
     StoreModule.forFeature(from.FeatureKey, from.reducers, { metaReducers: from.metaReducers }),
   ],
   exports: [

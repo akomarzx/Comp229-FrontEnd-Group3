@@ -1,0 +1,44 @@
+import {
+  ActionReducer,
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector,
+  MetaReducer
+} from '@ngrx/store';
+import { selectRouteParams } from 'src/app/shared/store/router.selectors';
+import { environment } from '../../../../environments/environment';
+import * as fromAdvertisements from './advertisements/advertisement.reducer'
+
+export const FeatureKey = 'Advertisements';
+
+export interface State {
+  advertisements: fromAdvertisements.State
+}
+
+export const reducers: ActionReducerMap<State> = {
+  advertisements: fromAdvertisements.reducer
+};
+
+export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+
+//Get the feature state from the global state
+export const selectAdvertisementFeature = createFeatureSelector<State>(FeatureKey);
+
+//Get the slice of the feature state
+export const selectAdvertismentSlice = createSelector(
+  selectAdvertisementFeature,
+  (featureState) => featureState.advertisements
+)
+
+//Get all entities
+export const selectAdvertisementsEntities = createSelector(
+  selectAdvertismentSlice,
+  fromAdvertisements.selectAdvertisementEntities
+)
+
+//Select one entity
+export const selectAdvertisement = createSelector(
+  selectAdvertisementsEntities,
+  selectRouteParams,
+  (advertisements, { _id }) => advertisements[_id]
+);

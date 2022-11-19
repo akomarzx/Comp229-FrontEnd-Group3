@@ -1,13 +1,14 @@
 export interface Advertisement {
-    item: String,
-    status: string
-    dateCreated: Date,    
-    expiryDate: Date,
-    description: {
-        title: string,
-        description: string,
-        category: string,
-        condition: string,
-        price: number
-    }
+  _id: string,
+  adsTitle: string,
+  price: number,
+  status: string
+  description: {
+    itemName: string,
+    description: string,
+    category: string,
+    condition: string,
+  }
+  activeDate: string,
+  expiryDate: string
 }

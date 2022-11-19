@@ -1,3 +1,7 @@
 .row .col-md-12 {
   background-color: #f1f5fe;
 }
+
+.featAdsNav {
+  min-height: 70px;
+}
