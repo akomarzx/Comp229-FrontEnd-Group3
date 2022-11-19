@@ -1,3 +1,4 @@
+import { BaseRouterStoreState, routerReducer, RouterReducerState, RouterState } from '@ngrx/router-store';
 import {
   ActionReducer,
   ActionReducerMap,
@@ -6,15 +7,16 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
+import * as fromAppState from './app-state.reducer';
 
-export const FeatureKey = '';
+export const FeatureKey = 'global';
 
 export interface State {
-
+  appState: fromAppState.State,
 }
 
 export const reducers: ActionReducerMap<State> = {
-
+  appState: fromAppState.reducer,
 };
 
 

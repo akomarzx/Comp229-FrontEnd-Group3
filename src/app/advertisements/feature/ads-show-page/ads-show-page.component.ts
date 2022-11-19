@@ -11,15 +11,16 @@ import { selectAdvertisement } from '../../data-access/store';
   templateUrl: './ads-show-page.component.html',
   styleUrls: ['./ads-show-page.component.css']
 })
-export class AdsShowPageComponent implements OnInit, OnDestroy {
+export class AdsShowPageComponent implements OnInit {
 
-  constructor(private route : ActivatedRoute, private store: Store, private router: Router) {
+  constructor(private route: ActivatedRoute, private store: Store, private router: Router) {
   }
-
-  ngOnInit(): void {
-    
+  ngOnInit() {
+    this.route.data.subscribe(
+      ({advertisement}) => {
+        this.selectedAdvert = advertisement
+      }
+    )
   }
-  ngOnDestroy(): void {
-  }
-  advertisement$: Observable<Advertisement | undefined>;
+  selectedAdvert: Advertisement | undefined;
 }

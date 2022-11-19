@@ -13,3 +13,12 @@ export const onAppStatesFailure = createAction(
   '[AppState] On AppStates Failure',
   props<{ error: any }>()
 );
+
+export const onResolveAdsError = createAction(
+  '[App State] On Error',
+  props<{ message: string }>()
+)
+
+export const onResolveErrorClear = createAction(
+  '[App State] On Error Clear'
+)
