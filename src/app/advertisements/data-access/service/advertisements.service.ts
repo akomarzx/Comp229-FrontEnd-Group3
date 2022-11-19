@@ -15,7 +15,10 @@ export class AdvertisementsService {
     const date = new Date();
     return date.setDate(date.getDate() + 7).toString();
   }
-
+  getCurrentDate() {
+    const date = new Date();
+    return date.setDate(date.getDate()).toString();
+  }
   //TODO: Remove Mock
   getAdvertisements(): Observable<Advertisement[]> {
     return of([
@@ -23,17 +26,16 @@ export class AdvertisementsService {
         _id: '1',
         adsTitle: 'hello world',
         price: 333,
-        status: 'new',
+        status: 'Available',
         // TODO: mkjae sure that backend will return the timestamp
         // Use a pipe to format the date in the template
-
-        activeDate: new Date().getDate().toString(),
-        expiryDate: this.addSevenDays(),
+        activeDate: Date.now().toString(),
+        expiryDate: Date.now().toString(),
         description: {
           itemName: 'test',
           description: 'this is a test description',
-          category: 'this a test',
-          condition: 'this is a test',
+          category: 'cars',
+          condition: 'new',
         }
       },
       {
