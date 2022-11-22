@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Update } from '@ngrx/entity';
 import { Observable, of } from 'rxjs';
 import { Advertisement, AdvertRequiredProps } from '../models/advertisement.model';
 
@@ -27,8 +28,8 @@ export class AdvertisementsService {
     return this.httpClient.post<Advertisement>(BASE_URL + 'advertisements', newAdvertisement, HEADER);
   }
 
-  updateAdvertisement(id: string, changes: AdvertRequiredProps): Observable<Advertisement> {
-    return this.httpClient.patch<Advertisement>(BASE_URL + 'advertisements/' + id, changes, HEADER);
+  updateAdvertisement(advert : Update<Advertisement>): Observable<Advertisement> {
+    return this.httpClient.patch<Advertisement>(BASE_URL + 'advertisements/' +  advert.id, advert.changes, HEADER);
   }
 }
 

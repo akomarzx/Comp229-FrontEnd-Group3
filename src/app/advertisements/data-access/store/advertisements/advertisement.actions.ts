@@ -14,7 +14,7 @@ export const onCreateNewAdvertisement = createAction(
 
 export const onUpdateAdvertisement = createAction(
   '[Update Advert] Update Advert',
-  props<{ id: string, advertChange: Update<AdvertRequiredProps> }>()
+  props<{ advertisement : Update<Advertisement>}>()
 )
 
 export const loadAdvertisementsSuccess = createAction(

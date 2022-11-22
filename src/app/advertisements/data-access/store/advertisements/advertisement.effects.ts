@@ -45,13 +45,15 @@ export class AdvertisementApiEffects {
   updateAdvertisementt$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(fromAdvertisementActions.onUpdateAdvertisement),
-      map(action => action),
+      map(action => {
+        return action
+      }),
       switchMap((action) => {
-        return this.adsSevice.updateAdvertisement(action.advertisement.id.toString(), action.advertisement.changes).pipe(
+        return this.adsSevice.updateAdvertisement(action.advertisement).pipe(
           tap((data) => {
             this.router.navigate(['/advertisements/', data._id]);
           }),
-          map((updatedAdvertisement) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: updatedAdvertisement as unknown as Update<Advertisement> }))
+          map((updatedAdvertisement) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: {id: updatedAdvertisement._id, changes: updatedAdvertisement} }))
         )
       })
     )

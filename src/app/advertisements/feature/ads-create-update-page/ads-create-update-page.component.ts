@@ -43,7 +43,7 @@ export class AdsCreateUpdatePageComponent implements OnInit {
     // console.log(event)
     if (this.isInEditMode) {
       const editAds: Update<Advertisement> = {
-        id: +this.currentIdParams,
+        id: this.currentIdParams.toString(),
         changes: event
       }
       this.store.dispatch(fromAdvertisementActions.onUpdateAdvertisement({ advertisement: editAds }))

@@ -16,8 +16,9 @@ export class AdsCreateUpdateFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.isEditMode) {
       this.route.data.subscribe(({ advertisement }) => {
-        let advert = advertisement as AdvertRequiredProps;
+        let advert = advertisement as Advertisement;
         this.advertForm.setValue({
+          _id: advert._id,
           adsTitle: advert.adsTitle,
           price: advert.price.toString(),
           status: advert.status,
@@ -35,6 +36,7 @@ export class AdsCreateUpdateFormComponent implements OnInit {
   }
 
   advertForm = this.formBuilder.group({
+    _id: [''],
     adsTitle: ['', Validators.required],
     price: ['', Validators.required],
     status: ['', Validators.required],
