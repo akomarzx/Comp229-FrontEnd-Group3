@@ -4,8 +4,7 @@ import { Actions, createEffect } from '@ngrx/effects';
 
 
 @Injectable()
-export class AdvertisementEffects {
+export class AdvertisementApiEffects {
 
-
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions) { }
 }

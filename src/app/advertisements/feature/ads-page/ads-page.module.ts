@@ -6,7 +6,7 @@ import { AdsPageComponent } from './ads-page.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromAdvertisement from '../../data-access/store';
 import { EffectsModule } from '@ngrx/effects';
-import { AdvertisementEffects } from '../../data-access/store/advertisements/advertisement.effects';
+import { AdvertisementApiEffects } from '../../data-access/store/advertisements/advertisement.effects';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { AdvertisementEffects } from '../../data-access/store/advertisements/adv
   imports: [
     CommonModule,
     AdsPageRoutingModule,
-    EffectsModule.forFeature([AdvertisementEffects])
+    EffectsModule.forFeature([AdvertisementApiEffects])
   ],
   exports: [
     AdsPageComponent

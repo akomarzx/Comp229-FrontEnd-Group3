@@ -12,3 +12,5 @@ export interface Advertisement {
   activeDate: string,
   expiryDate: string
 }
+
+export type AdvertRequiredProps = Pick<Advertisement, 'adsTitle' | 'price' | 'status' | 'description' | 'activeDate' | 'expiryDate'>;

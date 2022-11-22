@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Advertisement } from '../models/advertisement.model';
+import { Advertisement, AdvertRequiredProps } from '../models/advertisement.model';
 
 //TODO: chjange the url onm deployement
 const BASE_URL = 'http://localhost:3000/api/';
@@ -23,11 +23,11 @@ export class AdvertisementsService {
     return this.httpClient.get<Advertisement>(BASE_URL + 'advertisements/' + id);
   }
 
-  createAdvertisement(newAdvertisement: Advertisement): Observable<Advertisement> {
+  createAdvertisement(newAdvertisement: AdvertRequiredProps): Observable<Advertisement> {
     return this.httpClient.post<Advertisement>(BASE_URL + 'advertisements', newAdvertisement, HEADER);
   }
 
-  updateAdvertisement(id: string, changes: Advertisement): Observable<Advertisement> {
+  updateAdvertisement(id: string, changes: AdvertRequiredProps): Observable<Advertisement> {
     return this.httpClient.patch<Advertisement>(BASE_URL + 'advertisements' + id, changes, HEADER);
   }
 }

@@ -15,17 +15,7 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.adsService.getAdvertisements().subscribe(
-      (data) => {
-        console.log(data)
-        this.advertisements = data;
-      }
-    )
-    this.adsService.getAdvertisement('637bfa54f4eb4c15f1d85129').subscribe(
-      (data) => {
-        console.log(data);
-      }
-    )
   }
-  advertisements: Advertisement[] = [];
+
+  advertisements$: Advertisement[] = [];
 }
