@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Update } from '@ngrx/entity';
 import { ActivatedRoute } from '@angular/router';
-import { Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable, tap } from 'rxjs';
 import { selectHasError } from 'src/app/shared/store';
 import { Advertisement, AdvertRequiredProps } from '../../data-access/models/advertisement.model';
@@ -35,14 +35,18 @@ export class AdsCreateUpdatePageComponent implements OnInit {
   isInEditMode: boolean;
   isAdsNotFound$: Observable<boolean>;
   advertToUpdate: Advertisement | undefined;
-  currentIdParams!: string;
+  currentIdParams!: string | number;
 
   // Need selector for the current param
-  onFormSubmission(event: AdvertRequiredProps) {
+  onFormSubmission(event: Advertisement) {
     //TODO: check whether update or create
     // console.log(event)
     if (this.isInEditMode) {
-      this.store.dispatch(fromAdvertisementActions.onUpdateAdvertisement({ id: this.currentIdParams, advertChange: event as unknown as Update<AdvertRequiredProps> }))
+      const editAds: Update<Advertisement> = {
+        id: +this.currentIdParams,
+        changes: event
+      }
+      this.store.dispatch(fromAdvertisementActions.onUpdateAdvertisement({ advertisement: editAds }))
     } else {
       this.store.dispatch(fromAdvertisementActions.onCreateNewAdvertisement({ newAdvert: event }))
     }

@@ -28,7 +28,7 @@ export class AdvertisementsService {
   }
 
   updateAdvertisement(id: string, changes: AdvertRequiredProps): Observable<Advertisement> {
-    return this.httpClient.patch<Advertisement>(BASE_URL + 'advertisements' + id, changes, HEADER);
+    return this.httpClient.patch<Advertisement>(BASE_URL + 'advertisements/' + id, changes, HEADER);
   }
 }
 
