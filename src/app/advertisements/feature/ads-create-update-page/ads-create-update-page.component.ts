@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Update } from '@ngrx/entity';
 import { ActivatedRoute } from '@angular/router';
-import { Store, UPDATE } from '@ngrx/store';
+import { Store} from '@ngrx/store';
 import { Observable, tap } from 'rxjs';
 import { selectHasError } from 'src/app/shared/store';
 import { Advertisement, AdvertRequiredProps } from '../../data-access/models/advertisement.model';
