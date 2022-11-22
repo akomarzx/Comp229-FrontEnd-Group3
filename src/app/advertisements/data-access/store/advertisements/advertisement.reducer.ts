@@ -63,4 +63,4 @@ export const selectAllAdvertisement = selectAll;
 // select the total ads
 export const selectUserTotal = selectTotal;
 
-export const selectIsApiLoading = (state: State) => state.isApiDoneLoading;
+export const selectIsApiDoneLoading = (state: State) => state.isApiDoneLoading;

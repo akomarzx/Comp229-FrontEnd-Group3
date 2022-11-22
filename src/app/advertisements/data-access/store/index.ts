@@ -5,6 +5,7 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
+import { from, map, of, skip, skipWhile, switchMap } from 'rxjs';
 import { selectRouteParams } from 'src/app/shared/store/router.selectors';
 import { environment } from '../../../../environments/environment';
 import * as fromAdvertisements from './advertisements/advertisement.reducer'
@@ -51,5 +52,5 @@ export const selectAdvertisement = createSelector(
 
 export const selectIsApiLoading = createSelector(
   selectAdvertismentSlice,
-  fromAdvertisements.selectIsApiLoading
+  fromAdvertisements.selectIsApiDoneLoading
 )
