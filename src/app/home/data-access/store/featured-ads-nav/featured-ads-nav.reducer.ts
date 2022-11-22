@@ -11,14 +11,15 @@ export interface State {
 }
 
 export const initialState: State = {
-  isAllSelected: true,
-  isCarsSelected: false,
+  isAllSelected: false,
+  isCarsSelected: true,
   isElectroSelected: false,
   isFashionSelected: false,
   isSportsSelected: false,
   isOtherSelected: false
 };
-
+// TODO: filter the enitity based on the category choosen
+// compose selector for that
 export const reducer = createReducer(
   initialState,
   on(fromFeaturedAdsNav.onClickedCarsCategory,

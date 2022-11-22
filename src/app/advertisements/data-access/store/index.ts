@@ -30,6 +30,12 @@ export const selectAdvertismentSlice = createSelector(
   (featureState) => featureState.advertisements
 )
 
+//TODO: find a way to only get certain number of elements but for now get all
+export const selectAllAdvertisement = createSelector(
+  selectAdvertismentSlice,
+  fromAdvertisements.selectAllAdvertisement
+)
+
 //Get all entities
 export const selectAdvertisementsEntities = createSelector(
   selectAdvertismentSlice,

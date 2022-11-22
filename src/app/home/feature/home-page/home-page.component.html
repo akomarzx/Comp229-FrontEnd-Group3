@@ -21,7 +21,7 @@
     </div>
     <div class="row d-flex-lg justify-content-center listArea">
       <div class=" col-lg-10">
-        <app-advertisements-list [advertisments]="advertisements$"></app-advertisements-list>
+        <app-advertisements-list [advertisments]="advertisements$ | async"></app-advertisements-list>
       </div>
     </div>
   </div>
