@@ -5,7 +5,7 @@ import { concatMap, map, mergeMap } from 'rxjs';
 import { AdvertisementsService } from '../../service/advertisements.service';
 import * as fromAdvertisementActions from './advertisement.actions'
 
-
+//TODO: Error Handling
 @Injectable()
 export class AdvertisementApiEffects {
 
@@ -18,6 +18,20 @@ export class AdvertisementApiEffects {
         return this.adsSevice.getAdvertisements()
           .pipe(
             map((advertisements) => fromAdvertisementActions.loadAdvertisementsSuccess({ advertisements }))
+          )
+      })
+    )
+  })
+
+  //TODO: Redirect to show page after creation
+  createAdvertisement$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(fromAdvertisementActions.onCreateNewAdvertisement),
+      map(action => action.newAdvert),
+      concatMap((newAdvert) => {
+        return this.adsSevice.createAdvertisement(newAdvert)
+          .pipe(
+            map((newAdvertisement) => fromAdvertisementActions.addAdvertisementSuccess({ advertisement: newAdvertisement }))
           )
       })
     )

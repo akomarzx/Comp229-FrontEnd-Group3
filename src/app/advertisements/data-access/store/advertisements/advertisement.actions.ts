@@ -9,12 +9,12 @@ export const onStartup = createAction(
 
 export const onCreateNewAdvertisement = createAction(
   '[Create Advert Page] Create New Advert',
-  props<{ newAdvert: AdvertRequiredProps }>
+  props<{ newAdvert: AdvertRequiredProps }>()
 )
 
 export const onUpdateAdvertisement = createAction(
   '[Update Advert] Update Advert',
-  props<{ advertChange: Update<AdvertRequiredProps> }>
+  props<{ id: string, advertChange: Update<AdvertRequiredProps> }>()
 )
 
 export const loadAdvertisementsSuccess = createAction(
