@@ -1,53 +1,49 @@
 import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 
-import { Advertisement } from '../../models/advertisement.model';
+import { Advertisement, AdvertRequiredProps } from '../../models/advertisement.model';
 
-export const loadAdvertisements = createAction(
-  '[Advertisement/API] Load Advertisements',
+export const onStartup = createAction(
+  '[Advertisement Shared] OnStartup'
+)
+
+export const onCreateNewAdvertisement = createAction(
+  '[Create Advert Page] Create New Advert',
+  props<{ newAdvert: AdvertRequiredProps }>
+)
+
+export const onUpdateAdvertisement = createAction(
+  '[Update Advert] Update Advert',
+  props<{ advertChange: Update<AdvertRequiredProps> }>
+)
+
+export const loadAdvertisementsSuccess = createAction(
+  '[Advertisement/API] Load Advertisements Success',
   props<{ advertisements: Advertisement[] }>()
 );
 
-export const addAdvertisement = createAction(
-  '[Advertisement/API] Add Advertisement',
+export const loadAdvertisementsFailure = createAction(
+  '[Advertisement/API] Load Advertisements Failure',
+  props<{ errorMessage: string }>()
+);
+
+export const addAdvertisementSuccess = createAction(
+  '[Advertisement/API] Add Advertisement Success',
   props<{ advertisement: Advertisement }>()
 );
 
-export const upsertAdvertisement = createAction(
-  '[Advertisement/API] Upsert Advertisement',
-  props<{ advertisement: Advertisement }>()
-);
+export const addAdvertisementFailure = createAction(
+  '[Advetisement/API] Add Advertisement Failure',
+  props<{ errorMessage: string }>
+)
 
-export const addAdvertisements = createAction(
-  '[Advertisement/API] Add Advertisements',
-  props<{ advertisements: Advertisement[] }>()
-);
-
-export const upsertAdvertisements = createAction(
-  '[Advertisement/API] Upsert Advertisements',
-  props<{ advertisements: Advertisement[] }>()
-);
-
-export const updateAdvertisement = createAction(
-  '[Advertisement/API] Update Advertisement',
+export const updateAdvertisementSuccess = createAction(
+  '[Advertisement/API] Update Advertisement Success',
   props<{ advertisement: Update<Advertisement> }>()
 );
 
-export const updateAdvertisements = createAction(
-  '[Advertisement/API] Update Advertisements',
-  props<{ advertisements: Update<Advertisement>[] }>()
+export const updateAdvertisementFailure = createAction(
+  '[Advertisement/API] Update Advertisement Success',
+  props<{ errorMessage: string }>()
 );
 
-export const deleteAdvertisement = createAction(
-  '[Advertisement/API] Delete Advertisement',
-  props<{ id: string }>()
-);
-
-export const deleteAdvertisements = createAction(
-  '[Advertisement/API] Delete Advertisements',
-  props<{ ids: string[] }>()
-);
-
-export const clearAdvertisements = createAction(
-  '[Advertisement/API] Clear Advertisements'
-);

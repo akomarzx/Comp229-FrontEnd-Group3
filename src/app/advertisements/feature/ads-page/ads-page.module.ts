@@ -15,7 +15,6 @@ import { AdvertisementApiEffects } from '../../data-access/store/advertisements/
   imports: [
     CommonModule,
     AdsPageRoutingModule,
-    EffectsModule.forFeature([AdvertisementApiEffects])
   ],
   exports: [
     AdsPageComponent

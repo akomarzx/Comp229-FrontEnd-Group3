@@ -24,35 +24,14 @@ export const initialState: State = adapter.getInitialState({
 
 export const reducer = createReducer<State>(
   initialState,
-  on(AdvertisementActions.addAdvertisement,
+  on(AdvertisementActions.addAdvertisementSuccess,
     (state, action) => adapter.addOne(action.advertisement, state)
   ),
-  on(AdvertisementActions.upsertAdvertisement,
-    (state, action) => adapter.upsertOne(action.advertisement, state)
-  ),
-  on(AdvertisementActions.addAdvertisements,
-    (state, action) => adapter.addMany(action.advertisements, state)
-  ),
-  on(AdvertisementActions.upsertAdvertisements,
-    (state, action) => adapter.upsertMany(action.advertisements, state)
-  ),
-  on(AdvertisementActions.updateAdvertisement,
+  on(AdvertisementActions.updateAdvertisementSuccess,
     (state, action) => adapter.updateOne(action.advertisement, state)
   ),
-  on(AdvertisementActions.updateAdvertisements,
-    (state, action) => adapter.updateMany(action.advertisements, state)
-  ),
-  on(AdvertisementActions.deleteAdvertisement,
-    (state, action) => adapter.removeOne(action.id, state)
-  ),
-  on(AdvertisementActions.deleteAdvertisements,
-    (state, action) => adapter.removeMany(action.ids, state)
-  ),
-  on(AdvertisementActions.loadAdvertisements,
+  on(AdvertisementActions.loadAdvertisementsSuccess,
     (state, action) => adapter.setAll(action.advertisements, state)
-  ),
-  on(AdvertisementActions.clearAdvertisements,
-    state => adapter.removeAll(state)
   ),
 );
 
