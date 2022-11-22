@@ -1,48 +1,43 @@
 <div class="row justify-content-center mt-2 featAdsNav">
-    <div class="col-md-12">
-        <div class="d-flex justify-content-center mt-lg-3 mt-md-2 mt-sm-1">
-            <div class="mx-1">
+  <div class="col-md-12">
+    <div class="d-flex justify-content-center mt-lg-3 mt-md-2 mt-sm-1">
+      <!-- <div class="mx-1">
                 <app-feat-ads-category-button (activated)="loadFeatAdverts()">
                     <button class="btn btn-outline-secondary" #catButton
                         [ngClass]="{'active' : isFeatAllActive | async}">
                         <i class="fa-solid fa-heart me-1"></i>All</button>
                 </app-feat-ads-category-button>
-            </div>
-            <div class="mx-1">
-                <app-feat-ads-category-button (activated)="loadFeatCarAdverts()">
-                    <button class="btn btn-outline-secondary" #catButton
-                        [ngClass]="{'active' : isFeatCarActive$ | async}">
-                        <i class="fas fa-car fa-fw me-1"></i>Cars</button>
-                </app-feat-ads-category-button>
-            </div>
-            <div class="mx-1">
-                <app-feat-ads-category-button (activated)="loadFeatElectrAdverts()">
-                    <button class="btn btn-outline-secondary" #catButton
-                        [ngClass]="{'active' : isFeatElectroActive$ | async}"><i
-                            class="fas fa-tv fa-fw me-1"></i>Gadgets</button>
-                </app-feat-ads-category-button>
-            </div>
-            <div class="mx-1">
-                <app-feat-ads-category-button (activated)="loadFeatFashAdverts()">
-                    <button class="btn btn-outline-secondary" #catButton
-                        [ngClass]="{'active' : isFeatFashActive$ | async}"><i
-                            class="fa-solid fa-shirt fa-fw me-1"></i>Fashion</button>
-                </app-feat-ads-category-button>
-            </div>
-            <div class="mx-1">
-                <app-feat-ads-category-button (activated)="loadFeatSportAdverts()">
-                    <button class="btn btn-outline-secondary" #catButton
-                        [ngClass]="{'active' : isFeatSportsActive$ | async}"> <i
-                            class="fa-solid fa-bicycle fa-fw me-1"></i>Sports</button>
-                </app-feat-ads-category-button>
-            </div>
-            <div class="mx-1">
-                <app-feat-ads-category-button (activated)="loadFeatOtherAdverts()">
-                    <button class="btn btn-outline-secondary" #catButton
-                        [ngClass]="{'active' : isFeatOtherActive$ | async}"><i
-                            class="fa-solid fa-gifts me-1"></i>Other</button>
-                </app-feat-ads-category-button>
-            </div>
-        </div>
+            </div> -->
+      <div class="mx-1">
+        <app-feat-ads-category-button (activated)="loadFeatCarAdverts()">
+          <button class="btn btn-outline-secondary" #catButton [ngClass]="{'active' : isFeatCarActive$ | async}">
+            <i class="fas fa-car fa-fw me-1"></i>Cars</button>
+        </app-feat-ads-category-button>
+      </div>
+      <div class="mx-1">
+        <app-feat-ads-category-button (activated)="loadFeatElectrAdverts()">
+          <button class="btn btn-outline-secondary" #catButton [ngClass]="{'active' : isFeatElectroActive$ | async}"><i
+              class="fas fa-tv fa-fw me-1"></i>Gadgets</button>
+        </app-feat-ads-category-button>
+      </div>
+      <div class="mx-1">
+        <app-feat-ads-category-button (activated)="loadFeatFashAdverts()">
+          <button class="btn btn-outline-secondary" #catButton [ngClass]="{'active' : isFeatFashActive$ | async}"><i
+              class="fa-solid fa-shirt fa-fw me-1"></i>Fashion</button>
+        </app-feat-ads-category-button>
+      </div>
+      <div class="mx-1">
+        <app-feat-ads-category-button (activated)="loadFeatSportAdverts()">
+          <button class="btn btn-outline-secondary" #catButton [ngClass]="{'active' : isFeatSportsActive$ | async}"> <i
+              class="fa-solid fa-bicycle fa-fw me-1"></i>Sports</button>
+        </app-feat-ads-category-button>
+      </div>
+      <div class="mx-1">
+        <app-feat-ads-category-button (activated)="loadFeatOtherAdverts()">
+          <button class="btn btn-outline-secondary" #catButton [ngClass]="{'active' : isFeatOtherActive$ | async}"><i
+              class="fa-solid fa-gifts me-1"></i>Other</button>
+        </app-feat-ads-category-button>
+      </div>
     </div>
+  </div>
 </div>

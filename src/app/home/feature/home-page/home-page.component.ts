@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Advertisement } from 'src/app/advertisements/data-access/models/advertisement.model';
-import { AdvertisementsService } from 'src/app/advertisements/data-access/service/advertisements.service';
-
+import * as fromAdvertisement from '../../../advertisements/data-access/store'
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -10,10 +10,12 @@ import { AdvertisementsService } from 'src/app/advertisements/data-access/servic
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(public advertsService : AdvertisementsService) { 
+  constructor(private store: Store) {
   }
 
   ngOnInit(): void {
+    this.advertisements$ = this.store.select(fromAdvertisement.selectAllAdvertisement);
   }
 
+  advertisements$: Observable<Advertisement[]> | undefined;
 }

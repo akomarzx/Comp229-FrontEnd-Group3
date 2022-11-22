@@ -1,4 +1,3 @@
-<!-- TODO: Homepage needs redesign -->
 <div class="row h-100 d-flex justify-content-center mt-2">
   <div class="col-md px-0">
     <div class="row justify-content-center">
@@ -22,7 +21,7 @@
     </div>
     <div class="row d-flex-lg justify-content-center listArea">
       <div class=" col-lg-10">
-        <app-advertisements-list [advertisments]="advertsService.getAdvertisements() | async"></app-advertisements-list>
+        <app-advertisements-list [advertisments]="advertisements$ | async"></app-advertisements-list>
       </div>
     </div>
   </div>

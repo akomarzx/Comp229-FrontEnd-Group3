@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import * as fromAdvertisementsState from './advertisements/data-access/store'
 import * as fromAppState from './shared/store'
+import { AdvertisementApiEffects } from './advertisements/data-access/store/advertisements/advertisement.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import * as fromAppState from './shared/store'
     StoreModule.forFeature('router', routerReducer),
     StoreModule.forFeature(fromAppState.FeatureKey, fromAppState.reducers),
     StoreModule.forFeature(fromAdvertisementsState.FeatureKey, fromAdvertisementsState.reducers),
-    EffectsModule.forRoot(),
+    EffectsModule.forRoot([AdvertisementApiEffects]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),

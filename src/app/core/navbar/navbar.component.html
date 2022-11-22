@@ -29,6 +29,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" routerLink="/advertisements/create-ad" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+            <i class="fa-solid fa-plus"></i>Post Ads
+          </a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" [routerLink]="['/advertisements']" routerLinkActive="active"
             [routerLinkActiveOptions]="{exact: true}">
             <i class=" fa-solid fa-barcode" aria-hidden="true"></i>Browse Ads

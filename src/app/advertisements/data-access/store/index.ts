@@ -5,6 +5,7 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
+import { from, map, of, skip, skipWhile, switchMap } from 'rxjs';
 import { selectRouteParams } from 'src/app/shared/store/router.selectors';
 import { environment } from '../../../../environments/environment';
 import * as fromAdvertisements from './advertisements/advertisement.reducer'
@@ -30,6 +31,12 @@ export const selectAdvertismentSlice = createSelector(
   (featureState) => featureState.advertisements
 )
 
+//TODO: find a way to only get certain number of elements but for now get all
+export const selectAllAdvertisement = createSelector(
+  selectAdvertismentSlice,
+  fromAdvertisements.selectAllAdvertisement
+)
+
 //Get all entities
 export const selectAdvertisementsEntities = createSelector(
   selectAdvertismentSlice,
@@ -42,3 +49,8 @@ export const selectAdvertisement = createSelector(
   selectRouteParams,
   (advertisements, { _id }) => advertisements[_id]
 );
+
+export const selectIsApiLoading = createSelector(
+  selectAdvertismentSlice,
+  fromAdvertisements.selectIsApiDoneLoading
+)

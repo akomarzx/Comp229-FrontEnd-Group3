@@ -11,7 +11,7 @@ export function selectAdId(ads: Advertisement): string {
 }
 
 export interface State extends EntityState<Advertisement> {
-  // additional entities state properties
+  isApiDoneLoading: boolean
 }
 
 export const adapter: EntityAdapter<Advertisement> = createEntityAdapter<Advertisement>({
@@ -20,39 +20,26 @@ export const adapter: EntityAdapter<Advertisement> = createEntityAdapter<Adverti
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
+  isApiDoneLoading: true
 });
 
 export const reducer = createReducer<State>(
   initialState,
-  on(AdvertisementActions.addAdvertisement,
+  on(AdvertisementActions.onStartup,
+    (state, action): State => {
+      return {
+        ...state,
+        isApiDoneLoading: false
+      }
+    }),
+  on(AdvertisementActions.addAdvertisementSuccess,
     (state, action) => adapter.addOne(action.advertisement, state)
   ),
-  on(AdvertisementActions.upsertAdvertisement,
-    (state, action) => adapter.upsertOne(action.advertisement, state)
-  ),
-  on(AdvertisementActions.addAdvertisements,
-    (state, action) => adapter.addMany(action.advertisements, state)
-  ),
-  on(AdvertisementActions.upsertAdvertisements,
-    (state, action) => adapter.upsertMany(action.advertisements, state)
-  ),
-  on(AdvertisementActions.updateAdvertisement,
+  on(AdvertisementActions.updateAdvertisementSuccess,
     (state, action) => adapter.updateOne(action.advertisement, state)
   ),
-  on(AdvertisementActions.updateAdvertisements,
-    (state, action) => adapter.updateMany(action.advertisements, state)
-  ),
-  on(AdvertisementActions.deleteAdvertisement,
-    (state, action) => adapter.removeOne(action.id, state)
-  ),
-  on(AdvertisementActions.deleteAdvertisements,
-    (state, action) => adapter.removeMany(action.ids, state)
-  ),
-  on(AdvertisementActions.loadAdvertisements,
-    (state, action) => adapter.setAll(action.advertisements, state)
-  ),
-  on(AdvertisementActions.clearAdvertisements,
-    state => adapter.removeAll(state)
+  on(AdvertisementActions.loadAdvertisementsSuccess,
+    (state, { advertisements }) => adapter.setAll(advertisements, { ...state, isApiDoneLoading: true })
   ),
 );
 
@@ -75,3 +62,5 @@ export const selectAllAdvertisement = selectAll;
 
 // select the total ads
 export const selectUserTotal = selectTotal;
+
+export const selectIsApiDoneLoading = (state: State) => state.isApiDoneLoading;
