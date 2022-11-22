@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdvertisementResolver } from './advertisement.resolver';
+import { IsStoreFullyLoadedGuard } from './is-store-fully-loaded.guard';
 
 const routes: Routes = [
   {
@@ -16,15 +17,16 @@ const routes: Routes = [
     path: 'edit/:_id',
     loadChildren: () =>
       import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule),
-      resolve : {
-        advertisement : AdvertisementResolver
-      }
+    canActivate: [IsStoreFullyLoadedGuard],
+    resolve: {
+      advertisement: AdvertisementResolver
+    }
   },
   {
     path: ':_id',
     loadChildren: () => import('../feature/ads-show-page/ads-show-page.module').then(m => m.AdsShowPageModule),
-    resolve : {
-      advertisement : AdvertisementResolver
+    resolve: {
+      advertisement: AdvertisementResolver
     }
   }
 ];

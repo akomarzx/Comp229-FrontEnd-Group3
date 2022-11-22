@@ -48,3 +48,8 @@ export const selectAdvertisement = createSelector(
   selectRouteParams,
   (advertisements, { _id }) => advertisements[_id]
 );
+
+export const selectIsApiLoading = createSelector(
+  selectAdvertismentSlice,
+  fromAdvertisements.selectIsApiLoading
+)

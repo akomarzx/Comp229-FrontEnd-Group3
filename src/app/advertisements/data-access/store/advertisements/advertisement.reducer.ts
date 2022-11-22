@@ -11,7 +11,7 @@ export function selectAdId(ads: Advertisement): string {
 }
 
 export interface State extends EntityState<Advertisement> {
-  // additional entities state properties
+  isApiDoneLoading: boolean
 }
 
 export const adapter: EntityAdapter<Advertisement> = createEntityAdapter<Advertisement>({
@@ -20,10 +20,18 @@ export const adapter: EntityAdapter<Advertisement> = createEntityAdapter<Adverti
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
+  isApiDoneLoading: true
 });
 
 export const reducer = createReducer<State>(
   initialState,
+  on(AdvertisementActions.onStartup,
+    (state, action): State => {
+      return {
+        ...state,
+        isApiDoneLoading: false
+      }
+    }),
   on(AdvertisementActions.addAdvertisementSuccess,
     (state, action) => adapter.addOne(action.advertisement, state)
   ),
@@ -31,7 +39,7 @@ export const reducer = createReducer<State>(
     (state, action) => adapter.updateOne(action.advertisement, state)
   ),
   on(AdvertisementActions.loadAdvertisementsSuccess,
-    (state, action) => adapter.setAll(action.advertisements, state)
+    (state, { advertisements }) => adapter.setAll(advertisements, { ...state, isApiDoneLoading: true })
   ),
 );
 
@@ -54,3 +62,5 @@ export const selectAllAdvertisement = selectAll;
 
 // select the total ads
 export const selectUserTotal = selectTotal;
+
+export const selectIsApiLoading = (state: State) => state.isApiDoneLoading;
