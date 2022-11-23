@@ -11,7 +11,9 @@ export function selectAdId(ads: Advertisement): string {
 }
 
 export interface State extends EntityState<Advertisement> {
-  isApiDoneLoading: boolean
+  isApiDoneLoading: boolean,
+  hasErrorFromApi: boolean,
+  errorMessage: string
 }
 
 export const adapter: EntityAdapter<Advertisement> = createEntityAdapter<Advertisement>({
@@ -20,7 +22,9 @@ export const adapter: EntityAdapter<Advertisement> = createEntityAdapter<Adverti
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
-  isApiDoneLoading: true
+  isApiDoneLoading: true,
+  hasErrorFromApi: false,
+  errorMessage: ''
 });
 
 export const reducer = createReducer<State>(
