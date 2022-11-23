@@ -41,13 +41,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">
+          <a class="nav-link" [routerLink]="['/auth', 'register']">
             <i class="fa fa-user-plus" aria-hidden="true"></i>Sign up
           </a>
         </li>
         <!-- Hide log in and registration when user is logged in -->
         <li class="nav-item">
-          <a href="" class="nav-link">
+          <a [routerLink]="['/auth', 'login']" class="nav-link">
             <i class="fa fa-sign-in" aria-hidden="true"></i>Sign-in
           </a>
         </li>

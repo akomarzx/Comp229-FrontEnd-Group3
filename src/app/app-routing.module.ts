@@ -9,8 +9,12 @@ const routes: Routes = [
     loadChildren: () => import('./home/feature/home-page/home-page.module').then(m => m.HomePageModule)
   },
   {
-    path: 'advertisements', 
+    path: 'advertisements',
     loadChildren: () => import('./shared-advertisements/shell/ads-page-shell.module').then(m => m.AdsPageShellModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/shell/auth-shell.module').then(m => m.AuthShellModule)
   }
 ];
 
