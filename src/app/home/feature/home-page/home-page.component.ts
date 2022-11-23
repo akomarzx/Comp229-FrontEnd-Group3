@@ -11,11 +11,12 @@ import * as fromAdvertisement from '../../../shared-advertisements/data-access/s
 export class HomePageComponent implements OnInit {
 
   constructor(private store: Store) {
+    this.isApiLoading$ = this.store.select(fromAdvertisement.selectIsApiLoading)
   }
 
   ngOnInit(): void {
     this.advertisements$ = this.store.select(fromAdvertisement.selectAllAdvertisement);
   }
-
+  isApiLoading$ : Observable<boolean> | undefined;
   advertisements$: Observable<Advertisement[]> | undefined;
 }

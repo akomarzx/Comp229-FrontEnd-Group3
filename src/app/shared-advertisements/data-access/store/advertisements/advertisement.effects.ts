@@ -16,7 +16,6 @@ export class AdvertisementApiEffects {
   loadAdvertisements$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(fromAdvertisementActions.onStartup),
-      delay(3000),
       concatMap(() => {
         return this.adsSevice.getAdvertisements()
           .pipe(
