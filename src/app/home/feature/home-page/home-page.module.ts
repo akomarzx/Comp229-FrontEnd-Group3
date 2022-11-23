@@ -6,7 +6,8 @@ import { HomePageComponent } from './home-page.component';
 import { FeaturedAdsNavModule } from '../featured-ads-nav/featured-ads-nav.module';
 import { StoreModule } from '@ngrx/store';
 import * as from from '../../data-access/store';
-import { AdvertisementsListModule } from 'src/app/advertisements/ui/advertisements-list/advertisements-list.module';
+import { AdvertisementsListModule } from 'src/app/shared-advertisements/ui/advertisements-list/advertisements-list.module';
+import { SpinnerModule } from 'src/app/shared/ui/spinner/spinner.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { AdvertisementsListModule } from 'src/app/advertisements/ui/advertisemen
     HomePageRoutingModule,
     FeaturedAdsNavModule,
     AdvertisementsListModule,
+    SpinnerModule,
     StoreModule.forFeature(from.FeatureKey, from.reducers, { metaReducers: from.metaReducers }),
   ],
   exports: [

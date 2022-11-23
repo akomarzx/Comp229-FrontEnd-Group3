@@ -19,6 +19,9 @@
 
       <h1>Featured Ads</h1>
     </div>
+    <div>
+      <app-spinner *ngIf="(isApiLoading$ | async) === false"></app-spinner>
+    </div>
     <div class="row d-flex-lg justify-content-center listArea">
       <div class=" col-lg-10">
         <app-advertisements-list [advertisments]="advertisements$ | async"></app-advertisements-list>

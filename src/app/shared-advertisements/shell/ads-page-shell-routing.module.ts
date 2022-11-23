@@ -25,6 +25,7 @@ const routes: Routes = [
   {
     path: ':_id',
     loadChildren: () => import('../feature/ads-show-page/ads-show-page.module').then(m => m.AdsShowPageModule),
+    canActivate : [IsStoreFullyLoadedGuard],
     resolve: {
       advertisement: AdvertisementResolver
     }

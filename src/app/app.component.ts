@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import * as fromAppStateActions from './shared/store/app-state.actions'
 import * as fromAppState from './shared/store'
-import * as fromAdvertisementActions from './advertisements/data-access/store/advertisements/advertisement.actions'
+import * as fromAdvertisementActions from './shared-advertisements/data-access/store/advertisements/advertisement.actions'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
