@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
 import { createAction, Store } from '@ngrx/store';
-import { concatMap, map, mergeMap, switchMap, tap } from 'rxjs';
+import { concatMap, delay, map, mergeMap, switchMap, tap } from 'rxjs';
 import { AdvertisementsService } from '../../service/advertisements.service';
 import * as fromAdvertisementActions from './advertisement.actions'
 import { AdvertRequiredProps, Advertisement } from '../../models/advertisement.model'
@@ -16,6 +16,7 @@ export class AdvertisementApiEffects {
   loadAdvertisements$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(fromAdvertisementActions.onStartup),
+      delay(3000),
       concatMap(() => {
         return this.adsSevice.getAdvertisements()
           .pipe(
@@ -53,7 +54,7 @@ export class AdvertisementApiEffects {
           tap((data) => {
             this.router.navigate(['/advertisements/', data._id]);
           }),
-          map((updatedAdvertisement) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: {id: updatedAdvertisement._id, changes: updatedAdvertisement} }))
+          map((updatedAdvertisement) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: { id: updatedAdvertisement._id, changes: updatedAdvertisement } }))
         )
       })
     )

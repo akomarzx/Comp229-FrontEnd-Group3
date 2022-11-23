@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'advertisements', 
-    loadChildren: () => import('./advertisements/shell/ads-page-shell.module').then(m => m.AdsPageShellModule)
+    loadChildren: () => import('./shared-advertisements/shell/ads-page-shell.module').then(m => m.AdsPageShellModule)
   }
 ];
 

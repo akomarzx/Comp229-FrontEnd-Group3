@@ -11,9 +11,9 @@ import { FooterModule } from './core/footer/footer.module';
 import { NavbarModule } from './core/navbar/navbar.module';
 import { HttpClientModule } from '@angular/common/http';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
-import * as fromAdvertisementsState from './advertisements/data-access/store'
+import * as fromAdvertisementsState from './shared-advertisements/data-access/store'
 import * as fromAppState from './shared/store'
-import { AdvertisementApiEffects } from './advertisements/data-access/store/advertisements/advertisement.effects';
+import { AdvertisementApiEffects } from './shared-advertisements/data-access/store/advertisements/advertisement.effects';
 @NgModule({
   declarations: [
     AppComponent,
