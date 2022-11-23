@@ -1,4 +1,42 @@
 <p>{{selectedAdvert | json}}</p>
+<!-- <main class="container">
+    <div class="row">
+        <h1>{{advertisement.adsTitle}}</h1>
+        <br>
+        <div>
+            <a routerLink="/advertisements/edit/{{selectedAdvert?._id}}" class="btn btn-primary align-self-end" role="button">
+                <i class="fas fa-plus-circle"></i> 
+                Edit Advertisement
+            </a> 
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <tr>
+                    <th class="text-center">Ads Title</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Status</th>
+                    <th class="text-center">Active Date</th>
+                    <th class="text-center">Expiry Date</th>
+                    <th class="text-center">Description</th>
+                </tr>
+                <tr *ngFor="let item of advertisementList">
+                    <td class="text-center"> {{advertisement.adsTitle}} </td>
+                    <td class="text-center"> {{advertisement.price}} </td>
+                    <td class="text-center"> {{advertisement.status}} </td>
+                    <td class="text-center"> {{advertisement.activeDate}} </td>
+                    <td class="text-center"> {{advertisement.expiryDate}} </td>
+                    <td>
+                        Item Name: {{advertisement.description.itemName}}<br />
+                        Description: {{advertisement.description.description}}<br />
+                        Category: {{advertisement.description.category}}<br />
+                        Condition: {{advertisement.description.condition}}<br />
+                    </td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+  </main> -->
+
 <a routerLink="/advertisements/edit/{{selectedAdvert?._id}}">
     <button>Edit Advertisement</button>
 </a>
