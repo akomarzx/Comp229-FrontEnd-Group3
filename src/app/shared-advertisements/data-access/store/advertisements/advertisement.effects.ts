@@ -19,7 +19,7 @@ export class AdvertisementApiEffects {
       concatMap(() => {
         return this.adsSevice.getAdvertisements()
           .pipe(
-            map((advertisements) => fromAdvertisementActions.loadAdvertisementsSuccess({ advertisements })),
+            map(({ advertisements }) => fromAdvertisementActions.loadAdvertisementsSuccess({ advertisements })),
             catchError((error) => of(fromAdvertisementActions.loadAdvertisementsFailure({ errorMessage: error.message })))
           )
       })
@@ -33,10 +33,10 @@ export class AdvertisementApiEffects {
       map(action => action.newAdvert),
       concatMap((newAdvert) => {
         return this.adsSevice.createAdvertisement(newAdvert).pipe(
-          tap((data) => {
-            this.router.navigate(['/advertisements/', data._id]);
+          tap(({ advertisement }) => {
+            this.router.navigate(['/advertisements/', advertisement!._id]);
           }),
-          map((newAdvertisement) => fromAdvertisementActions.createAdvertisementSuccess({ advertisement: newAdvertisement })),
+          map(({ advertisement }) => fromAdvertisementActions.createAdvertisementSuccess({ advertisement: advertisement })),
           catchError((error) => of(fromAdvertisementActions.createAdvertisementFailure({ errorMessage: error.message })))
         )
       })
@@ -52,10 +52,10 @@ export class AdvertisementApiEffects {
       }),
       switchMap((action) => {
         return this.adsSevice.updateAdvertisement(action.advertisement).pipe(
-          tap((data) => {
-            this.router.navigate(['/advertisements/', data._id]);
+          tap(({ advertisement }) => {
+            this.router.navigate(['/advertisements/', advertisement!._id]);
           }),
-          map((updatedAdvertisement) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: { id: updatedAdvertisement._id, changes: updatedAdvertisement } })),
+          map(({ advertisement }) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: { id: advertisement!._id, changes: advertisement } })),
           catchError((error) => of(fromAdvertisementActions.updateAdvertisementFailure({ errorMessage: error.message })))
         )
       })
