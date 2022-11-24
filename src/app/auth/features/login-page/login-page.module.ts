@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { LoginPageRoutingModule } from './login-page-routing.module';
 import { LoginPageComponent } from './login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { LoginPageComponent } from './login-page.component';
   ],
   imports: [
     CommonModule,
-    LoginPageRoutingModule
+    LoginPageRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     LoginPageComponent

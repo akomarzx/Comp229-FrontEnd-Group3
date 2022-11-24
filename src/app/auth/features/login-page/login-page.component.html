@@ -4,15 +4,16 @@
             <h1>Log-in:</h1>
         </div>
         <div class="row">
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" id="username" placeholder="Enter your username"
-                        name="username">
+                        name="username" formControlName="username">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input class="form-control" id="password" placeholder="Enter your password">
+                    <input class="form-control" id="password" placeholder="Enter your password" id="password"
+                        name="password" formControlName="password">
                 </div>
                 <div class="mb-3">
                     <button class="btn btn-primary" type="submit">Log-in</button>
