@@ -2,6 +2,7 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Advertisement } from '../../models/advertisement.model';
 import * as AdvertisementActions from './advertisement.actions';
+import { routerRequestAction } from '@ngrx/router-store';
 
 export const advertisementsFeatureKey = 'advertisements';
 
@@ -36,15 +37,59 @@ export const reducer = createReducer<State>(
         isApiDoneLoading: false
       }
     }),
-  on(AdvertisementActions.addAdvertisementSuccess,
-    (state, action) => adapter.addOne(action.advertisement, state)
+  on(AdvertisementActions.createAdvertisementSuccess,
+    (state, action) => adapter.addOne(action.advertisement, { ...state, isApiDoneLoading: true })
   ),
+  on(AdvertisementActions.createAdvertisementFailure,
+    (state, action): State => {
+      return {
+        ...state,
+        hasErrorFromApi: true,
+        errorMessage: action.errorMessage,
+        isApiDoneLoading: true
+      }
+    }),
   on(AdvertisementActions.updateAdvertisementSuccess,
-    (state, action) => adapter.updateOne(action.advertisement, state)
+    (state, action) => adapter.updateOne(action.advertisement, { ...state, isApiDoneLoading: true })
   ),
+  on(AdvertisementActions.updateAdvertisementFailure,
+    (state, action): State => {
+      return {
+        ...state,
+        hasErrorFromApi: true,
+        errorMessage: action.errorMessage,
+        isApiDoneLoading: true
+      }
+    }),
   on(AdvertisementActions.loadAdvertisementsSuccess,
     (state, { advertisements }) => adapter.setAll(advertisements, { ...state, isApiDoneLoading: true })
   ),
+  on(AdvertisementActions.loadAdvertisementsFailure,
+    (state, action): State => {
+      return {
+        ...state,
+        hasErrorFromApi: true,
+        errorMessage: action.errorMessage,
+        isApiDoneLoading: true
+      }
+    }
+  ),
+  on(AdvertisementActions.OnErrorDismissed, routerRequestAction,
+    (state, action): State => {
+      return {
+        ...state,
+        hasErrorFromApi: false,
+        errorMessage: ''
+      }
+    }),
+  on(AdvertisementActions.onResolveAdvertisementFailure,
+    (state, action): State => {
+      return {
+        ...state,
+        hasErrorFromApi: true,
+        errorMessage: action.message
+      }
+    })
 );
 
 const {
@@ -68,3 +113,5 @@ export const selectAllAdvertisement = selectAll;
 export const selectUserTotal = selectTotal;
 
 export const selectIsApiDoneLoading = (state: State) => state.isApiDoneLoading;
+export const selectHasApiError = (state: State) => state.hasErrorFromApi;
+export const selectErrorMessage = (state: State) => state.errorMessage;

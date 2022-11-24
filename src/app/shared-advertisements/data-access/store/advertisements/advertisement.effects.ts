@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Update } from '@ngrx/entity';
 import { createAction, Store } from '@ngrx/store';
-import { concatMap, delay, map, mergeMap, switchMap, tap } from 'rxjs';
+import { catchError, concatMap, delay, map, mergeMap, of, switchMap, tap } from 'rxjs';
 import { AdvertisementsService } from '../../service/advertisements.service';
 import * as fromAdvertisementActions from './advertisement.actions'
 import { AdvertRequiredProps, Advertisement } from '../../models/advertisement.model'
@@ -19,7 +19,8 @@ export class AdvertisementApiEffects {
       concatMap(() => {
         return this.adsSevice.getAdvertisements()
           .pipe(
-            map((advertisements) => fromAdvertisementActions.loadAdvertisementsSuccess({ advertisements }))
+            map((advertisements) => fromAdvertisementActions.loadAdvertisementsSuccess({ advertisements })),
+            catchError((error) => of(fromAdvertisementActions.loadAdvertisementsFailure({ errorMessage: error.message })))
           )
       })
     )
@@ -35,7 +36,8 @@ export class AdvertisementApiEffects {
           tap((data) => {
             this.router.navigate(['/advertisements/', data._id]);
           }),
-          map((newAdvertisement) => fromAdvertisementActions.addAdvertisementSuccess({ advertisement: newAdvertisement }))
+          map((newAdvertisement) => fromAdvertisementActions.createAdvertisementSuccess({ advertisement: newAdvertisement })),
+          catchError((error) => of(fromAdvertisementActions.createAdvertisementFailure({ errorMessage: error.message })))
         )
       })
     )
@@ -53,7 +55,8 @@ export class AdvertisementApiEffects {
           tap((data) => {
             this.router.navigate(['/advertisements/', data._id]);
           }),
-          map((updatedAdvertisement) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: { id: updatedAdvertisement._id, changes: updatedAdvertisement } }))
+          map((updatedAdvertisement) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: { id: updatedAdvertisement._id, changes: updatedAdvertisement } })),
+          catchError((error) => of(fromAdvertisementActions.updateAdvertisementFailure({ errorMessage: error.message })))
         )
       })
     )

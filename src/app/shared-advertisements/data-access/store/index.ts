@@ -54,3 +54,13 @@ export const selectIsApiLoading = createSelector(
   selectAdvertismentSlice,
   fromAdvertisements.selectIsApiDoneLoading
 )
+
+export const selectHasApiErrored = createSelector(
+  selectAdvertismentSlice,
+  fromAdvertisements.selectHasApiError
+)
+
+export const selectErrorMessage = createSelector(
+  selectAdvertismentSlice,
+  fromAdvertisements.selectErrorMessage
+)
