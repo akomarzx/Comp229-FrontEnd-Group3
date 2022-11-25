@@ -6,6 +6,7 @@ import {
   MetaReducer,
   select
 } from '@ngrx/store';
+import { selectAdvertisement } from 'src/app/shared-advertisements/data-access/store';
 import { selectUserIds } from 'src/app/shared-advertisements/data-access/store/advertisements/advertisement.reducer';
 import { selectRouteParams } from 'src/app/shared/store/router.selectors';
 import { environment } from '../../../../environments/environment';
@@ -60,6 +61,17 @@ export const selectUserId = createSelector(
 
 export const selectIsOwner = createSelector(
   selectUserId,
-  selectRouteParams,
-  (id, { _id }) => id === id
+  selectAdvertisement,
+  selectIsAuthenticated,
+  (id, advertisement, isAuthenticated) => {
+    if (!isAuthenticated) {
+      return false;
+    }
+    if (id === advertisement?.owner._id) {
+      return true
+    }
+    else {
+      return false;
+    }
+  }
 )
