@@ -1,3 +1,4 @@
+import { routerRequestAction } from '@ngrx/router-store';
 import { Action, createReducer, on } from '@ngrx/store';
 import * as fromAuthActions from './auth.actions'
 //TODO: put the user into its own module
@@ -28,17 +29,34 @@ export const initialState: State = {
 
 export const reducer = createReducer(
   initialState,
-  on(fromAuthActions.RegistrationCommenced, (state, action): State => {
+  on(fromAuthActions.RegistrationCommenced, fromAuthActions.LoginCommenced, (state, action): State => {
     return {
       ...state,
       isAuthPending: true
     }
   }),
-  on(fromAuthActions.onRegistrationSuccess, fromAuthActions.onRegistrationFail, (state, action): State => {
+  on(fromAuthActions.onRegistrationSuccess, fromAuthActions.onRegistrationFail, fromAuthActions.onLogInFail, (state, action): State => {
     return {
       ...state,
       isAuthPending: false,
       errorMessage: action.message
+    }
+  }),
+  on(fromAuthActions.onLogInSuccess, (state, action): State => {
+    return {
+      ...state,
+      isAuthPending: false,
+      isAuthenticated: true,
+      errorMessage: '',
+      token: action.token,
+      expiry: action.expiry,
+      _id: action._id,
+    }
+  }),
+  on(routerRequestAction, (state, action): State => {
+    return {
+      ...state,
+      errorMessage: ''
     }
   })
 );

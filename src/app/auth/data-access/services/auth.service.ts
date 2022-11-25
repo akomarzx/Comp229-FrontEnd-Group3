@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ResponseModel } from '../models/ResponseModel';
 import { RegistrationCredential } from '../models/registration-model';
-import { LoginSuccessResponse } from '../models/login-success.model';
+import { LoginResponse } from '../models/login-success.model';
 import { LoginCredential } from '../models/login-credential.model';
 
 const BASE_URL = 'http://localhost:3000/api/auth/';
@@ -23,8 +23,8 @@ export class AuthService {
     return this.http.post<ResponseModel>(BASE_URL + 'signup', regBody, HEADER);
   }
 
-  logIn(loginCred : LoginCredential) : Observable<ResponseModel | LoginSuccessResponse> {
-    return this.http.post<ResponseModel | LoginSuccessResponse>(BASE_URL + 'signin', loginCred, HEADER);
+  logIn(loginCred: LoginCredential): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(BASE_URL + 'signin', loginCred, HEADER);
   }
 
 }
