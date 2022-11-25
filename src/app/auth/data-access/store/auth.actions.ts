@@ -23,7 +23,7 @@ export const LoginCommenced = createAction(
 
 export const onLogInSuccess = createAction(
   '[Auth Api] Login Successful',
-  props<{ message: string, token: string, expiry: string, _id: string }>()
+  props<{ message: string, token: string, expiry: string, user: User }>()
 )
 
 export const onLogInFail = createAction(

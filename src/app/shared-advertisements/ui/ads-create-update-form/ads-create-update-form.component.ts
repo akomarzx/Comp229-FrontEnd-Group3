@@ -14,6 +14,7 @@ export class AdsCreateUpdateFormComponent implements OnInit {
     this.formSubmission = new EventEmitter<any>();
   }
   ngOnInit(): void {
+
     if (this.isEditMode) {
       this.route.data.subscribe(({ advertisement }) => {
         let advert = advertisement as Advertisement;
@@ -29,7 +30,7 @@ export class AdsCreateUpdateFormComponent implements OnInit {
             description: advert.description.description,
             category: advert.description.category,
             condition: advert.description.condition
-          }
+          },
         })
       })
     }
@@ -47,13 +48,13 @@ export class AdsCreateUpdateFormComponent implements OnInit {
       description: ['', Validators.required],
       category: ['', Validators.required],
       condition: ['', Validators.required]
-    })
+    }),
   })
   onSubmit() {
     this.formSubmission.emit(this.advertForm.value);
   }
   @Input() isEditMode: boolean | undefined;
   @Input() advetisementToUpdated: Advertisement | undefined;
-
+  @Input() currentUser!: string;
   @Output() formSubmission: EventEmitter<any>;
 }

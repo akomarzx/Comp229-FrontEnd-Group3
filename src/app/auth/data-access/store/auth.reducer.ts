@@ -50,7 +50,10 @@ export const reducer = createReducer(
       errorMessage: '',
       token: action.token,
       expiry: action.expiry,
-      _id: action._id,
+      _id: action.user._id,
+      firstName: action.user.firstName,
+      lastName: action.user.lastName,
+      email: action.user.email
     }
   }),
   on(routerRequestAction, (state, action): State => {
@@ -61,7 +64,7 @@ export const reducer = createReducer(
   })
 );
 
-export const selectToken = (state : State) => state.token;
+export const selectToken = (state: State) => state.token;
 export const selectExpiry = (state: State) => state.expiry;
 export const selectIsAuthenticated = (state: State) => state.isAuthenticated;
 export const selectUserId = (state: State) => state._id;
