@@ -1,4 +1,5 @@
-export interface LoginSuccessResponse {
-    success : boolean,
-    token: string
+export interface LoginResponse {
+  message: string,
+  success: boolean,
+  token: string
 }

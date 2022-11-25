@@ -37,6 +37,13 @@ export const reducer = createReducer<State>(
         isApiDoneLoading: false
       }
     }),
+  on(AdvertisementActions.onCreateNewAdvertisement,
+    (state, action): State => {
+      return {
+        ...state,
+        isApiDoneLoading: false
+      }
+    }),
   on(AdvertisementActions.createAdvertisementSuccess,
     (state, action) => adapter.addOne(action.advertisement, { ...state, isApiDoneLoading: true })
   ),
@@ -47,6 +54,13 @@ export const reducer = createReducer<State>(
         hasErrorFromApi: true,
         errorMessage: action.errorMessage,
         isApiDoneLoading: true
+      }
+    }),
+  on(AdvertisementActions.onUpdateAdvertisement,
+    (state, action): State => {
+      return {
+        ...state,
+        isApiDoneLoading: false
       }
     }),
   on(AdvertisementActions.updateAdvertisementSuccess,
@@ -61,6 +75,7 @@ export const reducer = createReducer<State>(
         isApiDoneLoading: true
       }
     }),
+  
   on(AdvertisementActions.loadAdvertisementsSuccess,
     (state, { advertisements }) => adapter.setAll(advertisements, { ...state, isApiDoneLoading: true })
   ),
