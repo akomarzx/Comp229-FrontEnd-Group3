@@ -62,3 +62,6 @@ export const reducer = createReducer(
 );
 
 export const selectToken = (state : State) => state.token;
+export const selectExpiry = (state: State) => state.expiry;
+export const selectIsAuthenticated = (state: State) => state.isAuthenticated;
+export const selectUserId = (state: State) => state._id;

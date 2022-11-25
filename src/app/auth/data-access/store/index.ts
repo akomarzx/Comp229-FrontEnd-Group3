@@ -31,3 +31,21 @@ export const selectToken = createSelector(
   selectAuth,
   fromAuth.selectToken
 )
+
+export const selectExpiry = createSelector(
+  selectAuth,
+  fromAuth.selectExpiry
+)
+
+export const selectIsAuthenticated = createSelector(
+  selectAuth,
+  selectExpiry,
+  selectToken,
+  // TODO: Check if the token is expired even if it is present
+  (expiry, token) => {
+    if(!token){
+      return false;
+    }
+    return true;
+  }
+)

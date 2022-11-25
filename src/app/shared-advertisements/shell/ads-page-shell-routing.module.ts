@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IsAuthenticatedGuard } from 'src/app/auth/shell/is-authenticated.guard';
 import { AdvertisementResolver } from './advertisement.resolver';
 import { IsStoreFullyLoadedGuard } from './is-store-fully-loaded.guard';
 
@@ -11,13 +12,14 @@ const routes: Routes = [
   {
     path: 'create-ad',
     loadChildren: () =>
-      import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule)
+      import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule),
+      canActivate: [IsAuthenticatedGuard, IsAuthenticatedGuard]
   },
   {
     path: 'edit/:_id',
     loadChildren: () =>
       import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule),
-    canActivate: [IsStoreFullyLoadedGuard],
+    canActivate: [IsStoreFullyLoadedGuard, IsAuthenticatedGuard],
     resolve: {
       advertisement: AdvertisementResolver
     }
