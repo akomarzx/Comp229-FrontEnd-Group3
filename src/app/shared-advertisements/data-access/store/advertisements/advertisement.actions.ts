@@ -7,14 +7,18 @@ export const onStartup = createAction(
   '[Advertisement Shared] OnStartup'
 )
 
+export const OnErrorDismissed = createAction(
+  '[Advertisement Shared] On Error Dismissed'
+)
+
 export const onCreateNewAdvertisement = createAction(
   '[Create Advert Page] Create New Advert',
   props<{ newAdvert: AdvertRequiredProps }>()
 )
 
 export const onUpdateAdvertisement = createAction(
-  '[Update Advert] Update Advert',
-  props<{ advertisement : Update<Advertisement>}>()
+  '[Update Advert Page] Update Advert',
+  props<{ advertisement: Update<Advertisement> }>()
 )
 
 export const loadAdvertisementsSuccess = createAction(
@@ -27,14 +31,14 @@ export const loadAdvertisementsFailure = createAction(
   props<{ errorMessage: string }>()
 );
 
-export const addAdvertisementSuccess = createAction(
+export const createAdvertisementSuccess = createAction(
   '[Advertisement/API] Add Advertisement Success',
   props<{ advertisement: Advertisement }>()
 );
 
-export const addAdvertisementFailure = createAction(
+export const createAdvertisementFailure = createAction(
   '[Advetisement/API] Add Advertisement Failure',
-  props<{ errorMessage: string }>
+  props<{ errorMessage: string }>()
 )
 
 export const updateAdvertisementSuccess = createAction(
@@ -46,4 +50,10 @@ export const updateAdvertisementFailure = createAction(
   '[Advertisement/API] Update Advertisement Success',
   props<{ errorMessage: string }>()
 );
+
+export const onResolveAdvertisementFailure = createAction(
+  '[Advertisement Resolver] On Resolve Failure',
+  props<{ message: string }>()
+)
+
 

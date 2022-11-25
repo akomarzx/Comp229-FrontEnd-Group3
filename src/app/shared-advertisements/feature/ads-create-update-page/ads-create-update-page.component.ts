@@ -3,9 +3,9 @@ import { Update } from '@ngrx/entity';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, tap } from 'rxjs';
-import { selectHasError } from 'src/app/shared/store';
 import { Advertisement, AdvertRequiredProps } from '../../data-access/models/advertisement.model';
 import * as fromAdvertisementActions from '../../data-access/store/advertisements/advertisement.actions';
+import * as fromAdvertisementState from '../../data-access/store'
 @Component({
   selector: 'app-ads-create-update-page',
   templateUrl: './ads-create-update-page.component.html',
@@ -13,7 +13,7 @@ import * as fromAdvertisementActions from '../../data-access/store/advertisement
 })
 export class AdsCreateUpdatePageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private store: Store) {
-    this.isAdsNotFound$ = this.store.select(selectHasError);
+    this.isAdsNotFound$ = this.store.select(fromAdvertisementState.selectHasApiErrored);
     this.isInEditMode = false;
   }
 

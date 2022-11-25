@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 import { EMPTY, Observable, of, tap } from 'rxjs';
 import { Advertisement } from '../data-access/models/advertisement.model';
 import { selectAdvertisement } from '../data-access/store';
-import * as fromAppStateActions from '../../shared/store/app-state.actions';
+import * as fromAdvertisementActions from '../data-access/store/advertisements/advertisement.actions'
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +21,7 @@ export class AdvertisementResolver implements Resolve<any | undefined> {
       tap(
         (data) => {
           if (!data) {
-            this.store.dispatch(fromAppStateActions.onResolveAdsError({ message: 'Oh-oh the ads that you are looking for is not found' }))
+            this.store.dispatch(fromAdvertisementActions.onResolveAdvertisementFailure({ message: 'Oh-oh the ads that you are looking is not found' }));
           }
         }
       )
