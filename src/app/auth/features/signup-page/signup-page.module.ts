@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { SignupPageRoutingModule } from './signup-page-routing.module';
 import { SignupPageComponent } from './signup-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from '../../data-access/store/auth.effects';
 
 
 @NgModule({
@@ -13,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SignupPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     SignupPageComponent

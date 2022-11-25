@@ -12,7 +12,9 @@ import { NavbarModule } from './core/navbar/navbar.module';
 import { HttpClientModule } from '@angular/common/http';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import * as fromAdvertisementsState from './shared-advertisements/data-access/store'
+import * as fromAuthState from './auth/data-access/store'
 import { AdvertisementApiEffects } from './shared-advertisements/data-access/store/advertisements/advertisement.effects';
+import { AuthEffects } from './auth/data-access/store/auth.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,8 +27,9 @@ import { AdvertisementApiEffects } from './shared-advertisements/data-access/sto
     FooterModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('router', routerReducer),
+    StoreModule.forFeature(fromAuthState.authFeatureKey, fromAuthState.reducers),
     StoreModule.forFeature(fromAdvertisementsState.FeatureKey, fromAdvertisementsState.reducers),
-    EffectsModule.forRoot([AdvertisementApiEffects]),
+    EffectsModule.forRoot([AdvertisementApiEffects, AuthEffects]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),

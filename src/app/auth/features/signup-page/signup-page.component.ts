@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-
+import { Store } from '@ngrx/store';
+import * as fromAuthActions from '../../data-access/store/auth.actions'
 @Component({
   selector: 'app-signup-page',
   templateUrl: './signup-page.component.html',
@@ -8,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SignupPageComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private store: Store) { }
 
   ngOnInit(): void {
   }
@@ -17,11 +18,11 @@ export class SignupPageComponent implements OnInit {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', Validators.required],
-    username : ['', Validators.required],
+    username: ['', Validators.required],
     password: ['', Validators.required]
   })
 
-  onSubmit(){
-    console.log(this.registationForm.value)
+  onSubmit() {
+    this.store.dispatch(fromAuthActions.RegistrationCommenced({ credential: this.registationForm.value }))
   }
 }
