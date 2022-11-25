@@ -9,12 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterModule } from './core/footer/footer.module';
 import { NavbarModule } from './core/navbar/navbar.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import * as fromAdvertisementsState from './shared-advertisements/data-access/store'
 import * as fromAuthState from './auth/data-access/store'
 import { AdvertisementApiEffects } from './shared-advertisements/data-access/store/advertisements/advertisement.effects';
 import { AuthEffects } from './auth/data-access/store/auth.effects';
+import { JWTInterceptor } from './auth/shell/JWTauth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,9 @@ import { AuthEffects } from './auth/data-access/store/auth.effects';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

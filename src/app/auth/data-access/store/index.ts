@@ -19,3 +19,15 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+
+export const selectAuthFeatureSlice = createFeatureSelector<State>(authFeatureKey);
+
+export const selectAuth = createSelector(
+  selectAuthFeatureSlice,
+  (authState) => authState.auth
+)
+
+export const selectToken = createSelector(
+  selectAuth,
+  fromAuth.selectToken
+)

@@ -34,11 +34,11 @@ export class AdvertisementApiEffects {
       concatMap((newAdvert) => {
         return this.adsSevice.createAdvertisement(newAdvert).pipe(
           tap(({ advertisement }) => {
-            this.router.navigate(['/advertisements/', advertisement!._id]);
+            this.router.navigate(['/advertisements/', advertisement._id]);
           }),
           map(({ advertisement }) => fromAdvertisementActions.createAdvertisementSuccess({ advertisement: advertisement })),
           catchError((error) => {
-            return of(fromAdvertisementActions.createAdvertisementFailure({ errorMessage: error.error.message || "Unknown Error Occured" }))
+            return of(fromAdvertisementActions.createAdvertisementFailure({ errorMessage: error.message || "Unknown Error Occured" }))
           })
         )
       })

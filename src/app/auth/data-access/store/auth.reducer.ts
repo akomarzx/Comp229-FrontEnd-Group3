@@ -61,3 +61,4 @@ export const reducer = createReducer(
   })
 );
 
+export const selectToken = (state : State) => state.token;

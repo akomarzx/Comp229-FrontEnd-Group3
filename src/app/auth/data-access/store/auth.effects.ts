@@ -24,7 +24,6 @@ export class AuthEffects {
   registerUser$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(fromAuthActions.RegistrationCommenced),
-      delay(3000),
       map(action => action.credential),
       switchMap((credential) => {
         return this.authService.signUp(credential)
@@ -39,7 +38,6 @@ export class AuthEffects {
   logInUser$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(fromAuthActions.LoginCommenced),
-      delay(3000),
       map(action => action.credential),
       switchMap((credential) => {
         return this.authService.logIn(credential)
