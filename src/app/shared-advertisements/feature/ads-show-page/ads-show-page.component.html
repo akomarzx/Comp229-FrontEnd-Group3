@@ -1,4 +1,3 @@
-<!-- TODO: hide when there is not ads -->
 <main class="container">
   <div class="row" style="font-family: Times New Roman;">
     <div>
@@ -41,6 +40,10 @@
               Category: {{selectedAdvert.description.category}}<br />
               Condition: {{selectedAdvert.description.condition}}<br />
             </td>
+          </tr>
+          <tr>
+            <td class="text-center"><b>Posted by</b></td>
+            <td class="text-center"> {{selectedAdvert.owner.username}} </td>
           </tr>
         </tbody>
       </table>
