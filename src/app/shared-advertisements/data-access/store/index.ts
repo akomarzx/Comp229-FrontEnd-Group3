@@ -67,8 +67,8 @@ export const selectErrorMessage = createSelector(
 )
 
 function getFeturedAdsbyCategory(category: string, advertisements: Advertisement[]) {
-  let ads = advertisements.filter(ads => ads.description.category === 'cars');
-  let featuredAds = ads.slice(0, (ads.length >= 6 ? 5 : ads.length - 1));
+  let ads = advertisements.filter(ads => ads.description.category === category);
+  let featuredAds = ads.slice(0, (ads.length >= 3 ? 3 : ads.length));
   return featuredAds;
 }
 
@@ -103,7 +103,7 @@ export const selectSportsAds = createSelector(
 export const selectOtherAds = createSelector(
   selectAllAdvertisement,
   (advertisement) => {
-    return getFeturedAdsbyCategory('others' , advertisement)
+    return getFeturedAdsbyCategory('others', advertisement)
   }
 )
 
