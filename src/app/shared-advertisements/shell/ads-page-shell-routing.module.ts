@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'create-ad',
     loadChildren: () =>
       import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule),
-      canActivate: [IsAuthenticatedGuard, IsAuthenticatedGuard]
+      canActivate: [IsAuthenticatedGuard]
   },
   {
     path: 'edit/:_id',
