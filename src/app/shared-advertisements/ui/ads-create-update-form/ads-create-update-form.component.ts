@@ -23,8 +23,8 @@ export class AdsCreateUpdateFormComponent implements OnInit {
           adsTitle: advert.adsTitle,
           price: advert.price.toString(),
           status: advert.status,
-          activeDate: dateFormat(advert.activeDate, 'yyyy-mm-dd'),
-          expiryDate: dateFormat(advert.expiryDate, 'yyyy-mm-dd'),
+          activeDate: dateFormat(advert.activeDate, 'yyyy-mm-dd', true),
+          expiryDate: dateFormat(advert.expiryDate, 'yyyy-mm-dd', true),
           description: {
             itemName: advert.description.itemName,
             description: advert.description.description,
