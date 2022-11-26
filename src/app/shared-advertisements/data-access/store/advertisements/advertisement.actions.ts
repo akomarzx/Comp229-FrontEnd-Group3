@@ -47,7 +47,7 @@ export const updateAdvertisementSuccess = createAction(
 );
 
 export const updateAdvertisementFailure = createAction(
-  '[Advertisement/API] Update Advertisement Success',
+  '[Advertisement/API] Update Advertisement Failure',
   props<{ errorMessage: string }>()
 );
 

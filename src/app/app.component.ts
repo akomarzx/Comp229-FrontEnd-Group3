@@ -22,7 +22,9 @@ export class AppComponent implements OnInit {
   }
 
   onDismissError() {
+    // TODO: Refactor later
     this.store.dispatch(fromAuthActions.onAuthErrorDismissed())
+    this.store.dispatch(fromAdvertisementActions.OnErrorDismissed());
   }
 
   // hasAdvertisementApiError$: Observable<boolean>;

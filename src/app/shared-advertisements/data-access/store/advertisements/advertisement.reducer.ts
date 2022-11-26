@@ -45,7 +45,7 @@ export const reducer = createReducer<State>(
       }
     }),
   on(AdvertisementActions.createAdvertisementSuccess,
-    (state, action) => adapter.addOne(action.advertisement, { ...state, isApiDoneLoading: true })
+    (state, action) => adapter.addOne(action.advertisement, { ...state, isApiDoneLoading: true, hasErrorFromApi: false })
   ),
   on(AdvertisementActions.createAdvertisementFailure,
     (state, action): State => {
@@ -60,11 +60,12 @@ export const reducer = createReducer<State>(
     (state, action): State => {
       return {
         ...state,
-        isApiDoneLoading: false
+        isApiDoneLoading: false,
+        hasErrorFromApi: false
       }
     }),
   on(AdvertisementActions.updateAdvertisementSuccess,
-    (state, action) => adapter.updateOne(action.advertisement, { ...state, isApiDoneLoading: true })
+    (state, action) => adapter.updateOne(action.advertisement, { ...state, isApiDoneLoading: true, hasErrorFromApi: false })
   ),
   on(AdvertisementActions.updateAdvertisementFailure,
     (state, action): State => {
@@ -75,9 +76,9 @@ export const reducer = createReducer<State>(
         isApiDoneLoading: true
       }
     }),
-  
+
   on(AdvertisementActions.loadAdvertisementsSuccess,
-    (state, { advertisements }) => adapter.setAll(advertisements, { ...state, isApiDoneLoading: true })
+    (state, { advertisements }) => adapter.setAll(advertisements, { ...state, isApiDoneLoading: true, hasErrorFromApi: false })
   ),
   on(AdvertisementActions.loadAdvertisementsFailure,
     (state, action): State => {

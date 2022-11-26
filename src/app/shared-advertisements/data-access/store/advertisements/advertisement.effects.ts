@@ -56,7 +56,7 @@ export class AdvertisementApiEffects {
             this.router.navigate(['/advertisements/', advertisement!._id]);
           }),
           map(({ advertisement }) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: { id: advertisement!._id, changes: advertisement } })),
-          catchError((error) => of(fromAdvertisementActions.updateAdvertisementFailure({ errorMessage: error.error.message || "Unknown Error Occured" })))
+          catchError((error) => of(fromAdvertisementActions.updateAdvertisementFailure({ errorMessage: error.message || "Unknown Error Occured" })))
         )
       })
     )

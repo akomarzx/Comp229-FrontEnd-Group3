@@ -49,7 +49,6 @@ export class AuthEffects {
           .pipe(
             map(({ token, message }) => {
               const tokenInfo = this.decodeAccessToken(token)
-              console.log(tokenInfo)
               return {
                 expiresIn: tokenInfo.exp,
                 token: token,
