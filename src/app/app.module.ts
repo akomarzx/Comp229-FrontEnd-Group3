@@ -16,6 +16,7 @@ import * as fromAuthState from './auth/data-access/store'
 import { AdvertisementApiEffects } from './shared-advertisements/data-access/store/advertisements/advertisement.effects';
 import { AuthEffects } from './auth/data-access/store/auth.effects';
 import { JWTInterceptor } from './auth/shell/JWTauth.interceptor';
+import { ErrorBannerModule } from './shared/ui/error-banner/error-banner.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { JWTInterceptor } from './auth/shell/JWTauth.interceptor';
     AppRoutingModule,
     NavbarModule,
     FooterModule,
+    ErrorBannerModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('router', routerReducer),
     StoreModule.forFeature(fromAuthState.authFeatureKey, fromAuthState.reducers),

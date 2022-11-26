@@ -6,7 +6,9 @@ import * as fromAuthActions from './auth.actions'
 export interface State {
   isAuthPending: boolean,
   isAuthenticated: boolean,
-  errorMessage: string
+  errorMessage: string,
+  succesMessage: string,
+  hasAuthError: boolean,
   token: string,
   expiry: string,
   firstName: string,
@@ -19,6 +21,8 @@ export const initialState: State = {
   isAuthPending: false,
   isAuthenticated: false,
   errorMessage: '',
+  succesMessage: '',
+  hasAuthError: false,
   token: '',
   expiry: '',
   firstName: '',
@@ -35,13 +39,23 @@ export const reducer = createReducer(
       isAuthPending: true
     }
   }),
-  on(fromAuthActions.onRegistrationSuccess, fromAuthActions.onRegistrationFail, fromAuthActions.onLogInFail, (state, action): State => {
+  on(fromAuthActions.onRegistrationFail, fromAuthActions.onLogInFail, (state, action): State => {
     return {
       ...state,
       isAuthPending: false,
-      errorMessage: action.message
+      errorMessage: action.message,
+      hasAuthError: true
     }
   }),
+  on(fromAuthActions.onRegistrationSuccess,
+    (state, action): State => {
+      return {
+        ...state,
+        isAuthPending: false,
+        hasAuthError: false,
+        succesMessage: action.message
+      }
+    }),
   on(fromAuthActions.onLogInSuccess, (state, action): State => {
     return {
       ...state,
@@ -53,13 +67,16 @@ export const reducer = createReducer(
       _id: action.user._id,
       firstName: action.user.firstName,
       lastName: action.user.lastName,
-      email: action.user.email
+      email: action.user.email,
+      hasAuthError: false
     }
   }),
   on(routerRequestAction, (state, action): State => {
     return {
       ...state,
-      errorMessage: ''
+      errorMessage: '',
+      succesMessage: '',
+      hasAuthError: false
     }
   }),
   on(fromAuthActions.OnLogOut,
@@ -74,6 +91,15 @@ export const reducer = createReducer(
         email: '',
         isAuthenticated: false
       }
+    }),
+  on(fromAuthActions.onAuthErrorDismissed,
+    (state, action): State => {
+      return {
+        ...state,
+        errorMessage: '',
+        succesMessage: '',
+        hasAuthError: false
+      }
     })
 );
 
@@ -81,3 +107,6 @@ export const selectToken = (state: State) => state.token;
 export const selectExpiry = (state: State) => state.expiry;
 export const selectIsAuthenticated = (state: State) => state.isAuthenticated;
 export const selectUserId = (state: State) => state._id;
+export const selectHasAuthError = (state: State) => state.hasAuthError;
+export const selectAuthErrorMessage = (state: State) => state.errorMessage;
+export const selectSuccessMessage = (state: State) => state.succesMessage;

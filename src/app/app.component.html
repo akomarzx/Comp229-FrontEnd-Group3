@@ -2,6 +2,10 @@
   <div class="row">
     <app-navbar></app-navbar>
   </div>
+  <app-error-banner [shouldDisplay]="(hasAuthError$ | async) || (hasAdvertisementError$ | async)"
+    [errorMessage]="(authErrorMessage$ | async) || (advertisementErrorMessage$ | async)"
+    (errorDismissed)="onDismissError()">
+  </app-error-banner>
   <div class="row">
     <div class="col-md contentArea">
       <router-outlet></router-outlet>

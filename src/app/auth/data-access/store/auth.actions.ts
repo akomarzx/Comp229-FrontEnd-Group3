@@ -34,3 +34,7 @@ export const onLogInFail = createAction(
 export const OnLogOut = createAction(
   '[Shared Page] Logout'
 )
+
+export const onAuthErrorDismissed = createAction(
+  '[App Component] On Error Dismissed'
+)

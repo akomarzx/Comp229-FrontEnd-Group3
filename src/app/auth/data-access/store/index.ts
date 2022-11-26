@@ -75,3 +75,18 @@ export const selectIsOwner = createSelector(
     }
   }
 )
+
+export const selectHasAuthError = createSelector(
+  selectAuth,
+  fromAuth.selectHasAuthError
+)
+
+export const selectAuthErrorMessage = createSelector(
+  selectAuth,
+  fromAuth.selectAuthErrorMessage
+)
+
+export const selectSuccessMessage = createSelector(
+  selectAuth,
+  fromAuth.selectSuccessMessage
+)
