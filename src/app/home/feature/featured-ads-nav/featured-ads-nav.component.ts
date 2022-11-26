@@ -19,6 +19,7 @@ export class FeaturedAdsNavComponent implements OnInit {
   }
   ngOnInit(): void {
     this.featCarSelected.emit();
+    this.store.dispatch(fromFeaturedAdsCatActions.onClickedCarsCategory())
   }
   loadFeatCarAdverts() {
     this.store.dispatch(fromFeaturedAdsCatActions.onClickedCarsCategory())
