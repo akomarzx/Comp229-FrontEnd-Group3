@@ -6,7 +6,7 @@ import { RegistrationCredential } from '../models/registration-model';
 import { LoginResponse } from '../models/login-success.model';
 import { LoginCredential } from '../models/login-credential.model';
 
-const BASE_URL = 'http://localhost:3000/api/auth/';
+const BASE_URL = 'https://chafanarosa-cbs-backend.herokuapp.com/api/auth/';
 const HEADER = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };

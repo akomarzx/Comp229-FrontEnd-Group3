@@ -28,6 +28,11 @@ export class AuthEffects {
       switchMap((credential) => {
         return this.authService.signUp(credential)
           .pipe(
+            tap(() => {
+              this.router.navigate(['/auth/login']);
+              // TODO: Remove in the final release
+              alert('Succesfully Registered, (Remove Alert in final release)');
+            }),
             map(({ message }) => fromAuthActions.onRegistrationSuccess({ message: message })),
             catchError((error) => of(fromAuthActions.onRegistrationFail({ message: error.error.message }))),
           )
