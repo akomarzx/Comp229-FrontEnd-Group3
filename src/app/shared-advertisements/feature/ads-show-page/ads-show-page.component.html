@@ -1,13 +1,23 @@
 <main class="container">
   <div class="row" style="font-family: Times New Roman;">
-    <div *ngIf="isCurrentUseTheOwner | async">
+    <div class="row">
+      <div class="col-md-3">
+        <a routerLink="/" class="btn btn-primary align-self-end" role="button">
+          <i class="fas fa-plus-home"></i>
+          Back to Homepage
+        </a>
+      </div>
+    </div>
+    <div *ngIf="isCurrentUseTheOwner | async" class="mt-3">
       <a routerLink="/advertisements/edit/{{selectedAdvert._id}}" class="btn btn-primary align-self-end" role="button">
         <i class="fas fa-plus-circle"></i>
         Edit Advertisement
       </a>
     </div>
+
+
     <br><br>
-    <h1 class="text-center my-3">Advertisement Description</h1><br>
+    <h1 class="text-center my-3">{{selectedAdvert.adsTitle}}</h1><br>
     <br>
     <div class="table-responsive">
       <table class="table table-bordered table-striped table-hover">
@@ -20,9 +30,10 @@
             <td class="text-center"><b>Price</b></td>
             <td class="text-center"> {{selectedAdvert.price | currency}}</td>
           </tr>
-          <tr>
+          <tr [ngSwitch]="selectedAdvert.status">
             <td class="text-center"><b>Status</b></td>
-            <td class="text-center"> {{selectedAdvert.status}} </td>
+            <td class="text-center" *ngSwitchCase="'available'">Available</td>
+            <td class="text-center" *ngSwitchCase="'sold'">Sold</td>
           </tr>
           <tr>
             <td class="text-center"><b>Active Date</b></td>
@@ -37,8 +48,19 @@
             <td class="text-center">
               Item Name: {{selectedAdvert.description.itemName}}<br />
               Description: {{selectedAdvert.description.description}}<br />
-              Category: {{selectedAdvert.description.category}}<br />
-              Condition: {{selectedAdvert.description.condition}}<br />
+              <div [ngSwitch]="selectedAdvert.description.category">
+                <div *ngSwitchCase="'cars'">Category: Cars<br /></div>
+                <div *ngSwitchCase="'electronics'">Category: Electronics<br /></div>
+                <div *ngSwitchCase="'fashion'">Category: Fashion<br /></div>
+                <div *ngSwitchCase="'sports'">Category: Sports<br /></div>
+                <div *ngSwitchCase="'others'">Category: Others<br /></div>
+              </div>
+              <div [ngSwitch]="selectedAdvert.description.condition">
+                <div *ngSwitchCase="'new'">Condition: Brand New<br /></div>
+                <div *ngSwitchCase="'likeNew'">Condition: Like New<br /></div>
+                <div *ngSwitchCase="'used'">Condition: Used<br /></div>
+              </div>
+
             </td>
           </tr>
           <tr>
