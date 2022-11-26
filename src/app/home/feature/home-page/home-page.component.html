@@ -13,7 +13,9 @@
       </div>
     </div>
     <div class="row featureAdsNav mb-3">
-      <app-featured-ads-nav></app-featured-ads-nav>
+      <app-featured-ads-nav (featCarSelected)="onSelectCarAds()" (featElectronicsSelected)="onSelectElectronicsAds()"
+        (featFashionSelected)="onSelectFashionAds()" (featSportsSelected)="onSelectSportsAds()"
+        (featOthersSelected)="onSelectOthersAds()"></app-featured-ads-nav>
     </div>
     <div class="row text-center mt-4 mb-3 mt-lg-0">
       <h1>Featured Ads</h1>

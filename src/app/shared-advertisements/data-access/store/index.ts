@@ -8,6 +8,7 @@ import {
 import { from, map, of, skip, skipWhile, switchMap } from 'rxjs';
 import { selectRouteParams } from 'src/app/shared/store/router.selectors';
 import { environment } from '../../../../environments/environment';
+import { Advertisement } from '../models/advertisement.model';
 import * as fromAdvertisements from './advertisements/advertisement.reducer'
 
 export const FeatureKey = 'Advertisements';
@@ -64,3 +65,45 @@ export const selectErrorMessage = createSelector(
   selectAdvertismentSlice,
   fromAdvertisements.selectErrorMessage
 )
+
+function getFeturedAdsbyCategory(category: string, advertisements: Advertisement[]) {
+  let ads = advertisements.filter(ads => ads.description.category === category);
+  let featuredAds = ads.slice(0, (ads.length >= 3 ? 3 : ads.length));
+  return featuredAds;
+}
+
+export const selectFeaturedCarsAds = createSelector(
+  selectAllAdvertisement,
+  (advertisments) => {
+    return getFeturedAdsbyCategory('cars', advertisments);
+  }
+)
+
+export const selectFeaturedFashionAds = createSelector(
+  selectAllAdvertisement,
+  (advertisments) => {
+    return getFeturedAdsbyCategory('fashion', advertisments);
+  }
+)
+
+export const selectGadgetAds = createSelector(
+  selectAllAdvertisement,
+  (advertisments) => {
+    return getFeturedAdsbyCategory('electronics', advertisments);
+  }
+)
+
+export const selectSportsAds = createSelector(
+  selectAllAdvertisement,
+  (advertisments) => {
+    return getFeturedAdsbyCategory('sports', advertisments);
+  }
+)
+
+export const selectOtherAds = createSelector(
+  selectAllAdvertisement,
+  (advertisement) => {
+    return getFeturedAdsbyCategory('others', advertisement)
+  }
+)
+

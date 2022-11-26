@@ -15,8 +15,23 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.advertisements$ = this.store.select(fromAdvertisement.selectAllAdvertisement);
   }
-  isApiLoading$ : Observable<boolean> | undefined;
+
+  onSelectCarAds() {
+    this.advertisements$ = this.store.select(fromAdvertisement.selectFeaturedCarsAds)
+  }
+  onSelectElectronicsAds() {
+    this.advertisements$ = this.store.select(fromAdvertisement.selectGadgetAds)
+  }
+  onSelectFashionAds() {
+    this.advertisements$ = this.store.select(fromAdvertisement.selectFeaturedFashionAds);
+  }
+  onSelectSportsAds() {
+    this.advertisements$ = this.store.select(fromAdvertisement.selectSportsAds);
+  }
+  onSelectOthersAds() {
+    this.advertisements$ = this.store.select(fromAdvertisement.selectOtherAds);
+  }
+  isApiLoading$: Observable<boolean> | undefined;
   advertisements$: Observable<Advertisement[]> | undefined;
 }
