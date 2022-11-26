@@ -61,7 +61,20 @@ export const reducer = createReducer(
       ...state,
       errorMessage: ''
     }
-  })
+  }),
+  on(fromAuthActions.OnLogOut,
+    (state, action): State => {
+      return {
+        ...state,
+        token: '',
+        expiry: '',
+        _id: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        isAuthenticated: false
+      }
+    })
 );
 
 export const selectToken = (state: State) => state.token;

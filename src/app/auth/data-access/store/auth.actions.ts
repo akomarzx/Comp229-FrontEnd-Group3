@@ -30,3 +30,7 @@ export const onLogInFail = createAction(
   '[Auth Api] Login Failed',
   props<{ message: string }>()
 )
+
+export const OnLogOut = createAction(
+  '[Shared Page] Logout'
+)
