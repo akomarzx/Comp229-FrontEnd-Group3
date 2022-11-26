@@ -10,7 +10,12 @@ export interface Advertisement {
     condition: string,
   }
   activeDate: string,
-  expiryDate: string
+  expiryDate: string,
+  owner: {
+    _id: string,
+    username: string,
+    created: string
+  }
 }
 
 export type AdvertRequiredProps = Pick<Advertisement, 'adsTitle' | 'price' | 'status' | 'description' | 'activeDate' | 'expiryDate'>;

@@ -3,8 +3,12 @@ import {
   ActionReducerMap,
   createFeatureSelector,
   createSelector,
-  MetaReducer
+  MetaReducer,
+  select
 } from '@ngrx/store';
+import { selectAdvertisement } from 'src/app/shared-advertisements/data-access/store';
+import { selectUserIds } from 'src/app/shared-advertisements/data-access/store/advertisements/advertisement.reducer';
+import { selectRouteParams } from 'src/app/shared/store/router.selectors';
 import { environment } from '../../../../environments/environment';
 import * as fromAuth from './auth.reducer'
 
@@ -30,4 +34,44 @@ export const selectAuth = createSelector(
 export const selectToken = createSelector(
   selectAuth,
   fromAuth.selectToken
+)
+
+export const selectExpiry = createSelector(
+  selectAuth,
+  fromAuth.selectExpiry
+)
+
+export const selectIsAuthenticated = createSelector(
+  selectAuth,
+  selectExpiry,
+  selectToken,
+  // TODO: Check if the token is expired even if it is present
+  (expiry, token) => {
+    if (!token) {
+      return false;
+    }
+    return true;
+  }
+)
+
+export const selectUserId = createSelector(
+  selectAuth,
+  fromAuth.selectUserId
+)
+
+export const selectIsOwner = createSelector(
+  selectUserId,
+  selectAdvertisement,
+  selectIsAuthenticated,
+  (id, advertisement, isAuthenticated) => {
+    if (!isAuthenticated) {
+      return false;
+    }
+    if (id === advertisement?.owner._id) {
+      return true
+    }
+    else {
+      return false;
+    }
+  }
 )

@@ -10,7 +10,6 @@ import * as fromAdvertisementActions from './shared-advertisements/data-access/s
 export class AppComponent implements OnInit {
   constructor(private store: Store) {
   }
-  //TODO: Load data in here
   ngOnInit(): void {
     this.store.dispatch(fromAdvertisementActions.onStartup())
   }

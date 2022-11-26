@@ -6,6 +6,7 @@ import { Observable, tap } from 'rxjs';
 import { Advertisement, AdvertRequiredProps } from '../../data-access/models/advertisement.model';
 import * as fromAdvertisementActions from '../../data-access/store/advertisements/advertisement.actions';
 import * as fromAdvertisementState from '../../data-access/store'
+import * as fromAuthState from '../../../auth/data-access/store'
 @Component({
   selector: 'app-ads-create-update-page',
   templateUrl: './ads-create-update-page.component.html',
@@ -15,6 +16,7 @@ export class AdsCreateUpdatePageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private store: Store) {
     this.isAdsNotFound$ = this.store.select(fromAdvertisementState.selectHasApiErrored);
     this.isInEditMode = false;
+    this.currentUser$ = this.store.select(fromAuthState.selectUserId)
   }
 
   ngOnInit(): void {
@@ -36,11 +38,9 @@ export class AdsCreateUpdatePageComponent implements OnInit {
   isAdsNotFound$: Observable<boolean>;
   advertToUpdate: Advertisement | undefined;
   currentIdParams!: string | number;
+  currentUser$: Observable<string>;
 
-  // Need selector for the current param
   onFormSubmission(event: Advertisement) {
-    //TODO: check whether update or create
-    // console.log(event)
     if (this.isInEditMode) {
       const editAds: Update<Advertisement> = {
         id: this.currentIdParams.toString(),

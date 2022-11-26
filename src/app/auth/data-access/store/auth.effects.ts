@@ -47,12 +47,17 @@ export class AuthEffects {
               console.log(tokenInfo)
               return {
                 expiresIn: tokenInfo.exp,
-                _id: tokenInfo.payload.id,
                 token: token,
-                message: message
+                message: message,
+                user: {
+                  _id: tokenInfo.payload._id,
+                  firstName: tokenInfo.payload.firstName,
+                  lastName: tokenInfo.payload.lastName,
+                  email: tokenInfo.payload.email
+                }
               }
             }),
-            map(({ message, token, expiresIn, _id }) => fromAuthActions.onLogInSuccess({ message: message, token: token, _id: _id, expiry: expiresIn })),
+            map(({ message, token, expiresIn, user }) => fromAuthActions.onLogInSuccess({ message: message, token: token, user: user, expiry: expiresIn })),
             tap(() => {
               this.router.navigateByUrl('/');
             }),

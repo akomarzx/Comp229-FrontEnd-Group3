@@ -40,18 +40,25 @@
             <i class=" fa-solid fa-barcode" aria-hidden="true"></i>Browse Ads
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="(isAuthenticated$ | async) === false">
           <a class="nav-link" [routerLink]="['/auth', 'register']" routerLinkActive="active">
             <i class="fa fa-user-plus" aria-hidden="true"></i>Sign up
           </a>
         </li>
         <!-- Hide log in and registration when user is logged in -->
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="(isAuthenticated$ | async) === false">
           <a [routerLink]="['/auth', 'login']" class="nav-link" routerLinkActive="active">
             <i class="fa fa-sign-in" aria-hidden="true"></i>Sign-in
           </a>
         </li>
-        <!-- TODO: Add User Nav when user is logged in -->
+        <li class="nav-item" *ngIf="(isAuthenticated$ | async) === true">
+          <a [routerLink]="['/']" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i class="fa-solid fa-user"></i>Profile
+          </a>
+        </li>
+        <li class="nav-item" *ngIf="(isAuthenticated$ | async) === true">
+          <button (click)="onLogOut()" class="btn btn-primary">Sign out</button>
+        </li>
       </ul>
       <form class="d-flex nav-searchbar">
         <input class="form-control me-2" type="text" placeholder="What are you looking for?">

@@ -1,14 +1,13 @@
-<!-- TODO: hide when there is not ads -->
 <main class="container">
   <div class="row" style="font-family: Times New Roman;">
-    <div>
+    <div *ngIf="isCurrentUseTheOwner | async">
       <a routerLink="/advertisements/edit/{{selectedAdvert._id}}" class="btn btn-primary align-self-end" role="button">
         <i class="fas fa-plus-circle"></i>
         Edit Advertisement
       </a>
-      <br><br>
-      <h1 class="text-center">Advertisement Description</h1><br>
     </div>
+    <br><br>
+    <h1 class="text-center my-3">Advertisement Description</h1><br>
     <br>
     <div class="table-responsive">
       <table class="table table-bordered table-striped table-hover">
@@ -41,6 +40,10 @@
               Category: {{selectedAdvert.description.category}}<br />
               Condition: {{selectedAdvert.description.condition}}<br />
             </td>
+          </tr>
+          <tr>
+            <td class="text-center"><b>Posted by</b></td>
+            <td class="text-center"> {{selectedAdvert.owner.username}} </td>
           </tr>
         </tbody>
       </table>

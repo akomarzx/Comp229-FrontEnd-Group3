@@ -7,7 +7,6 @@ import { catchError, concatMap, delay, map, mergeMap, of, switchMap, tap } from 
 import { AdvertisementsService } from '../../service/advertisements.service';
 import * as fromAdvertisementActions from './advertisement.actions'
 import { AdvertRequiredProps, Advertisement } from '../../models/advertisement.model'
-//TODO: Error Handling
 @Injectable()
 export class AdvertisementApiEffects {
 
@@ -26,7 +25,6 @@ export class AdvertisementApiEffects {
     )
   })
 
-  //TODO: Redirect to show page after creation
   createAdvertisement$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(fromAdvertisementActions.onCreateNewAdvertisement),
