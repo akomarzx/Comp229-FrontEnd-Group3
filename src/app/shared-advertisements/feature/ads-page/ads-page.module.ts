@@ -8,6 +8,7 @@ import * as fromAdvertisement from '../../data-access/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AdvertisementApiEffects } from '../../data-access/store/advertisements/advertisement.effects';
 import { AdvertisementsListModule } from '../../ui/advertisements-list/advertisements-list.module';
+import { SpinnerModule } from 'src/app/shared/ui/spinner/spinner.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AdvertisementsListModule } from '../../ui/advertisements-list/advertise
   imports: [
     CommonModule,
     AdsPageRoutingModule,
-    AdvertisementsListModule
+    AdvertisementsListModule,
+    SpinnerModule
   ],
   exports: [
     AdsPageComponent
