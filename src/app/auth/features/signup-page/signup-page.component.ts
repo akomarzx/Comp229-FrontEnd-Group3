@@ -12,14 +12,21 @@ export class SignupPageComponent implements OnInit {
   constructor(private fb: FormBuilder, private store: Store) { }
 
   ngOnInit(): void {
+    this.registationForm.get('password')?.valueChanges.subscribe(
+      () => {
+        console.log(this.registationForm.get('password')?.errors)
+      }
+    )
   }
 
   registationForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    email: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    //TODO: Backend endpoint to check for user that has the username
+    // Implement a async validator
     username: ['', Validators.required],
-    password: ['', Validators.required]
+    password: ['', [Validators.required, Validators.minLength(7)]]
   })
 
   onSubmit() {

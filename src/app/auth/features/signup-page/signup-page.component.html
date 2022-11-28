@@ -8,27 +8,79 @@
         <div class="mb-3">
           <label for="firstName" class="form-label">First Name</label>
           <input type="text" class="form-control" id="firstName" placeholder="Enter your First Name" name="firstName"
-            formControlName="firstName">
+            formControlName="firstName" [class.valid]="registationForm.get('firstName')?.valid &&
+        (registationForm.get('firstName')?.dirty || registationForm.get('firstName')?.touched)" [class.invalid]="registationForm.get('firstName')?.invalid &&
+        (registationForm.get('firstName')?.dirty || registationForm.get('firstName')?.touched)" />
+          <div *ngIf="registationForm.get('firstName')?.invalid &&
+        registationForm.get('firstName')?.errors &&
+        (registationForm.get('firstName')?.dirty || registationForm.get('firstName')?.touched)">
+            <small class="text-danger" *ngIf="registationForm.get('firstName')?.hasError('required')">
+              This field is required.
+            </small>
+          </div>
         </div>
+
         <div class="mb-3">
           <label for="lastName" class="form-label">Last Name</label>
           <input type="text" class="form-control" id="lastName" placeholder="Enter your Last Name" name="lastName"
-            formControlName="lastName">
+            formControlName="lastName" [class.valid]="registationForm.get('lastName')?.valid &&
+        (registationForm.get('lastName')?.dirty || registationForm.get('lastName')?.touched)" [class.invalid]="registationForm.get('lastName')?.invalid &&
+        (registationForm.get('lastName')?.dirty || registationForm.get('lastName')?.touched)">
+          <div *ngIf="registationForm.get('lastName')?.invalid &&
+        registationForm.get('lastName')?.errors &&
+        (registationForm.get('lastName')?.dirty || registationForm.get('lastName')?.touched)">
+            <small class="text-danger" *ngIf="registationForm.get('lastName')?.hasError('required')">
+              This field is required.
+            </small>
+          </div>
         </div>
         <div class="mb-3">
           <label for="email" class="form-label">Email Address</label>
           <input type="text" class="form-control" id="email" placeholder="Enter your Email" name="email"
-            formControlName="email">
+            formControlName="email" [class.valid]="registationForm.get('email')?.valid &&
+            (registationForm.get('email')?.dirty || registationForm.get('email')?.touched)" [class.invalid]="registationForm.get('email')?.invalid &&
+            (registationForm.get('email')?.dirty || registationForm.get('email')?.touched)">
+          <div *ngIf="registationForm.get('email')?.invalid &&
+        registationForm.get('email')?.errors &&
+        (registationForm.get('email')?.dirty || registationForm.get('email')?.touched)">
+            <small class="text-danger" *ngIf="registationForm.get('email')?.hasError('required')">
+              This field is required.
+            </small>
+            <small class="text-danger" *ngIf="registationForm.get('email')?.hasError('email')">
+              Invalid email address format
+            </small>
+          </div>
         </div>
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
           <input type="text" class="form-control" id="username" placeholder="Enter your username" name="username"
-            formControlName="username">
+            formControlName="username" [class.valid]="registationForm.get('username')?.valid &&
+            (registationForm.get('username')?.dirty || registationForm.get('username')?.touched)" [class.invalid]="registationForm.get('username')?.invalid &&
+            (registationForm.get('username')?.dirty || registationForm.get('username')?.touched)">
+          <div *ngIf="registationForm.get('username')?.invalid &&
+            registationForm.get('username')?.errors &&
+            (registationForm.get('username')?.dirty || registationForm.get('username')?.touched)">
+            <small class="text-danger" *ngIf="registationForm.get('username')?.hasError('required')">
+              This field is required.
+            </small>
+          </div>
         </div>
         <div class="mb-3">
           <label for="password" class="form-label">Password</label>
           <input type="password" class="form-control" id="password" placeholder="Enter your password" name="password"
-            formControlName="password">
+            formControlName="password" [class.valid]="registationForm.get('password')?.valid &&
+            (registationForm.get('password')?.dirty || registationForm.get('password')?.touched)" [class.invalid]="registationForm.get('password')?.invalid &&
+            (registationForm.get('password')?.dirty || registationForm.get('password')?.touched)">
+          <div *ngIf="registationForm.get('password')?.invalid &&
+            registationForm.get('password')?.errors &&
+            (registationForm.get('password')?.dirty || registationForm.get('password')?.touched)">
+            <small class="text-danger" *ngIf="registationForm.get('password')?.hasError('required')">
+              This field is required.
+            </small>
+            <small class="text-danger" *ngIf="registationForm.get('password')?.hasError('minlength')">
+              Password needs to be 7 characters or longer
+            </small>
+          </div>
         </div>
         <div class="mb-3">
           <button type="submit" [disabled]="!registationForm.valid" class="btn btn-primary">
