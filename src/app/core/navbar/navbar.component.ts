@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   isAuthenticated$: Observable<boolean> | undefined;
 
   onLogOut() {
-    this.store.dispatch(fromAuthActions.OnLogOut());
+    this.store.dispatch(fromAuthActions.onLogOutCommenced());
     this.router.navigate(['/']);
   }
 }

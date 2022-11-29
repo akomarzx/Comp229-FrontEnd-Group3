@@ -1,6 +1,20 @@
 import { createAction, props } from '@ngrx/store';
 import { RegistrationCredential } from '../models/registration-model';
 import { User } from '../models/user.model'
+
+export const onAppStartUp = createAction(
+  '[Auth Shared] On App Init'
+)
+
+export const onCredentialFound = createAction(
+  '[Auth Shared] On Credential Found',
+  props<{token : string, expiry : string, user : User}>()
+)
+
+export const onCredentialNotFound = createAction(
+  '[Auth Shared] On Credential Not Found'
+)
+
 export const RegistrationCommenced = createAction(
   '[Registration Page] Registration Commenced',
   props<{ credential: any }>()
@@ -31,8 +45,11 @@ export const onLogInFail = createAction(
   props<{ message: string }>()
 )
 
+export const onLogOutCommenced = createAction(
+  '[Shared Page] On Logout Commenced'
+)
 export const OnLogOut = createAction(
-  '[Shared Page] Logout'
+  '[Shared Page] Logout Finished'
 )
 
 export const onAuthErrorDismissed = createAction(
