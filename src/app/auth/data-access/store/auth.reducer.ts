@@ -56,7 +56,7 @@ export const reducer = createReducer(
         succesMessage: action.message
       }
     }),
-  on(fromAuthActions.onLogInSuccess, (state, action): State => {
+  on(fromAuthActions.onLogInSuccess, fromAuthActions.onCredentialFound,(state, action): State => {
     return {
       ...state,
       isAuthPending: false,
@@ -79,7 +79,7 @@ export const reducer = createReducer(
       hasAuthError: false
     }
   }),
-  on(fromAuthActions.OnLogOut,
+  on(fromAuthActions.OnLogOut, fromAuthActions.onCredentialNotFound,
     (state, action): State => {
       return {
         ...state,

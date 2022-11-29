@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, map, catchError, of, delay, tap } from 'rxjs';
+import { switchMap, map, catchError, of, delay, tap, from } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import * as fromAuthActions from './auth.actions';
 import jwt_decode from 'jwt-decode';
@@ -61,6 +61,9 @@ export class AuthEffects {
                 }
               }
             }),
+            tap(({token, expiresIn, user}) => {
+              this.authService.storeCredential(token, expiresIn, user);
+            }),
             map(({ message, token, expiresIn, user }) => fromAuthActions.onLogInSuccess({ message: message, token: token, user: user, expiry: expiresIn })),
             tap(() => {
               this.router.navigateByUrl('/');
@@ -70,4 +73,32 @@ export class AuthEffects {
       })
     )
   })
+
+  onAppStartup$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(fromAuthActions.onAppStartUp),
+        map(()=> {
+          let credentials = this.authService.retrieveCredential();
+          if(credentials){
+            return fromAuthActions.onCredentialFound({token: credentials.token, expiry: credentials.expiry, user: credentials.user})
+          }else{
+            return fromAuthActions.onCredentialNotFound();
+          }
+        })
+      )
+    }
+  )
+
+  onLogout$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(fromAuthActions.onLogOutCommenced),
+        tap(() => {
+          this.authService.clearCredentials();
+        }),
+        map(() => fromAuthActions.OnLogOut())
+      )
+    }
+  )
 }

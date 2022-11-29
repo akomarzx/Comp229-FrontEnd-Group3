@@ -18,6 +18,8 @@ export class AppComponent implements OnInit {
     this.advertisementErrorMessage$ = store.select(fromAdvertisementState.selectErrorMessage);
   }
   ngOnInit(): void {
+    // TODO: Refactor later
+    this.store.dispatch(fromAuthActions.onAppStartUp());
     this.store.dispatch(fromAdvertisementActions.onStartup())
   }
 
