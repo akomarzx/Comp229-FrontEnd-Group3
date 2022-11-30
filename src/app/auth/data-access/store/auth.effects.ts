@@ -61,7 +61,7 @@ export class AuthEffects {
                 }
               }
             }),
-            tap(({token, expiresIn, user}) => {
+            tap(({ token, expiresIn, user }) => {
               this.authService.storeCredential(token, expiresIn, user);
             }),
             map(({ message, token, expiresIn, user }) => fromAuthActions.onLogInSuccess({ message: message, token: token, user: user, expiry: expiresIn })),
@@ -78,11 +78,11 @@ export class AuthEffects {
     () => {
       return this.actions$.pipe(
         ofType(fromAuthActions.onAppStartUp),
-        map(()=> {
+        map(() => {
           let credentials = this.authService.retrieveCredential();
-          if(credentials){
-            return fromAuthActions.onCredentialFound({token: credentials.token, expiry: credentials.expiry, user: credentials.user})
-          }else{
+          if (credentials) {
+            return fromAuthActions.onCredentialFound({ token: credentials.token, expiry: credentials.expiry, user: credentials.user })
+          } else {
             return fromAuthActions.onCredentialNotFound();
           }
         })
@@ -93,7 +93,7 @@ export class AuthEffects {
   onLogout$ = createEffect(
     () => {
       return this.actions$.pipe(
-        ofType(fromAuthActions.onLogOutCommenced),
+        ofType(fromAuthActions.onLogOutCommenced, fromAuthActions.onTokenExpiredInRouteGuard, fromAuthActions.onTokenExpiredInInterceptor),
         tap(() => {
           this.authService.clearCredentials();
         }),

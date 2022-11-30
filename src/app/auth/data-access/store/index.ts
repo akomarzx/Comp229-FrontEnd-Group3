@@ -9,6 +9,7 @@ import {
 import { selectAdvertisement } from 'src/app/shared-advertisements/data-access/store';
 import { selectUserIds } from 'src/app/shared-advertisements/data-access/store/advertisements/advertisement.reducer';
 import { selectRouteParams } from 'src/app/shared/store/router.selectors';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../../../environments/environment';
 import * as fromAuth from './auth.reducer'
 
@@ -43,11 +44,10 @@ export const selectExpiry = createSelector(
 
 export const selectIsAuthenticated = createSelector(
   selectAuth,
-  selectExpiry,
   selectToken,
-  // TODO: Check if the token is expired even if it is present
-  (expiry, token) => {
-    if (!token) {
+  (auth, token) => {
+    const jwtHelper = new JwtHelperService();
+    if (!token || jwtHelper.isTokenExpired(token)) {
       return false;
     }
     return true;

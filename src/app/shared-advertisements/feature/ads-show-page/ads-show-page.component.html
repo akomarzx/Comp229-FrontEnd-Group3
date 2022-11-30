@@ -2,17 +2,18 @@
   <div class="row" style="font-family: Times New Roman;">
     <div class="row d-flex justify-content-between">
       <div class="col-md-6 ">
-        <a routerLink="/" class="btn btn-primary" role="button">
-          <i class="fas fa-plus-home"></i>
-          Back to Homepage
-        </a>
-      </div>
-      <div class="col-md-6 d-md-flex justify-content-end">
         <a routerLink="/advertisements" class="btn btn-primary d" role="button">
           <i class="fas fa-plus-home"></i>
           Browse Ads
         </a>
       </div>
+      <div class="col-md-6 d-md-flex justify-content-end">
+        <a routerLink="/" class="btn btn-primary" role="button">
+          <i class="fas fa-plus-home"></i>
+          Back to Homepage
+        </a>
+      </div>
+
     </div>
     <div *ngIf="isCurrentUseTheOwner | async" class="mt-3">
       <a routerLink="/advertisements/edit/{{selectedAdvert._id}}" class="btn btn-primary align-self-end" role="button">

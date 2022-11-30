@@ -7,7 +7,8 @@ import { LoginResponse } from '../models/login-success.model';
 import { LoginCredential } from '../models/login-credential.model';
 import { User } from '../models/user.model';
 
-const BASE_URL = 'https://chafanarosa--cbs--backend.herokuapp.com/api/auth/';
+// const BASE_URL = 'https://chafanarosa--cbs--backend.herokuapp.com/api/auth/';
+const BASE_URL = 'http://localhost:3000/api/auth/'
 const HEADER = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -28,26 +29,26 @@ export class AuthService {
     return this.http.post<LoginResponse>(BASE_URL + 'signin', loginCred, HEADER);
   }
 
-  storeCredential(token : string, expiry: string , user : User){
+  storeCredential(token: string, expiry: string, user: User) {
     sessionStorage.setItem('token', token);
     sessionStorage.setItem('expiry', expiry);
     sessionStorage.setItem('user', JSON.stringify(user));
   }
 
   retrieveCredential() {
-    let token : string | null = sessionStorage.getItem('token');
-    let expiry : string | null = sessionStorage.getItem('expiry')
-    let user : User | null = null;
-    
-    if(sessionStorage.getItem('user')){
+    let token: string | null = sessionStorage.getItem('token');
+    let expiry: string | null = sessionStorage.getItem('expiry')
+    let user: User | null = null;
+
+    if (sessionStorage.getItem('user')) {
       user = JSON.parse(sessionStorage.getItem('user')!)
     }
 
-    if(token && expiry && user){
+    if (token && expiry && user) {
       return {
-        token, expiry , user
+        token, expiry, user
       }
-    }else{
+    } else {
       return null;
     }
   }

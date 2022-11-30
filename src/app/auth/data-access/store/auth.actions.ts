@@ -8,7 +8,7 @@ export const onAppStartUp = createAction(
 
 export const onCredentialFound = createAction(
   '[Auth Shared] On Credential Found',
-  props<{token : string, expiry : string, user : User}>()
+  props<{ token: string, expiry: string, user: User }>()
 )
 
 export const onCredentialNotFound = createAction(
@@ -54,4 +54,12 @@ export const OnLogOut = createAction(
 
 export const onAuthErrorDismissed = createAction(
   '[App Component] On Error Dismissed'
+)
+
+export const onTokenExpiredInRouteGuard = createAction(
+  '[Route Guard] On Token Expired'
+)
+
+export const onTokenExpiredInInterceptor = createAction(
+  '[HTTP interceptor] On Token Expired'
 )
