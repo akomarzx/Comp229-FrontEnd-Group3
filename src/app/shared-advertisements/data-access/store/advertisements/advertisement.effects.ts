@@ -36,7 +36,10 @@ export class AdvertisementApiEffects {
           }),
           map(({ advertisement }) => fromAdvertisementActions.createAdvertisementSuccess({ advertisement: advertisement })),
           catchError((error) => {
-            return of(fromAdvertisementActions.createAdvertisementFailure({ errorMessage: error.message || "Unknown Error Occured" }))
+            return of(fromAdvertisementActions.createAdvertisementFailure({ errorMessage: error.error.message || "Unknown Error Occured" }))
+          }),
+          tap(() => {
+            this.router.navigate(['/']);
           })
         )
       })
@@ -56,7 +59,10 @@ export class AdvertisementApiEffects {
             this.router.navigate(['/advertisements/', advertisement!._id]);
           }),
           map(({ advertisement }) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: { id: advertisement!._id, changes: advertisement } })),
-          catchError((error) => of(fromAdvertisementActions.updateAdvertisementFailure({ errorMessage: error.message || "Unknown Error Occured" })))
+          catchError((error) => of(fromAdvertisementActions.updateAdvertisementFailure({ errorMessage: error.error.message || "Unknown Error Occured" }))),
+          tap(() => {
+            this.router.navigate(['/']);
+          })
         )
       })
     )

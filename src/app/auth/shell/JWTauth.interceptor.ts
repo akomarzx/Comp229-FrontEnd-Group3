@@ -9,13 +9,14 @@ import { map, Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectToken, selectIsAuthenticated } from '../data-access/store';
 import * as fromAuthAction from '../../auth/data-access/store/auth.actions'
+import { Router } from '@angular/router';
 @Injectable()
 export class JWTInterceptor implements HttpInterceptor {
   token$: Observable<string>
   isAuthenticated$: Observable<boolean>;
   isAuthenticated: boolean | undefined
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     // TODO: Check if user is logged in first
     this.token$ = this.store.select(selectToken)
     this.isAuthenticated$ = this.store.select(selectIsAuthenticated)
