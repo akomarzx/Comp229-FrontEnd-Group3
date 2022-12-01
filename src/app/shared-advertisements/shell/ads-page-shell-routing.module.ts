@@ -13,7 +13,12 @@ const routes: Routes = [
     path: 'create-ad',
     loadChildren: () =>
       import('../feature/ads-create-update-page/ads-create-update-page.module').then(m => m.AdsCreateUpdatePageModule),
-      canActivate: [IsAuthenticatedGuard]
+    canActivate: [IsAuthenticatedGuard]
+  },
+  {
+    path: 'my-ads',
+    loadChildren: () => import('../feature/my-ads/my-ads.module').then(m => m.MyAdsModule),
+    canActivate: [IsStoreFullyLoadedGuard, IsAuthenticatedGuard]
   },
   {
     path: 'edit/:_id',
@@ -27,11 +32,12 @@ const routes: Routes = [
   {
     path: ':_id',
     loadChildren: () => import('../feature/ads-show-page/ads-show-page.module').then(m => m.AdsShowPageModule),
-    canActivate : [IsStoreFullyLoadedGuard],
+    canActivate: [IsStoreFullyLoadedGuard],
     resolve: {
       advertisement: AdvertisementResolver
     }
-  }
+  },
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

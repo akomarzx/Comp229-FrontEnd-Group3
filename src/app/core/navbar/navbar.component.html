@@ -52,8 +52,8 @@
           </a>
         </li>
         <li class="nav-item" *ngIf="(isAuthenticated$ | async) === true">
-          <a [routerLink]="['/']" class="nav-link">
-            <i class="fa-solid fa-user"></i>Profile
+          <a [routerLink]="['/advertisements', 'my-ads']" class="nav-link" routerLinkActive="active">
+            <i class="fa-solid fa-user"></i>My Ads
           </a>
         </li>
         <li class="nav-item" *ngIf="(isAuthenticated$ | async) === true">
