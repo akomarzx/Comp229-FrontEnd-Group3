@@ -51,6 +51,15 @@ export const selectAdvertisement = createSelector(
   (advertisements, { _id }) => advertisements[_id]
 );
 
+export const selectIsAdvertisementExpired = createSelector(
+  selectAdvertisement,
+  (ad) => {
+    let expiry = new Date(ad!.expiryDate).getTime();
+    let now = new Date().setHours(0, 0, 0, 0);
+    return expiry >= now;
+  }
+)
+
 export const selectIsApiLoading = createSelector(
   selectAdvertismentSlice,
   fromAdvertisements.selectIsApiDoneLoading

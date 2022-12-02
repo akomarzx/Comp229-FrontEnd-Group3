@@ -12,7 +12,7 @@ import { CurrencyPipe } from '@angular/common';
   ],
   imports: [
     CommonModule,
-    AdsShowPageRoutingModule
+    AdsShowPageRoutingModule,
   ],
   exports : [
     AdsShowPageComponent

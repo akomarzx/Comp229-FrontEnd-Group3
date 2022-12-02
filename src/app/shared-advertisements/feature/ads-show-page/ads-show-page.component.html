@@ -1,4 +1,4 @@
-<main class="container">
+<main class="container" *ngIf="(hasError$ | async) === false">
   <div class="row" style="font-family: Times New Roman;">
     <div class="row d-flex justify-content-between">
       <div class="col-md-6 ">
@@ -13,7 +13,7 @@
           Back to Homepage
         </a>
       </div>
-      
+
     </div>
     <div *ngIf="isCurrentUseTheOwner | async" class="mt-3">
       <a routerLink="/advertisements/edit/{{selectedAdvert._id}}" class="btn btn-primary align-self-end" role="button">
@@ -22,7 +22,13 @@
       </a>
     </div>
 
-
+    <div class="row mt-2" *ngIf="(isAdsExpired$ | async) === false">
+      <div class="col-md">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <strong>This ads has expired. If you want to reenable please adjust the expiry date</strong>
+        </div>
+      </div>
+    </div>
     <br><br>
     <h1 class="text-center my-3">{{selectedAdvert.adsTitle}}</h1><br>
     <br>
