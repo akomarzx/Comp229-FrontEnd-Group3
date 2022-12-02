@@ -12,7 +12,7 @@ import * as fromAdvertisementState from '../../data-access/store';
 export class AdsPageComponent implements OnInit {
 
   constructor(private store: Store) {
-    this.advertisement$ = this.store.select(fromAdvertisementState.selectAllAdvertisement);
+    this.advertisement$ = this.store.select(fromAdvertisementState.selectValidAds);
     this.isApiLoading$ = this.store.select(fromAdvertisementState.selectIsApiLoading);
   }
 

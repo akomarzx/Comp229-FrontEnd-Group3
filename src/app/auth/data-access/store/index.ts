@@ -12,7 +12,7 @@ import { selectRouteParams } from 'src/app/shared/store/router.selectors';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../../../environments/environment';
 import * as fromAuth from './auth.reducer'
-
+import * as fromAdsState from '../../../shared-advertisements/data-access/store/'
 export const authFeatureKey = 'Auth';
 
 export interface State {
@@ -73,6 +73,14 @@ export const selectIsOwner = createSelector(
     else {
       return false;
     }
+  }
+)
+
+export const selectAdsOwnedByUser = createSelector(
+  selectUserId,
+  fromAdsState.selectAllAdvertisement,
+  (userId, advertisements) => {
+    return advertisements.filter(ads => ads.owner._id === userId);
   }
 )
 
