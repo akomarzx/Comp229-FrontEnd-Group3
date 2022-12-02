@@ -54,6 +54,9 @@ export const selectAdvertisement = createSelector(
 export const selectIsAdvertisementExpired = createSelector(
   selectAdvertisement,
   (ad) => {
+    if (!ad) {
+      return false;
+    }
     let expiry = new Date(ad!.expiryDate).getTime();
     let now = new Date().setHours(0, 0, 0, 0);
     return expiry >= now;
