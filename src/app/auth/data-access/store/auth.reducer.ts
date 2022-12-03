@@ -116,6 +116,19 @@ export const reducer = createReducer(
         succesMessage: '',
         hasAuthError: false
       }
+    }),
+  on(fromAuthActions.onProfileUpdateSuccess,
+    (state, action): State => {
+      return {
+        ...state,
+        user: {
+          username: action.profile.username,
+          firstName: action.profile.firstName,
+          lastName: action.profile.lastName,
+          email: action.profile.email,
+          _id: state.user._id
+        }
+      }
     })
 );
 
@@ -126,4 +139,4 @@ export const selectUserId = (state: State) => state.user._id;
 export const selectHasAuthError = (state: State) => state.hasAuthError;
 export const selectAuthErrorMessage = (state: State) => state.errorMessage;
 export const selectSuccessMessage = (state: State) => state.succesMessage;
-export const selectUser = (state : State) => state.user;
+export const selectUser = (state: State) => state.user;

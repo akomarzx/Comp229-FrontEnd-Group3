@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { RegistrationCredential } from '../models/registration-model';
-import { User } from '../models/user.model'
+import { User, UserProfile } from '../models/user.model'
 
 export const onAppStartUp = createAction(
   '[Auth Shared] On App Init'
@@ -62,4 +62,19 @@ export const onTokenExpiredInRouteGuard = createAction(
 
 export const onTokenExpiredInInterceptor = createAction(
   '[HTTP interceptor] On Token Expired'
+)
+
+export const onProfileUpdateCommenced = createAction(
+  '[Profile Update Page] On Profile Update Commenced',
+  props<{ userProfile: UserProfile }>()
+)
+
+export const onProfileUpdateSuccess = createAction(
+  '[Auth Api] Profile Update Success',
+  props<{ profile: UserProfile }>()
+)
+
+export const onProfileUpdateFail = createAction(
+  '[Auth Api] Profile Update Fail',
+  props<{ message: string }>()
 )

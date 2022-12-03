@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { UserProfile } from 'src/app/auth/data-access/models/user.model';
 import * as fromAuthState from '../../../data-access/store'
+import * as fromAuthActions from '../../../data-access/store/auth.actions'
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
@@ -28,10 +30,11 @@ export class MyProfileComponent implements OnInit {
     username: ['', Validators.required]
   })
 
-  currentUser!: { firstName: string, lastName: string, email: string, username: string };
-  currentUser$: Observable<{ firstName: string, lastName: string, email: string, username: string }>;
+  currentUser!: UserProfile;
+  currentUser$: Observable<UserProfile>;
 
   onSubmit() {
-    console.log(this.updateProfileForm.value)
+    let profile = this.updateProfileForm.value as UserProfile
+    this.store.dispatch(fromAuthActions.onProfileUpdateCommenced({ userProfile:  profile }))
   }
 }

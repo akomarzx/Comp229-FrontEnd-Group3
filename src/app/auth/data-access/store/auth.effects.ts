@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { act, Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap, map, catchError, of, delay, tap, from } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import * as fromAuthActions from './auth.actions';
@@ -31,7 +31,7 @@ export class AuthEffects {
             tap(() => {
               this.router.navigate(['/auth/login']);
               // TODO: Remove in the final release
-              alert('Succesfully Registered, (Remove Alert in final release)');
+              alert('Succesfully Registered');
             }),
             map(({ message }) => fromAuthActions.onRegistrationSuccess({ message: message })),
             catchError((error) => of(fromAuthActions.onRegistrationFail({ message: error.error.message }))),
@@ -99,6 +99,25 @@ export class AuthEffects {
           this.authService.clearCredentials();
         }),
         map(() => fromAuthActions.OnLogOut())
+      )
+    }
+  )
+
+  updateProfile$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(fromAuthActions.onProfileUpdateCommenced),
+        map(action => action.userProfile),
+        switchMap(userProfile => {
+          return this.authService.updateProfile(userProfile).pipe(
+            tap((data) => {
+              this.authService.storeCredentialForUpdate(data)
+              alert('Profile Updated Succesfully');
+            }),
+            map((updatedProfile) => fromAuthActions.onProfileUpdateSuccess({ profile: updatedProfile })),
+            catchError((error) => of(fromAuthActions.onProfileUpdateFail({ message: error.message })))
+          )
+        })
       )
     }
   )
