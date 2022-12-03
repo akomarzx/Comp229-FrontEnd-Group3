@@ -9,7 +9,12 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('../features/signup-page/signup-page.module').then(m => m.SignupPageModule)
+  },
+  {
+    path: '/profile',
+    loadChildren: () => import('../features/profile/profile.module').then(m => m.ProfileModule)
   }
+
 ];
 
 @NgModule({
