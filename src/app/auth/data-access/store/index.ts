@@ -98,3 +98,8 @@ export const selectSuccessMessage = createSelector(
   selectAuth,
   fromAuth.selectSuccessMessage
 )
+
+export const selectUser = createSelector(
+  selectAuth,
+  fromAuth.selectUser
+)

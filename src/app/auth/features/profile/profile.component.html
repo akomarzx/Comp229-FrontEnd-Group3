@@ -1,1 +1,9 @@
-<p>profile works!</p>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" routerLink="/auth/user/profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">My Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLink="/auth/user/profile/advertisements" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">My Ads</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>

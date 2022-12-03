@@ -57,7 +57,8 @@ export class AuthEffects {
                   _id: tokenInfo.payload._id,
                   firstName: tokenInfo.payload.firstName,
                   lastName: tokenInfo.payload.lastName,
-                  email: tokenInfo.payload.email
+                  email: tokenInfo.payload.email,
+                  username: tokenInfo.payload.username
                 }
               }
             }),
