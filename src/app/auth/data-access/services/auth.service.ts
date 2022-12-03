@@ -7,8 +7,8 @@ import { LoginResponse } from '../models/login-success.model';
 import { LoginCredential } from '../models/login-credential.model';
 import { User, UserProfile } from '../models/user.model';
 
-// const BASE_URL = 'https://chafanarosa--cbs--backend.herokuapp.com/api/auth/';
-const BASE_URL = 'http://localhost:3000/api/auth/'
+const BASE_URL = 'https://chafanarosa--cbs--backend.herokuapp.com/api/auth/';
+// const BASE_URL = 'http://localhost:3000/api/auth/'
 const HEADER = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
