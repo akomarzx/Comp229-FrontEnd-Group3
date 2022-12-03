@@ -1,3 +1,9 @@
+export interface Inquiry {
+  username: string,
+  question: string,
+  answer: string
+}
+
 export interface Advertisement {
   _id: string,
   adsTitle: string,
@@ -15,7 +21,8 @@ export interface Advertisement {
     _id: string,
     username: string,
     created: string
-  }
+  },
+  inquiries: Inquiry[]
 }
 
 export type AdvertRequiredProps = Pick<Advertisement, 'adsTitle' | 'price' | 'status' | 'description' | 'activeDate' | 'expiryDate'>;

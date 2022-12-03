@@ -15,8 +15,8 @@
       </div>
 
     </div>
-    <div *ngIf="isCurrentUseTheOwner | async" class="mt-3">
-      <a routerLink="/advertisements/edit/{{selectedAdvert._id}}" class="btn btn-primary align-self-end" role="button">
+    <div *ngIf="isCurrentUseTheOwner$ | async" class="mt-3">
+      <a routerLink="/advertisements/edit/{{selectedAdvert?._id}}" class="btn btn-primary align-self-end" role="button">
         <i class="fas fa-plus-circle"></i>
         Edit Advertisement
       </a>
@@ -30,45 +30,45 @@
       </div>
     </div>
     <br><br>
-    <h1 class="text-center my-3">{{selectedAdvert.adsTitle}}</h1><br>
+    <h1 class="text-center my-3">{{selectedAdvert?.adsTitle}}</h1><br>
     <br>
     <div class="table-responsive">
       <table class="table table-bordered table-striped table-hover">
         <tbody>
           <tr>
             <td class="text-center"><b>Ads Title</b></td>
-            <td class="text-center"> {{selectedAdvert.adsTitle}} </td>
+            <td class="text-center"> {{selectedAdvert?.adsTitle}} </td>
           </tr>
           <tr>
             <td class="text-center"><b>Price</b></td>
-            <td class="text-center"> {{selectedAdvert.price | currency}}</td>
+            <td class="text-center"> {{selectedAdvert?.price | currency}}</td>
           </tr>
-          <tr [ngSwitch]="selectedAdvert.status">
+          <tr [ngSwitch]="selectedAdvert?.status">
             <td class="text-center"><b>Status</b></td>
             <td class="text-center" *ngSwitchCase="'available'">Available</td>
             <td class="text-center" *ngSwitchCase="'sold'">Sold</td>
           </tr>
           <tr>
             <td class="text-center"><b>Active Date</b></td>
-            <td class="text-center"> {{selectedAdvert.activeDate | date : "MMMM d, y" : "UTC"}} </td>
+            <td class="text-center"> {{selectedAdvert?.activeDate | date : "MMMM d, y" : "UTC"}} </td>
           </tr>
           <tr>
             <td class="text-center"><b>Expiry Date</b></td>
-            <td class="text-center"> {{selectedAdvert.expiryDate | date : 'MMMM d, y': "UTC"}} </td>
+            <td class="text-center"> {{selectedAdvert?.expiryDate | date : 'MMMM d, y': "UTC"}} </td>
           </tr>
           <tr>
             <td class="text-center"><b>Description</b></td>
             <td class="text-center">
-              Item Name: {{selectedAdvert.description.itemName}}<br />
-              Description: {{selectedAdvert.description.description}}<br />
-              <div [ngSwitch]="selectedAdvert.description.category">
+              Item Name: {{selectedAdvert?.description?.itemName}}<br />
+              Description: {{selectedAdvert?.description?.description}}<br />
+              <div [ngSwitch]="selectedAdvert?.description?.category">
                 <div *ngSwitchCase="'cars'">Category: Cars<br /></div>
                 <div *ngSwitchCase="'electronics'">Category: Electronics<br /></div>
                 <div *ngSwitchCase="'fashion'">Category: Fashion<br /></div>
                 <div *ngSwitchCase="'sports'">Category: Sports<br /></div>
                 <div *ngSwitchCase="'others'">Category: Others<br /></div>
               </div>
-              <div [ngSwitch]="selectedAdvert.description.condition">
+              <div [ngSwitch]="selectedAdvert?.description?.condition">
                 <div *ngSwitchCase="'new'">Condition: Brand New<br /></div>
                 <div *ngSwitchCase="'likeNew'">Condition: Like New<br /></div>
                 <div *ngSwitchCase="'used'">Condition: Used<br /></div>
@@ -78,34 +78,71 @@
           </tr>
           <tr>
             <td class="text-center"><b>Posted by</b></td>
-            <td class="text-center"> {{selectedAdvert.owner.username}} </td>
+            <td class="text-center"> {{selectedAdvert?.owner?.username}} </td>
           </tr>
         </tbody>
       </table>
     </div>
     <div>
-      <form action="#" class="w3-container w3-card-4 w3-light-grey w3-text-black w3-margin">
-        <h2 class="w3-center" style="font-family:Times New Roman;"><b>Contact Chafanarosa</b></h2>
-        <div class="w3-row w3-section">
-          <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
-          <div class="w3-rest">
-            <input class="w3-input w3-border" name="name" type="text" placeholder="Name">
+      <div class="row text">
+        <div class="row my-2">
+          <h2>Customer Questions and Answer</h2>
+        </div>
+        <div class="row my-2" *ngIf="(isCurrentUseTheOwner$ | async) === false">
+          <div class="col-md-10">
+            <div class="row">
+              <div>
+                <button class="btn btn-primary btn-lg" (click)="onUserWantsToAsk()">Ask the owner</button>
+              </div>
+            </div>
+            <div *ngIf="isQuestioningActive">
+              <form [formGroup]="newQuestionForm" (ngSubmit)="addNewQuestion()">
+                <div class="col-md-8 my-2">
+                  <label for="username" class="form-label" #answer>Username</label>
+                  <input name="answer" cols="10" rows="3" class="form-control" formControlName="question"
+                    placeholder="provide if you like" formControlName="username">
+                </div>
+                <div class="col-md-8 mb-3">
+                  <label for="answer" class="form-label" #answer>What do you want to ask?</label>
+                  <textarea name="answer" cols="10" rows="3" class="form-control" formControlName="question"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Post Question</button>
+              </form>
+            </div>
           </div>
         </div>
-        <div class="w3-row w3-section">
-          <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-          <div class="w3-rest">
-            <input class="w3-input w3-border" name="email" type="text" placeholder="Email">
+        <div class="row my-2" *ngFor="let inquiry of this.selectedAdvert?.inquiries; let i = index">
+          <div class="row ">
+            <div class="col-md-2">
+              <h4>Question:</h4>
+            </div>
+            <div class="col-md-10">
+              <h4>{{inquiry.question}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <h4>Answer from the owner: </h4>
+            </div>
+            <div class="col-md-10">
+              <h4>{{inquiry.answer || 'No answers yet'}}</h4>
+            </div>
+          </div>
+          <div class="row">
+            <h6>Asked by: {{inquiry.username || 'anonymous'}}</h6>
+          </div>
+          <div *ngIf="isCurrentUseTheOwner$ | async">
+            <form [formGroup]="answerQuestionForm" (ngSubmit)="answerQuestion(i)">
+              <div class="col-md-8 mb-3">
+                <label for="answer" class="form-label" #answer>Edit/Add Answer</label>
+                <textarea name="answer" cols="10" rows="3" class="form-control" formControlName="answer"></textarea>
+              </div>
+              <button type="submit" class="btn btn-success">Post Answer</button>
+            </form>
           </div>
         </div>
-        <div class="w3-row w3-section">
-          <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
-          <div class="w3-rest">
-            <input class="w3-input w3-border" name="message" type="text" placeholder="Message">
-          </div>
-        </div>
-        <button class="w3-button w3-block w3-section w3-black w3-ripple w3-padding">Send Message</button>
-      </form>
+      </div>
+
     </div>
   </div>
 </main>

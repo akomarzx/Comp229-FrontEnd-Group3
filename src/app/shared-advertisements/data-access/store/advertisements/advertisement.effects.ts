@@ -46,7 +46,7 @@ export class AdvertisementApiEffects {
 
   updateAdvertisementt$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(fromAdvertisementActions.onUpdateAdvertisement),
+      ofType(fromAdvertisementActions.onUpdateAdvertisement, fromAdvertisementActions.onAnswerQuestion),
       map(action => {
         return action
       }),
@@ -56,9 +56,25 @@ export class AdvertisementApiEffects {
             this.router.navigate(['/advertisements/', advertisement!._id]);
           }),
           map(({ advertisement }) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: { id: advertisement!._id, changes: advertisement } })),
-          tap((data) => {
-            console.log(data)
+          catchError((error) => of(fromAdvertisementActions.updateAdvertisementFailure({ errorMessage: error.error.message || "Unknown Error Occured" }))),
+        )
+      })
+    )
+  }
+  )
+
+  addNewQuestion$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(fromAdvertisementActions.onAddNewQuestion),
+      map(action => {
+        return action
+      }),
+      switchMap((action) => {
+        return this.adsSevice.addNewQuestion(action.advertisement).pipe(
+          tap(({ advertisement }) => {
+            this.router.navigate(['/advertisements/', advertisement!._id]);
           }),
+          map(({ advertisement }) => fromAdvertisementActions.updateAdvertisementSuccess({ advertisement: { id: advertisement!._id, changes: advertisement } })),
           catchError((error) => of(fromAdvertisementActions.updateAdvertisementFailure({ errorMessage: error.error.message || "Unknown Error Occured" }))),
         )
       })

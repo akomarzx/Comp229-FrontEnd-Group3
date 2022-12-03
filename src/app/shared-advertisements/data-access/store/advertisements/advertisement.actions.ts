@@ -56,4 +56,12 @@ export const onResolveAdvertisementFailure = createAction(
   props<{ message: string }>()
 )
 
+export const onAddNewQuestion = createAction(
+  '[Show Page] Add New Question',
+  props<{ advertisement: Update<Advertisement> }>()
+)
 
+export const onAnswerQuestion = createAction(
+  '[Show Page] Answered Question',
+  props<{ advertisement: Update<Advertisement> }>()
+)

@@ -33,5 +33,9 @@ export class AdvertisementsService {
   updateAdvertisement(advert: Update<Advertisement>): Observable<AdsApiResponseModel> {
     return this.httpClient.patch<AdsApiResponseModel>(BASE_URL + 'advertisements/' + advert.id, advert.changes, HEADER);
   }
+
+  addNewQuestion(advert: Update<Advertisement>): Observable<AdsApiResponseModel> {
+    return this.httpClient.patch<AdsApiResponseModel>(BASE_URL + 'advertisements/' + advert.id + '/inquiry', advert.changes);
+  }
 }
 
