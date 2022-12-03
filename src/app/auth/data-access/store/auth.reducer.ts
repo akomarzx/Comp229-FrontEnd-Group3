@@ -11,10 +11,14 @@ export interface State {
   hasAuthError: boolean,
   token: string,
   expiry: string,
-  firstName: string,
-  lastName: string,
-  email: string,
-  _id: string,
+  user: {
+    firstName: string,
+    lastName: string,
+    email: string,
+    _id: string,
+    username: string
+  }
+
 }
 
 export const initialState: State = {
@@ -25,10 +29,14 @@ export const initialState: State = {
   hasAuthError: false,
   token: '',
   expiry: '',
-  firstName: '',
-  lastName: '',
-  email: '',
-  _id: ''
+  user: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    _id: '',
+    username: ''
+  },
+
 };
 
 export const reducer = createReducer(
@@ -64,10 +72,13 @@ export const reducer = createReducer(
       errorMessage: '',
       token: action.token,
       expiry: action.expiry,
-      _id: action.user._id,
-      firstName: action.user.firstName,
-      lastName: action.user.lastName,
-      email: action.user.email,
+      user: {
+        _id: action.user._id,
+        firstName: action.user.firstName,
+        lastName: action.user.lastName,
+        email: action.user.email,
+        username: action.user.username
+      },
       hasAuthError: false
     }
   }),
@@ -85,10 +96,13 @@ export const reducer = createReducer(
         ...state,
         token: '',
         expiry: '',
-        _id: '',
-        firstName: '',
-        lastName: '',
-        email: '',
+        user: {
+          _id: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          username: ''
+        },
         isAuthenticated: false,
         errorMessage: 'You are logged out',
         hasAuthError: true
@@ -102,13 +116,27 @@ export const reducer = createReducer(
         succesMessage: '',
         hasAuthError: false
       }
+    }),
+  on(fromAuthActions.onProfileUpdateSuccess,
+    (state, action): State => {
+      return {
+        ...state,
+        user: {
+          username: action.profile.username,
+          firstName: action.profile.firstName,
+          lastName: action.profile.lastName,
+          email: action.profile.email,
+          _id: state.user._id
+        }
+      }
     })
 );
 
 export const selectToken = (state: State) => state.token;
 export const selectExpiry = (state: State) => state.expiry;
 export const selectIsAuthenticated = (state: State) => state.isAuthenticated;
-export const selectUserId = (state: State) => state._id;
+export const selectUserId = (state: State) => state.user._id;
 export const selectHasAuthError = (state: State) => state.hasAuthError;
 export const selectAuthErrorMessage = (state: State) => state.errorMessage;
 export const selectSuccessMessage = (state: State) => state.succesMessage;
+export const selectUser = (state: State) => state.user;

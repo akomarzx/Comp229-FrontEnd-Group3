@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="row my-3">
+      <h1>Update Profile</h1>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <form [formGroup]="updateProfileForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter your First Name" name="firstName"
+              formControlName="firstName" [class.valid]="updateProfileForm.get('firstName')?.valid &&
+          (updateProfileForm.get('firstName')?.dirty || updateProfileForm.get('firstName')?.touched)" [class.invalid]="updateProfileForm.get('firstName')?.invalid &&
+          (updateProfileForm.get('firstName')?.dirty || updateProfileForm.get('firstName')?.touched)" />
+            <div *ngIf="updateProfileForm.get('firstName')?.invalid &&
+          updateProfileForm.get('firstName')?.errors &&
+          (updateProfileForm.get('firstName')?.dirty || updateProfileForm.get('firstName')?.touched)">
+              <small class="text-danger" *ngIf="updateProfileForm.get('firstName')?.hasError('required')">
+                This field is required.
+              </small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter your Last Name" name="lastName"
+              formControlName="lastName" [class.valid]="updateProfileForm.get('lastName')?.valid &&
+          (updateProfileForm.get('lastName')?.dirty || updateProfileForm.get('lastName')?.touched)" [class.invalid]="updateProfileForm.get('lastName')?.invalid &&
+          (updateProfileForm.get('lastName')?.dirty || updateProfileForm.get('lastName')?.touched)">
+            <div *ngIf="updateProfileForm.get('lastName')?.invalid &&
+          updateProfileForm.get('lastName')?.errors &&
+          (updateProfileForm.get('lastName')?.dirty || updateProfileForm.get('lastName')?.touched)">
+              <small class="text-danger" *ngIf="updateProfileForm.get('lastName')?.hasError('required')">
+                This field is required.
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="text" class="form-control" id="email" placeholder="Enter your Email" name="email"
+              formControlName="email" [class.valid]="updateProfileForm.get('email')?.valid &&
+              (updateProfileForm.get('email')?.dirty || updateProfileForm.get('email')?.touched)" [class.invalid]="updateProfileForm.get('email')?.invalid &&
+              (updateProfileForm.get('email')?.dirty || updateProfileForm.get('email')?.touched)">
+            <div *ngIf="updateProfileForm.get('email')?.invalid &&
+          updateProfileForm.get('email')?.errors &&
+          (updateProfileForm.get('email')?.dirty || updateProfileForm.get('email')?.touched)">
+              <small class="text-danger" *ngIf="updateProfileForm.get('email')?.hasError('required')">
+                This field is required.
+              </small>
+              <small class="text-danger" *ngIf="updateProfileForm.get('email')?.hasError('email')">
+                Invalid email address format
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter your username" name="username"
+              formControlName="username" [class.valid]="updateProfileForm.get('username')?.valid &&
+              (updateProfileForm.get('username')?.dirty || updateProfileForm.get('username')?.touched)"
+              [class.invalid]="updateProfileForm.get('username')?.invalid &&
+              (updateProfileForm.get('username')?.dirty || updateProfileForm.get('username')?.touched)">
+            <div *ngIf="updateProfileForm.get('username')?.invalid &&
+              updateProfileForm.get('username')?.errors &&
+              (updateProfileForm.get('username')?.dirty || updateProfileForm.get('username')?.touched)">
+              <small class="text-danger" *ngIf="updateProfileForm.get('username')?.hasError('required')">
+                This field is required.
+              </small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <button type="submit" [disabled]="!updateProfileForm.valid" class="btn btn-primary">
+              Update Profile
+            </button>
+            <a routerLink="/" class="ms-2">
+              <button class="btn btn-warning">Cancel</button>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

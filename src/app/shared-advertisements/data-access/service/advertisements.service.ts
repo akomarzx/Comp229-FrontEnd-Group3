@@ -6,7 +6,8 @@ import { Advertisement, AdvertRequiredProps } from '../models/advertisement.mode
 import { AdsApiResponseModel } from '../models/response.model';
 
 //TODO: chjange the url onm deployement
-const BASE_URL = 'https://chafanarosa--cbs--backend.herokuapp.com/api/';
+// const BASE_URL = 'https://chafanarosa--cbs--backend.herokuapp.com/api/';
+const BASE_URL = 'http://localhost:3000/api/';
 const HEADER = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -31,6 +32,10 @@ export class AdvertisementsService {
 
   updateAdvertisement(advert: Update<Advertisement>): Observable<AdsApiResponseModel> {
     return this.httpClient.patch<AdsApiResponseModel>(BASE_URL + 'advertisements/' + advert.id, advert.changes, HEADER);
+  }
+
+  addNewQuestion(advert: Update<Advertisement>): Observable<AdsApiResponseModel> {
+    return this.httpClient.patch<AdsApiResponseModel>(BASE_URL + 'advertisements/' + advert.id + '/inquiry', advert.changes);
   }
 }
 

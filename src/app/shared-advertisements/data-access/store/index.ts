@@ -51,6 +51,18 @@ export const selectAdvertisement = createSelector(
   (advertisements, { _id }) => advertisements[_id]
 );
 
+export const selectIsAdvertisementExpired = createSelector(
+  selectAdvertisement,
+  (ad) => {
+    if (!ad) {
+      return false;
+    }
+    let expiry = new Date(ad!.expiryDate).getTime();
+    let now = new Date().setHours(0, 0, 0, 0);
+    return expiry >= now;
+  }
+)
+
 export const selectIsApiLoading = createSelector(
   selectAdvertismentSlice,
   fromAdvertisements.selectIsApiDoneLoading
@@ -72,38 +84,51 @@ function getFeturedAdsbyCategory(category: string, advertisements: Advertisement
   return featuredAds;
 }
 
-export const selectFeaturedCarsAds = createSelector(
+export const selectValidAds = createSelector(
   selectAllAdvertisement,
+  (adverts) => {
+    return adverts.filter((ads) => {
+      let active = new Date(ads.activeDate).getTime();
+      let expiry = new Date(ads.expiryDate).getTime();
+      let now = new Date().setHours(0, 0, 0, 0);
+      return active <= now && expiry >= now;
+    })
+  }
+)
+
+export const selectFeaturedCarsAds = createSelector(
+  selectValidAds,
   (advertisments) => {
     return getFeturedAdsbyCategory('cars', advertisments);
   }
 )
 
 export const selectFeaturedFashionAds = createSelector(
-  selectAllAdvertisement,
+  selectValidAds,
   (advertisments) => {
     return getFeturedAdsbyCategory('fashion', advertisments);
   }
 )
 
 export const selectGadgetAds = createSelector(
-  selectAllAdvertisement,
+  selectValidAds,
   (advertisments) => {
     return getFeturedAdsbyCategory('electronics', advertisments);
   }
 )
 
 export const selectSportsAds = createSelector(
-  selectAllAdvertisement,
+  selectValidAds,
   (advertisments) => {
     return getFeturedAdsbyCategory('sports', advertisments);
   }
 )
 
 export const selectOtherAds = createSelector(
-  selectAllAdvertisement,
+  selectValidAds,
   (advertisement) => {
     return getFeturedAdsbyCategory('others', advertisement)
   }
 )
+
 
