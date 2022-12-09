@@ -8,7 +8,7 @@ export interface Advertisement {
   _id: string,
   adsTitle: string,
   price: number,
-  status: string
+  status: string,
   description: {
     itemName: string,
     description: string,

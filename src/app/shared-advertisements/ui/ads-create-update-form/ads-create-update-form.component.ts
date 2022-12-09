@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Advertisement, AdvertRequiredProps } from '../../data-access/models/advertisement.model';
@@ -16,6 +16,7 @@ export class AdsCreateUpdateFormComponent implements OnInit {
   ngOnInit(): void {
 
     if (this.isEditMode) {
+
       this.route.data.subscribe(({ advertisement }) => {
         let advert = advertisement as Advertisement;
         this.advertForm.setValue({
@@ -57,4 +58,16 @@ export class AdsCreateUpdateFormComponent implements OnInit {
   @Input() advetisementToUpdated: Advertisement | undefined;
   @Input() currentUser!: string;
   @Output() formSubmission: EventEmitter<any>;
+
+  url = "https://pic.onlinewebfonts.com/svg/img_241955.png";
+  onFileSelected(event:any){
+    if(event.target.files[0])
+    {
+      let reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event:any) =>{
+        this.url = event.target.result;
+      }
+    }
+  }
 }
