@@ -4,3 +4,10 @@
 .listArea {
     min-height: 40vh;
 }
+
+.all {
+  background: linear-gradient(to bottom, #7A95B0 0%, #1D3E6E) ;
+  font: 1em sans-serif;
+  color: white;
+}
+
