@@ -50,7 +50,7 @@ export class AdsCreateUpdateFormComponent implements OnInit {
       description: ['', Validators.required],
       category: ['', Validators.required],
       condition: ['', Validators.required],
-      image: ['', Validators.required]
+      image: ['']
     }),
   })
   onSubmit() {
