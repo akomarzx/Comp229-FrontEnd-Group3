@@ -30,7 +30,8 @@ export class AdsCreateUpdateFormComponent implements OnInit {
             itemName: advert.description.itemName,
             description: advert.description.description,
             category: advert.description.category,
-            condition: advert.description.condition
+            condition: advert.description.condition,
+            image: advert.description.image
           },
         })
       })
@@ -48,7 +49,8 @@ export class AdsCreateUpdateFormComponent implements OnInit {
       itemName: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
-      condition: ['', Validators.required]
+      condition: ['', Validators.required],
+      image: ['', Validators.required]
     }),
   })
   onSubmit() {
