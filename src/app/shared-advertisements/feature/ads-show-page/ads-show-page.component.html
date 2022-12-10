@@ -25,12 +25,13 @@
     <div class="row mt-2" *ngIf="(isAdsExpired$ | async) === false">
       <div class="col-md">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>This ads has expired. If you want to reenable please adjust the expiry date</strong>
+          <strong>This ads has expired. If you want to re-enable please adjust the expiry date</strong>
         </div>
       </div>
     </div>
     <br><br>
     <h1 class="text-center my-3">{{selectedAdvert?.adsTitle}}</h1><br>
+    <img src="{{selectedAdvert?.description?.image}}" class="img-top img-fluid" alt="...">
     <br>
     <div class="table-responsive">
       <table class="table table-bordered table-striped table-hover">
