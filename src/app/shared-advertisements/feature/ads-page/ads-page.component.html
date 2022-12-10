@@ -1,9 +1,11 @@
-<div class="row my-4">
-  <h1 class="text-center">Browse Ads</h1>
-</div>
-<app-spinner *ngIf="(isApiLoading$ | async) === false"></app-spinner>
-<div class="row justify-content-center">
-  <div class="col-md-10 ">
-    <app-advertisements-list [advertisments]="advertisement$ | async"></app-advertisements-list>
+<div class="all">
+  <div class="row my-4">
+    <h1 class="text-center">Browse Ads</h1>
+  </div>
+  <app-spinner *ngIf="(isApiLoading$ | async) === false"></app-spinner>
+  <div class="row justify-content-center">
+    <div class="col-md-10 ">
+      <app-advertisements-list [advertisments]="advertisement$ | async"></app-advertisements-list>
+    </div>
   </div>
 </div>
