@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Advertisement, AdvertRequiredProps } from '../../data-access/models/advertisement.model';
 import dateFormat, { masks } from "dateformat";
+import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 @Component({
   selector: 'app-ads-create-update-form',
   templateUrl: './ads-create-update-form.component.html',
@@ -10,11 +11,10 @@ import dateFormat, { masks } from "dateformat";
 })
 export class AdsCreateUpdateFormComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute) {
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private storage: Storage) {
     this.formSubmission = new EventEmitter<any>();
   }
   ngOnInit(): void {
-
     if (this.isEditMode) {
       this.route.data.subscribe(({ advertisement }) => {
         let advert = advertisement as Advertisement;
@@ -30,9 +30,11 @@ export class AdsCreateUpdateFormComponent implements OnInit {
             description: advert.description.description,
             category: advert.description.category,
             condition: advert.description.condition,
+            image: advert.description.image
           },
         })
       })
+      this.disableSubmit = false
     }
   }
 
@@ -47,14 +49,46 @@ export class AdsCreateUpdateFormComponent implements OnInit {
       itemName: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
-      condition: ['', Validators.required]
+      condition: ['', Validators.required],
+      image: ['']
     }),
   })
+
+
   onSubmit() {
+    console.log(this.advertForm.value)
     this.formSubmission.emit(this.advertForm.value);
   }
   @Input() isEditMode: boolean | undefined;
   @Input() advetisementToUpdated: Advertisement | undefined;
   @Input() currentUser!: string;
   @Output() formSubmission: EventEmitter<any>;
+
+  file: any;
+  disableSubmit = true;
+  progessNumber: number = 0;
+  isUploadingCommenced = false;
+  onFileSelected(event: any) {
+    this.file = event.target.files[0];
+  }
+  onUpload() {
+    const storageRef = ref(this.storage, this.file.name)
+    const uploadTask = uploadBytesResumable(storageRef, this.file);
+    uploadTask.on('state_changed',
+      (snapshot) => {
+        this.progessNumber = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        this.isUploadingCommenced = true;
+        this.disableSubmit = false;
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          this.disableSubmit = false;
+          this.advertForm.get('description')?.get('image')?.setValue(url)
+        })
+      }
+    )
+  }
 }
