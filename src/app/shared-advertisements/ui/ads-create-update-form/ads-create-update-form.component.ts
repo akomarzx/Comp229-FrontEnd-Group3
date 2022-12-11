@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Advertisement, AdvertRequiredProps } from '../../data-access/models/advertisement.model';
 import dateFormat, { masks } from "dateformat";
+import { url } from 'inspector';
 @Component({
   selector: 'app-ads-create-update-form',
   templateUrl: './ads-create-update-form.component.html',
@@ -30,7 +31,8 @@ export class AdsCreateUpdateFormComponent implements OnInit {
             itemName: advert.description.itemName,
             description: advert.description.description,
             category: advert.description.category,
-            condition: advert.description.condition
+            condition: advert.description.condition,
+            image: advert.description.image
           },
         })
       })
@@ -48,7 +50,8 @@ export class AdsCreateUpdateFormComponent implements OnInit {
       itemName: ['', Validators.required],
       description: ['', Validators.required],
       category: ['', Validators.required],
-      condition: ['', Validators.required]
+      condition: ['', Validators.required],
+      image: ['', Validators.required]
     }),
   })
   onSubmit() {
