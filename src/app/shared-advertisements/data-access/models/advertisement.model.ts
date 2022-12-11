@@ -14,6 +14,7 @@ export interface Advertisement {
     description: string,
     category: string,
     condition: string,
+    // image: string
   }
   activeDate: string,
   expiryDate: string,
