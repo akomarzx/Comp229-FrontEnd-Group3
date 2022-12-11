@@ -1,4 +1,3 @@
-<div class="all">
 <div *ngIf="(isAdsNotFound$ | async) === false">
   <div *ngIf="advertToUpdate">
     <h1 class="text-center">Edit Advertisement</h1>
@@ -10,4 +9,3 @@
 <app-ads-create-update-form *ngIf="(isAdsNotFound$ | async) === false" [advetisementToUpdated]="advertToUpdate"
   [isEditMode]="isInEditMode" (formSubmission)="onFormSubmission($event)" [currentUser]="(currentUser$ | async)!">
 </app-ads-create-update-form>
-</div>
