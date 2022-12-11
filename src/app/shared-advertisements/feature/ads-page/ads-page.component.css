@@ -1,5 +1,10 @@
 .all {
-  background: linear-gradient(to bottom, #FE3533 0%, #900001) ;
-  font: 1em sans-serif;
+  background: linear-gradient(to bottom, #900001 0%, #FE3533 ) ;
+  font: 0.87em Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: white;
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
+
+
