@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "heroku-postbuild": "ng build --prod --build-optimizer "
+    "heroku-postbuild": "ng build --configuration prduction --aot --build-optimizer=true "
   },
   "private": true,
   "dependencies": {
