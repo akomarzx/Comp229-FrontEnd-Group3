@@ -21,7 +21,8 @@ export interface Advertisement {
   owner: {
     _id: string,
     username: string,
-    created: string
+    created: string,
+    email: string
   },
   inquiries: Inquiry[]
 }
