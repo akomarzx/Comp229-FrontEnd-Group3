@@ -35,7 +35,7 @@ export class AdsCreateUpdateFormComponent implements OnInit {
           },
         })
       })
-      this.disableSubmit = false
+      this.shouldSubmitBeDisabled$.next(false);
     }
   }
 
