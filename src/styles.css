@@ -5,7 +5,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 html body {
-  min-height: 0vh !important;
+  min-height: 100vh !important;
   padding-top: 47px !important;
   padding-bottom: 47px !important;
   padding-left: 0.8;
