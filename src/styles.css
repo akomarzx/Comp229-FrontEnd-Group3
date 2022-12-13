@@ -1,13 +1,30 @@
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
 
 html body {
-    min-height: 100vh;
-    margin: 0;
-}
-body {
-  min-height: 100%;
-  padding-top: 60px !important;
-  padding-bottom: 140px !important;
-  padding-left: 1.0em;
-  padding-right: 0.8em;
+  min-height: 0vh !important;
+  padding-top: 47px !important;
+  padding-bottom: 47px !important;
+  padding-left: 0.8;
+  padding-right: 0.8;
   font-family: 'Lato' ,Georgia, 'Times New Roman', Times, serif;
 }
+
+/* body {
+  padding-top: 47px !important;
+  padding-bottom: 47px !important;
+  padding-left: 0.5;
+  padding-right: 0.5;
+  font-family: 'Lato' ,Georgia, 'Times New Roman', Times, serif;
+} */
+
+
+.mb-0 {
+  font-weight: bold;
+  color: rgb(25, 26, 31);
+  font-size: small;
+}
+
