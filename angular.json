@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Comp229-FrontEnd-Group3:build:production"
+              "buildTarget": "Comp229-FrontEnd-Group3:build:production"
             },
             "development": {
-              "browserTarget": "Comp229-FrontEnd-Group3:build:development"
+              "buildTarget": "Comp229-FrontEnd-Group3:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Comp229-FrontEnd-Group3:build"
+            "buildTarget": "Comp229-FrontEnd-Group3:build"
           }
         },
         "test": {

@@ -1,4 +1,4 @@
-import { getSelectors, RouterReducerState } from '@ngrx/router-store';
+import { getRouterSelectors, RouterReducerState } from '@ngrx/router-store';
 
 // `router` is used as the default feature name. You can use the feature name
 // of your choice by creating a feature selector and pass it to the `getSelectors` function
@@ -14,7 +14,7 @@ export const {
   selectRouteData, // select the current route data
   selectUrl, // select the current url
   selectTitle, // Select the title if available
-} = getSelectors();
+} = getRouterSelectors();
 
 /*
 Use of this source code is governed by an MIT-style license that

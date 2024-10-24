@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { delay, filter, map, Observable, of, skipWhile, take } from 'rxjs';
 import * as FromAdvertisementState from '../data-access/store';
@@ -7,7 +7,7 @@ import * as FromAdvetisementActions from '../data-access/store/advertisements/ad
 @Injectable({
   providedIn: 'root'
 })
-export class IsStoreFullyLoadedGuard implements CanActivate {
+export class IsStoreFullyLoadedGuard  {
 
   constructor(private store: Store) { }
 
