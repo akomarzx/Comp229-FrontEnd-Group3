@@ -16,9 +16,7 @@ import { AdvertisementApiEffects } from './shared-advertisements/data-access/sto
 import { AuthEffects } from './auth/data-access/store/auth.effects';
 import { JWTInterceptor } from './auth/shell/JWTauth.interceptor';
 import { ErrorBannerModule } from './shared/ui/error-banner/error-banner.module';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideStorage,getStorage } from '@angular/fire/storage';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,8 +36,6 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JWTInterceptor, multi: true }
