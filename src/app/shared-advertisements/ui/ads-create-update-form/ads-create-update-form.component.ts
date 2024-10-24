@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Advertisement, AdvertRequiredProps } from '../../data-access/models/advertisement.model';
 import dateFormat, { masks } from "dateformat";
-import { Storage, ref, uploadBytesResumable, getDownloadURL } from '@angular/fire/storage';
 import { BehaviorSubject, Observable } from 'rxjs';
 @Component({
   selector: 'app-ads-create-update-form',
@@ -75,22 +74,22 @@ export class AdsCreateUpdateFormComponent implements OnInit {
     this.file = event.target.files[0];
   }
   onUpload() {
-    const storageRef = ref(this.storage, this.file.name)
-    const uploadTask = uploadBytesResumable(storageRef, this.file);
-    uploadTask.on('state_changed',
-      (snapshot) => {
-        this.progessNumber = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        this.isUploadingCommenced = true;
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        this.shouldSubmitBeDisabled$.next(false);
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-          this.advertForm.get('description')?.get('image')?.setValue(url)
-        })
-      }
-    )
+    // const storageRef = ref(this.storage, this.file.name)
+    // const uploadTask = uploadBytesResumable(storageRef, this.file);
+    // uploadTask.on('state_changed',
+    //   (snapshot) => {
+    //     this.progessNumber = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    //     this.isUploadingCommenced = true;
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   },
+    //   () => {
+    //     this.shouldSubmitBeDisabled$.next(false);
+    //     getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+    //       this.advertForm.get('description')?.get('image')?.setValue(url)
+    //     })
+    //   }
+    // )
   }
 }
