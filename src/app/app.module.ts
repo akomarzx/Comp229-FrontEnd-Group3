@@ -34,7 +34,7 @@ import { environment } from '../environments/environment';
     StoreModule.forFeature(fromAdvertisementsState.FeatureKey, fromAdvertisementsState.reducers),
     EffectsModule.forRoot([AdvertisementApiEffects, AuthEffects]),
     StoreRouterConnectingModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production , connectInZone: true}),
     StoreRouterConnectingModule.forRoot(),
   ],
   providers: [
