@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable, of, tap } from 'rxjs';
 import { selectIsAuthenticated } from '../data-access/store';
@@ -10,7 +10,7 @@ import * as fromAuthActions from '../../auth/data-access/store/auth.actions'
 @Injectable({
   providedIn: 'root'
 })
-export class IsAuthenticatedGuard implements CanActivate {
+export class IsAuthenticatedGuard  {
 
   constructor(private store: Store, private router: Router) {
 

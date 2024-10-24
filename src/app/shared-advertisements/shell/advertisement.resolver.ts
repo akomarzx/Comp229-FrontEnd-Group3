@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Router, Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { EMPTY, Observable, of, tap } from 'rxjs';
 import { Advertisement } from '../data-access/models/advertisement.model';
@@ -14,7 +10,7 @@ import * as fromAdvertisementActions from '../data-access/store/advertisements/a
 })
 // will use this resolver to make sure that
 // params is present in the collection when editing or showing a single ad
-export class AdvertisementResolver implements Resolve<any | undefined> {
+export class AdvertisementResolver  {
   constructor(private store: Store) { }
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any | undefined> {
     return this.store.select(selectAdvertisement).pipe(
